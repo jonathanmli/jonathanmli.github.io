@@ -23,3 +23,4 @@ I have included links to some of the coding projects I have done in the past bel
 This [Baseball Shiny App](https://github.com/jonathanmli/bb_viz) explores the similarities between baseball batters using machine learning
 
 
+You can find other interesting projects and repositories on my github [profile page](https://github.com/jonathanmli). 
