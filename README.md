@@ -22,5 +22,8 @@ I have included links to some of the coding projects I have done in the past bel
 
 This [Baseball Shiny App](https://github.com/jonathanmli/bb_viz) explores the similarities between baseball batters using machine learning
 
+I conducted mathematical research on simulating random exterior forms, and created visualization tools for mathematical objects as hypergraphs [here](https://github.com/jonathanmli/J2SummerResearch)
+
+[Here](https://github.com/jonathanmli/weighted-experts) is a project on online learning in finance. 
 
 You can find other interesting projects and repositories on my github [profile page](https://github.com/jonathanmli). 
