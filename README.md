@@ -20,6 +20,6 @@ Happy to talk about any of the topics I mentioned above. You can reach me at jmz
 
 I have included links to some of the coding projects I have done in the past below. 
 
-This app explores the similarities between baseball batters using machine learning
-[Baseball Shiny App](https://github.com/jonathanmli/bb_viz)
+This [Baseball Shiny App](https://github.com/jonathanmli/bb_viz) explores the similarities between baseball batters using machine learning
+
 
