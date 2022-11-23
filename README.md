@@ -1,4 +1,4 @@
-# Museum 
+# Jonathan's Museum 
 
 ## About me
 
