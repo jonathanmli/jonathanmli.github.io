@@ -1,4 +1,4 @@
-# Jonathan's Museum 
+# Jonathan Li(ght)'s Museum 
 
 ## About me
 
