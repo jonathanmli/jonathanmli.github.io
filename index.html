@@ -200,17 +200,44 @@
               <br>
               Covered by <a href="https://docs.google.com/presentation/d/1GmZmoWOa2O92BPrncRcTKa15xvQGhq7g4I4hJSNlC0M/edit#slide=id.g2d35a16f27e_0_24">State of AI Report 2024</a>, published by <a href="https://www.stateof.ai/">Air Street Capital</a>
               <br><br>
+              
+              <style>
+                .custom-button {
+                  padding: 7px 12px;
+                  margin-right: 5px;
+                  border: none;
+                  border-radius: 5px;
+                  color: white;
+                  font-weight: bold;
+                  cursor: pointer;
+                  transition: background-color 0.3s ease, transform 0.1s ease;
+                }
+                .code-button { background-color: #fbbf24; } /* Yellow-Orange */
+                .code-button:hover { background-color: #f59e0b; } /* Darker Orange */
+                
+                .website-button { background-color: #d946ef; } /* Magenta-Purple */
+                .website-button:hover { background-color: #c026d3; } /* Darker Magenta */
+                
+                .pdf-button { background-color: #1e40af; } /* Deep Blue */
+                .pdf-button:hover { background-color: #1e3a8a; } /* Darker Blue */
+                
+                .custom-button:hover {
+                  transform: scale(1.05);
+                }
+              </style>
+          
               <a href="https://github.com/jonathanmli/Avalon-LLM/tree/main/strategist" style="text-decoration:none;">
-                <button style="padding:5px 10px;margin-right:5px;border:none;background-color:#007bff;color:white;border-radius:5px;cursor:pointer;">Code</button>
+                <button class="custom-button code-button">Code</button>
               </a>
               <a href="https://llm-strategist.github.io/" style="text-decoration:none;">
-                <button style="padding:5px 10px;margin-right:5px;border:none;background-color:#28a745;color:white;border-radius:5px;cursor:pointer;">Website</button>
+                <button class="custom-button website-button">Website</button>
               </a>
               <a href="https://arxiv.org/pdf/2408.10635" style="text-decoration:none;">
-                <button style="padding:5px 10px;border:none;background-color:#dc3545;color:white;border-radius:5px;cursor:pointer;">PDF</button>
+                <button class="custom-button pdf-button">PDF</button>
               </a>
             </td>
           </tr>
+          
           
 
           <tr>
