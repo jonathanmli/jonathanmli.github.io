@@ -41,7 +41,7 @@ p, strong, td, th, tr {
 
 name {
   font-size: 32px;
-  color: #BA348A; /* Bright Orange */
+  color: #DB5D69; /* Bright Orange */
   font-weight: bold;
 }
 
@@ -77,44 +77,50 @@ table {
   color: #ffffff; /* Keep table text white */
 }
 
-/* Buttons - Retaining the Original Colors */
+/* General Button Styling */
 .custom-button {
   padding: 7px 12px;
   margin-right: 5px;
-  border: none;
+  border: 2px solid; /* Border color matches text color */
   border-radius: 5px;
-  color: white;
+  background: none; /* No background initially */
   font-weight: bold;
+  color: white; /* Default text color */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Code Button - Yellow */
 .code-button {
-  background-color: #fbbf24; /* Keep Original Yellow */
+  color: #fbbf24; /* Yellow text */
+  border-color: #fbbf24; /* Yellow border */
 }
 
 .code-button:hover {
-  background-color: #f59e0b; /* Keep Original Hover Yellow */
+  background-color: #fbbf24; /* Fill with yellow */
+  color: rgba(0, 0, 0, 0); /* Gradually fade text to transparent */
 }
 
+/* Website Button - Purple */
 .website-button {
-  background-color: #d946ef; /* Keep Original Purple */
+  color: #d946ef; /* Purple text */
+  border-color: #d946ef; /* Purple border */
 }
 
 .website-button:hover {
-  background-color: #c026d3; /* Keep Original Hover Purple */
+  background-color: #d946ef; /* Fill with purple */
+  color: rgba(0, 0, 0, 0); /* Gradually fade text to transparent */
 }
 
+/* PDF Button - Dark Blue */
 .pdf-button {
-  background-color: #1e40af; /* Keep Original Dark Blue */
+  color: #1e40af; /* Dark Blue text */
+  border-color: #1e40af; /* Dark Blue border */
 }
 
 .pdf-button:hover {
-  background-color: #1e3a8a; /* Keep Original Hover Darker Blue */
-}
-
-.custom-button:hover {
-  transform: scale(1.05);
+  background-color: #1e40af; /* Fill with Dark Blue */
+  color: rgba(0, 0, 0, 0); /* Gradually fade text to transparent */
 }
 
 
