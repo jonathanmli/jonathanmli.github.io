@@ -76,12 +76,15 @@ a:focus, a:hover {
   width: 30px; /* Adjust size if needed */
   height: 30px;
   margin: 0 10px; /* Spacing between icons */
-  filter: brightness(0) saturate(100%) invert(80%) sepia(92%) saturate(359%) hue-rotate(1deg) brightness(105%) contrast(103%);
+  
+  /* Default Color: #FEBC2B */
+  filter: brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(512%) hue-rotate(1deg) brightness(105%) contrast(103%);
   transition: filter 0.3s ease-in-out;
 }
 
+/* Hover Effect: #EBE82E */
 .icon-style:hover {
-  filter: brightness(0) saturate(100%) invert(91%) sepia(74%) saturate(316%) hue-rotate(14deg) brightness(105%) contrast(102%);
+  filter: brightness(0) saturate(100%) invert(80%) sepia(96%) saturate(312%) hue-rotate(5deg) brightness(110%) contrast(105%);
 }
 
 
