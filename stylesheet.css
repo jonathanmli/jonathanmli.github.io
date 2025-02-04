@@ -17,58 +17,95 @@
 
 /* Global styles */
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #0d0887; /* Deep Plasma Purple */
+  color: #fde725; /* Bright Yellow */
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
 /* Text and headings */
 p, strong, td, th, tr {
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  color: #fde725; /* Bright Yellow */
 }
 
 name {
   font-size: 32px;
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  color: #f89441; /* Bright Orange */
+  font-weight: bold;
 }
 
+/* Headings */
 heading {
   font-size: 22px;
-  color: #FFCC00; /* Gold for visibility */
-  font-family: 'Montserrat', sans-serif;
+  color: #9c179e; /* Magenta */
+  font-weight: bold;
 }
 
+/* Paper titles */
 papertitle {
   font-size: 16px;
   font-weight: 700;
-  color: #FF8888;
-  font-family: 'Montserrat', sans-serif;
+  color: #f89441; /* Bright Orange */
 }
-
 
 /* Links */
 a {
-  color: #00BFFF; /* Light blue for contrast */
+  color: #f89441; /* Bright Orange */
   text-decoration: none;
+  font-weight: bold;
 }
 
 a:focus, a:hover {
-  color: #FFD700; /* Gold on hover */
-  text-decoration: none;
+  color: #fde725; /* Golden Yellow on Hover */
+  text-decoration: underline;
 }
 
 /* Tables */
 table {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #0d0887; /* Deep Purple */
+  color: #fde725; /* Bright Yellow */
 }
 
-/* Highlighted text */
-span.highlight {
-  background-color: #333333; /* Dark gray for subtle contrast */
+/* Buttons */
+.custom-button {
+  padding: 7px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.code-button {
+  background-color: #9c179e; /* Magenta */
+}
+
+.code-button:hover {
+  background-color: #5d01a6; /* Mid Purple */
+}
+
+.website-button {
+  background-color: #f89441; /* Bright Orange */
+}
+
+.website-button:hover {
+  background-color: #9c179e; /* Magenta */
+}
+
+.pdf-button {
+  background-color: #fde725; /* Golden Yellow */
+  color: #0d0887; /* Deep Purple Text */
+}
+
+.pdf-button:hover {
+  background-color: #f89441; /* Bright Orange */
+  color: white;
+}
+
+.custom-button:hover {
+  transform: scale(1.05);
 }
 
 /* Image effects */
@@ -93,42 +130,3 @@ span.highlight {
   -webkit-transition: opacity .2s ease-in-out;
 }
 
-/* Button styles */
-.custom-button {
-  padding: 7px 12px;
-  margin-right: 5px;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-}
-
-.code-button {
-  background-color: #fbbf24;
-}
-
-.code-button:hover {
-  background-color: #f59e0b;
-}
-
-.website-button {
-  background-color: #d946ef;
-}
-
-.website-button:hover {
-  background-color: #c026d3;
-}
-
-.pdf-button {
-  background-color: #1e40af;
-}
-
-.pdf-button:hover {
-  background-color: #1e3a8a;
-}
-
-.custom-button:hover {
-  transform: scale(1.05);
-}
