@@ -81,11 +81,11 @@ table {
 .custom-button {
   padding: 7px 12px;
   margin-right: 5px;
-  border: 2px solid; /* Border color matches text color */
+  border: 2px solid; /* Border color will match text color */
   border-radius: 5px;
   background: none; /* No background initially */
   font-weight: bold;
-  color: white; /* Default text color */
+  color: #BA348A; /* Default text color */
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -98,7 +98,7 @@ table {
 
 .code-button:hover {
   background-color: #fbbf24; /* Fill with yellow */
-  color: rgba(0, 0, 0, 0); /* Gradually fade text to transparent */
+  color: #000000; /* Change text to black */
 }
 
 /* Website Button - Purple */
@@ -109,7 +109,7 @@ table {
 
 .website-button:hover {
   background-color: #d946ef; /* Fill with purple */
-  color: rgba(0, 0, 0, 0); /* Gradually fade text to transparent */
+  color: #000000; /* Change text to black */
 }
 
 /* PDF Button - Dark Blue */
@@ -120,7 +120,7 @@ table {
 
 .pdf-button:hover {
   background-color: #1e40af; /* Fill with Dark Blue */
-  color: rgba(0, 0, 0, 0); /* Gradually fade text to transparent */
+  color: #000000; /* Change text to black */
 }
 
 
