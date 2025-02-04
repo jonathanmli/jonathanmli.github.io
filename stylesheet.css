@@ -17,15 +17,15 @@
 
 /* Global styles */
 body {
-  background-color: #0d0887; /* Deep Plasma Purple */
-  color: #fde725; /* Bright Yellow */
+  background-color: #000000; /* Keep black background */
+  color: #ffffff; /* Keep white main text */
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
 /* Text and headings */
 p, strong, td, th, tr {
-  color: #fde725; /* Bright Yellow */
+  color: #ffffff; /* Keep main text white */
 }
 
 name {
@@ -62,11 +62,11 @@ a:focus, a:hover {
 
 /* Tables */
 table {
-  background-color: #0d0887; /* Deep Purple */
-  color: #fde725; /* Bright Yellow */
+  background-color: #000000; /* Keep black background */
+  color: #ffffff; /* Keep table text white */
 }
 
-/* Buttons */
+/* Buttons - Retaining the Original Colors */
 .custom-button {
   padding: 7px 12px;
   margin-right: 5px;
@@ -79,34 +79,33 @@ table {
 }
 
 .code-button {
-  background-color: #9c179e; /* Magenta */
+  background-color: #fbbf24; /* Keep Original Yellow */
 }
 
 .code-button:hover {
-  background-color: #5d01a6; /* Mid Purple */
+  background-color: #f59e0b; /* Keep Original Hover Yellow */
 }
 
 .website-button {
-  background-color: #f89441; /* Bright Orange */
+  background-color: #d946ef; /* Keep Original Purple */
 }
 
 .website-button:hover {
-  background-color: #9c179e; /* Magenta */
+  background-color: #c026d3; /* Keep Original Hover Purple */
 }
 
 .pdf-button {
-  background-color: #fde725; /* Golden Yellow */
-  color: #0d0887; /* Deep Purple Text */
+  background-color: #1e40af; /* Keep Original Dark Blue */
 }
 
 .pdf-button:hover {
-  background-color: #f89441; /* Bright Orange */
-  color: white;
+  background-color: #1e3a8a; /* Keep Original Hover Darker Blue */
 }
 
 .custom-button:hover {
   transform: scale(1.05);
 }
+
 
 /* Image effects */
 .one {
