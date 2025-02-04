@@ -253,7 +253,12 @@
               <img src="figures/sfs.png" alt="sfs" width="160" height="160">
             </td>
             <td width="75%" valign="middle">
-              <papertitle>Scattered Forest Search: Smarter Code Space Exploration with LLMs</papertitle>
+              <div class="tooltip"></div>
+                <papertitle>Scattered Forest Search: Smarter Code Space Exploration with LLMs</papertitle>
+                <span class="tooltiptext">
+                  We propose a novel approach to scaling LLM inference for code generation. We frame code generation as a black box optimization problem within the code space and employ optimization-inspired techniques to enhance exploration. Specifically, we introduce Scattered Forest Search to enhance solution diversity while searching for solutions. Our theoretical analysis illustrates how these methods avoid local optima during optimization. Extensive experiments on HumanEval, MBPP, APPS, CodeContests, and Leetcode reveal significant performance improvements. For instance, our method achieves a pass@1 rate of 67.1% on HumanEval+ and 87.2% on HumanEval with GPT-3.5, marking improvements of 8.6% and 4.3% over the state-of-the-art, while also halving the iterations needed to find the correct solution. Furthermore, our method scales more efficiently than existing search techniques, including tree search, line search, and repeated sampling.
+                </span>
+              </div>
               <br>
               <strong>Jonathan Light*</strong>, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao,
               Ziniu Hu, Haifeng Chen, Wei Cheng
@@ -272,16 +277,37 @@
               <img src="figures/merlin.jpg" alt="prl" width="160" height="160">
             </td>
             <td width="75%" valign="middle">
-              <a href="https://arxiv.org/pdf/2310.05036.pdf">
+              <div class="tooltip">
                 <papertitle>From Text to Tactic: Evaluating LLMs Playing the Game of Avalon</papertitle>
-              </a> 
+                <span class="tooltiptext">
+                  In this paper, we explore the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon. 
+                  Players in Avalon are challenged not only to make informed decisions based on dynamically evolving game phases, but also to engage in discussions 
+                  where they must deceive, deduce, and negotiate with other players. These characteristics make Avalon a compelling test-bed to study the decision-making 
+                  and language-processing capabilities of LLM Agents. To facilitate research in this line, we introduce AVALONBENCH - a comprehensive game environment tailored 
+                  for evaluating multi-agent LLM Agents. This benchmark incorporates: (1) a game environment for Avalon, (2) rule-based bots as baseline opponents, and 
+                  (3) ReAct-style LLM agents with tailored prompts for each role. Notably, our evaluations based on AVALONBENCH highlight a clear capability gap. 
+                  For instance, models like ChatGPT playing good-role got a win rate of 22.2% against rule-based bots playing evil, while good-role bot achieves 38.2% 
+                  win rate in the same setting. We envision AVALONBENCH could be a good test-bed for developing more advanced LLMs (with self-playing) and agent frameworks 
+                  that can effectively model the layered complexities of such game environments.
+                </span>
+              </div>
               <br>
               <strong>Jonathan Light*</strong>, Min Cai, Sheng Shen, Ziniu Hu
-               <br>
-              <em> NeurIPS Foundation Models for Decision Making Workshop </em>, 2023
               <br>
+              <em>NeurIPS Foundation Models for Decision Making Workshop</em>, 2023
+              <br><br>
+              <a href="https://arxiv.org/pdf/2310.05036.pdf">
+                <button class="custom-button generic-button">PDF</button>
+              </a>
+              <a href="https://avalonbench.github.io/" target="_blank"></a>
+                <button class="custom-button generic-button">Website</button>
+              </a>
+              <a href="https://github.com/jonathanmli/Avalon-LLM" target="_blank">
+                <button class="custom-button generic-button">Code</button>
+              </a>
             </td>
           </tr>
+          
 
           
 
@@ -290,16 +316,38 @@
               <img src="figures/dataset_distill_rl.png" alt="prl" width="160" height="160">
             </td>
             <td width="75%" valign="middle">
-              <a href="https://jonathanmli.github.io/">
+              <div class="tooltip">
                 <papertitle>Dataset Distillation for Offline Reinforcement Learning</papertitle>
-              </a> 
+                <span class="tooltiptext">
+                  Offline reinforcement learning often requires a quality dataset that we can train a policy on. 
+                  However, in many situations, it is not possible to get such a dataset, nor is it easy to train 
+                  a policy to perform well in the actual environment given the offline data. We propose using 
+                  data distillation to train and distill a better dataset which can then be used for training a 
+                  better policy model. We show that our method is able to synthesize a dataset where a model 
+                  trained on it achieves similar performance to a model trained on the full dataset or a model 
+                  trained using percentile behavioral cloning. Our project site is available 
+                  <a href="https://datasetdistillation4rl.github.io/" target="_blank">here</a>. 
+                  We also provide our implementation at 
+                  <a href="https://github.com/ggflow123/DDRL" target="_blank">this GitHub repository</a>.
+                </span>
+              </div>
               <br>
               <strong>Jonathan Light*</strong>, Yuanzhe Liu, Ziniu Hu
-               <br>
-              <em>ICML Data-centric Machine Learning Research Workshop</em>, 2024
               <br>
+              <em>ICML Data-centric Machine Learning Research Workshop</em>, 2024
+              <br><br>
+              <a href="https://arxiv.org/pdf/2407.20299" target="_blank">
+                <button class="custom-button generic-button">PDF</button>
+              </a>
+              <a href="https://datasetdistillation4rl.github.io/" target="_blank">
+                <button class="custom-button generic-button">Website</button>
+              </a>
+              <a href="https://github.com/ggflow123/DDRL" target="_blank">
+                <button class="custom-button generic-button">Code</button>
+              </a>
             </td>
           </tr>
+          
 
         </tbody></table>
 
