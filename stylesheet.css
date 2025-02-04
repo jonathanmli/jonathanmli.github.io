@@ -19,30 +19,35 @@
 body {
   background-color: #000000;
   color: #ffffff;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
 /* Text and headings */
 p, strong, td, th, tr {
   color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
 }
 
 name {
   font-size: 32px;
   color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
 }
 
 heading {
   font-size: 22px;
   color: #FFCC00; /* Gold for visibility */
+  font-family: 'Montserrat', sans-serif;
 }
 
 papertitle {
   font-size: 16px;
   font-weight: 700;
   color: #FF8888;
+  font-family: 'Montserrat', sans-serif;
 }
+
 
 /* Links */
 a {
