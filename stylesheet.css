@@ -151,6 +151,51 @@ table {
   color: #000000; /* Change text to black */
 }
 
+/* Tooltip Container */
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltip Text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 400px; /* Adjust width if needed */
+  background-color: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
+  color: #ffffff; /* White text */
+  text-align: left;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 120%; /* Position above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Tooltip Arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Below the tooltip box */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+}
+
+/* Show Tooltip on Hover */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
 
 /* Image effects */
 .one {
