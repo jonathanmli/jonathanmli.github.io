@@ -15,6 +15,17 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Plasma colors:
+Highlighter yellow: EBE82E
+Yellow: FEBC2B
+Orange: F48848
+Red: DB5D69
+Magenta: BA348A
+Purple: 843092
+Dark purple: 582D90
+Indigo: 2B2C7B
+*/
+
 /* Global styles */
 body {
   background-color: #000000; /* Keep black background */
@@ -30,14 +41,14 @@ p, strong, td, th, tr {
 
 name {
   font-size: 32px;
-  color: #f89441; /* Bright Orange */
+  color: #BA348A; /* Bright Orange */
   font-weight: bold;
 }
 
 /* Headings */
 heading {
   font-size: 22px;
-  color: #9c179e; /* Magenta */
+  color: #DB5D69; /* Magenta */
   font-weight: bold;
 }
 
@@ -45,18 +56,18 @@ heading {
 papertitle {
   font-size: 16px;
   font-weight: 700;
-  color: #f89441; /* Bright Orange */
+  color: #F48848; /* Bright Orange */
 }
 
 /* Links */
 a {
-  color: #f89441; /* Bright Orange */
+  color: #FEBC2B; /* Bright Orange */
   text-decoration: none;
   font-weight: bold;
 }
 
 a:focus, a:hover {
-  color: #fde725; /* Golden Yellow on Hover */
+  color: #EBE82E; /* Golden Yellow on Hover */
   text-decoration: underline;
 }
 
