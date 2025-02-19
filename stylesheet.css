@@ -15,7 +15,7 @@ body {
 
 /* Link styles */
 a {
-  color: #FEBC2B; /* originally bright orange */
+  color: #FEBC2B; /* bright orange from original design */
   text-decoration: none;
   font-weight: bold;
 }
@@ -24,14 +24,14 @@ a:hover {
   text-decoration: underline;
 }
 
-/* HEADINGS color (used also for nav text) */
+/* Headings color (used also for nav text) */
 h1, h2, h3, h4, h5, h6 {
-  color: #DB5D69; /* used for headings & nav bar text */
+  color: #DB5D69; /* bright, used for headings & nav bar text */
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-/* Sidebar Navigation */
+/* Sidebar Navigation (fixed on the left) */
 .sidebar {
   position: fixed;
   top: 0;
@@ -45,30 +45,31 @@ h1, h2, h3, h4, h5, h6 {
   overflow-y: auto;
 }
 
+/* Name (Jonathan Li(ght)) */
 .nav-header {
   margin-bottom: 20px;
 }
-
 .nav-header h2 {
   margin: 0;
-  color: #DB5D69; /* same color as headings */
+  color: #DB5D69;
 }
 
+/* Navigation links */
 .nav-links a {
   display: block;
-  color: #DB5D69; /* headings color */
+  color: #DB5D69; /* same color as headings */
   padding: 8px 0;
   font-weight: bold;
   transition: color 0.2s ease;
 }
-
 .nav-links a:hover {
   color: #F191A5; /* lighten or shift color on hover */
 }
 
-/* CV button area in sidebar */
+/* CV area in sidebar */
 .nav-cv {
   margin-top: 20px;
+  margin-bottom: 20px;
   text-align: left;
 }
 .nav-cv small {
@@ -78,63 +79,76 @@ h1, h2, h3, h4, h5, h6 {
   color: #888888;
 }
 
-/* Main content wrapper (pushed right to accommodate sidebar) */
-.content {
-  margin-left: 220px; /* same width as sidebar */
-  padding: 20px;
-  max-width: 1200px; /* optional max-width */
-}
-
-/* Intro section */
-#intro p {
-  margin-bottom: 1rem;
-}
-
-/* Social Icons */
-.intro-profile {
+/* Social icons at bottom of sidebar */
+.nav-social {
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  margin-top: 1.5rem;
-}
-.profile-pic img {
-  width: 200px;
-  height: auto;
-  border-radius: 6px;
-  margin-right: 20px;
-}
-.social-icons {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.social-icons .social-icon {
-  margin-right: 10px;
+  gap: 10px;
 }
 
 /* Icon style filter (original from your code) */
 .icon-style {
   width: 30px;
   height: 30px;
-  filter: brightness(0) saturate(100%) invert(60%) sepia(98%) 
+  filter: brightness(0) saturate(100%) invert(60%) sepia(98%)
           saturate(512%) hue-rotate(1deg) brightness(105%) contrast(103%);
   transition: filter 0.3s ease-in-out;
 }
 .icon-style:hover {
-  filter: brightness(0) saturate(100%) invert(80%) sepia(96%) 
+  filter: brightness(0) saturate(100%) invert(80%) sepia(96%)
           saturate(312%) hue-rotate(5deg) brightness(110%) contrast(105%);
 }
 
-/* Education Layout */
+/* Main content wrapper (pushed right to accommodate sidebar) */
+.content {
+  margin-left: 220px; /* same width as sidebar */
+  padding: 20px;
+  max-width: 1200px; /* optional max-width for readability */
+}
+
+/* Intro Section Layout */
+.intro-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap; /* wrap for smaller screens */
+  gap: 20px;
+}
+
+/* Intro text */
+.intro-text {
+  flex: 1 1 400px; /* allow it to shrink on small screens */
+  min-width: 300px;
+}
+
+/* Profile pic on the right */
+.profile-pic {
+  max-width: 300px;
+  flex-shrink: 0;
+}
+.profile-pic img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 2px solid #333;
+}
+
+/* Education Layout with vertical bar */
 .education-entry {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
+  align-items: center;
 }
+
 .edu-details {
   flex: 1 1 60%;
+  border-left: 2px solid #DB5D69; /* vertical bar */
+  padding-left: 15px;
   margin-right: 20px;
 }
+
 .edu-logo img {
   width: 80px;
   height: auto;
@@ -150,18 +164,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem;
   transition: background-color 0.3s ease-in-out;
 }
-
 .publication-card:hover {
   background-color: #111111; /* slightly lighter black on hover */
 }
 
-/* Publication card header: image + brief info */
+/* Pub card header: image + text side by side */
 .publication-card-header {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 1rem;
 }
-
 .publication-card-header img {
   width: 120px;
   height: 120px;
@@ -185,9 +197,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .pub-buttons a {
   text-decoration: none;
+  margin-right: 5px;
 }
 
-/* Hide abstract initially with a collapsible approach */
+/* Hide the abstract initially for collapsible effect */
 .card-abstract {
   max-height: 0;
   overflow: hidden;
@@ -197,24 +210,24 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Expand the card's abstract on hover */
 .publication-card:hover .card-abstract {
-  max-height: 1000px; /* large enough to reveal full text */
+  max-height: 300px; /* or larger to ensure full text is shown */
+  /* You can adjust max-height as needed if your abstracts are longer */
 }
 
-/* Buttons in general */
+/* Custom buttons */
 .custom-button {
   padding: 7px 12px;
-  margin-right: 5px;
-  border: 2px solid; /* Border color will match text color */
+  border: 2px solid;
   border-radius: 5px;
   background: none;
   font-weight: bold;
-  color: white; /* Default text color */
+  color: white;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .generic-button {
-  color: #BA348A;
+  color: #BA348A;  /* same color from original style suggestions */
   border-color: #BA348A;
 }
 .generic-button:hover {
