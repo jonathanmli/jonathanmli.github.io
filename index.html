@@ -14,16 +14,54 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="figures/LOGO.png">
+
 </head>
 <body>
 
+  <!-- Hamburger / Nav Toggle (appears on smaller screens) -->
+  <div class="hamburger" id="navToggle">
+    &#9776;
+  </div>
+
   <!-- Fixed Sidebar Navigation -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebarMenu">
+    <!-- Name with rotating last name on a new line -->
     <div class="nav-header">
-      <!-- Same color as headings (#DB5D69) -->
-      <h2>Jonathan Li(ght)</h2>
+      <h2>
+        Jonathan<br>
+        <span class="rotating-lastname">
+          <div class="rotating-lastname-inner">
+            <div>Li</div>
+            <div>Light</div>
+            <div>明</div>
+            <div>アキラ</div>
+            <div>명</div>
+          </div>
+        </span>
+      </h2>
     </div>
 
+    <!-- Social icons directly under name -->
+    <div class="nav-social-top">
+      <!-- Email Icon -->
+      <a href="mailto:jonathan.li.connect@gmail.com" class="social-icon">
+        <img src="figures/email_icon.svg" alt="Email" class="icon-style">
+      </a>
+      <!-- LinkedIn Icon -->
+      <a href="https://www.linkedin.com/in/jonathan-m-li/" class="social-icon">
+        <img src="figures/linkedin-icon.svg" alt="LinkedIn" class="icon-style">
+      </a>
+      <!-- GitHub Icon -->
+      <a href="https://github.com/jonathanmli" class="social-icon">
+        <img src="figures/github-mark-white.svg" alt="GitHub" class="icon-style">
+      </a>
+      <!-- Google Scholar Icon -->
+      <a href="https://scholar.google.com/citations?user=NjUdt4cAAAAJ&hl=en" class="social-icon">
+        <img src="figures/google-scholar-icon.svg" alt="Google Scholar" class="icon-style">
+      </a>
+    </div>
+
+    <!-- Navigation links -->
     <nav class="nav-links">
       <a href="#intro">Home</a>
       <a href="#education">Education</a>
@@ -42,26 +80,6 @@
         <button class="custom-button generic-button">CV</button>
       </a>
       <small>(may be slightly outdated)</small>
-    </div>
-
-    <!-- Social icons moved to bottom of nav bar -->
-    <div class="nav-social">
-      <!-- Email Icon -->
-      <a href="mailto:jonathan.li.connect@gmail.com" class="social-icon">
-        <img src="figures/email_icon.svg" alt="Email" class="icon-style">
-      </a>
-      <!-- LinkedIn Icon -->
-      <a href="https://www.linkedin.com/in/jonathan-m-li/" class="social-icon">
-        <img src="figures/linkedin-icon.svg" alt="LinkedIn" class="icon-style">
-      </a>
-      <!-- GitHub Icon -->
-      <a href="https://github.com/jonathanmli" class="social-icon">
-        <img src="figures/github-mark-white.svg" alt="GitHub" class="icon-style">
-      </a>
-      <!-- Google Scholar Icon -->
-      <a href="https://scholar.google.com/citations?user=NjUdt4cAAAAJ&hl=en" class="social-icon">
-        <img src="figures/google-scholar-icon.svg" alt="Google Scholar" class="icon-style">
-      </a>
     </div>
   </aside>
 
@@ -384,5 +402,15 @@
     </footer>
   </main>
 
+  <!-- Toggle Sidebar Script -->
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    // On smaller screens, toggle the sidebar open/close
+    navToggle.addEventListener('click', () => {
+      sidebarMenu.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

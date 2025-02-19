@@ -31,6 +31,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
 }
 
+/* The hamburger (shown on smaller screens) */
+.hamburger {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #000;
+  border: 2px solid #333;
+  padding: 8px 10px;
+  border-radius: 4px;
+  z-index: 999; /* above everything else */
+}
+
 /* Sidebar Navigation (fixed on the left) */
 .sidebar {
   position: fixed;
@@ -43,18 +58,77 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
   border-right: 2px solid #333333;
   overflow-y: auto;
+  transition: transform 0.3s ease; /* for slide in/out on mobile */
+
+  /* By default, we keep it in place for larger screens */
+  transform: translateX(0);
+}
+.sidebar.open {
+  transform: translateX(0); /* override if hidden on mobile */
 }
 
-/* Name (Jonathan Li(ght)) */
+/* Name + rotating last name area */
 .nav-header {
   margin-bottom: 20px;
 }
 .nav-header h2 {
   margin: 0;
   color: #DB5D69;
+  display: inline-block;
+  line-height: 1.3;
 }
 
-/* Navigation links */
+/* Rotating last name container */
+.rotating-lastname {
+  position: relative;
+  display: inline-block;
+  height: 1.2em; /* the visible "window" */
+  overflow: hidden;
+  vertical-align: bottom;
+  margin-top: 0.3em;
+}
+
+/* Container that slides upward */
+.rotating-lastname-inner {
+  display: block;
+  animation: slideName 10s infinite;
+  line-height: 1.2em;
+}
+
+/* The 5 lines: Li, Light, 明, アキラ, 명 */
+.rotating-lastname-inner > div {
+  height: 1.2em; /* each line's height */
+}
+
+/* Keyframes for upward pushing transitions */
+@keyframes slideName {
+  0%   { transform: translateY(0); }
+  10%  { transform: translateY(0); }
+  /* Step to second name: Light */
+  20%  { transform: translateY(-1.2em); }
+  30%  { transform: translateY(-1.2em); }
+  /* Step to third name: 明 */
+  40%  { transform: translateY(-2.4em); }
+  50%  { transform: translateY(-2.4em); }
+  /* Step to fourth name: アキラ */
+  60%  { transform: translateY(-3.6em); }
+  70%  { transform: translateY(-3.6em); }
+  /* Step to fifth name: 명 */
+  80%  { transform: translateY(-4.8em); }
+  90%  { transform: translateY(-4.8em); }
+  /* Loop back to first (Li) */
+  100% { transform: translateY(0); }
+}
+
+/* Social icons area under name */
+.nav-social-top {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Navigation links below icons */
 .nav-links a {
   display: block;
   color: #DB5D69; /* same color as headings */
@@ -79,15 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #888888;
 }
 
-/* Social icons at bottom of sidebar */
-.nav-social {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-/* Icon style filter (original from your code) */
+/* Icon style filter */
 .icon-style {
   width: 30px;
   height: 30px;
@@ -210,8 +276,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Expand the card's abstract on hover */
 .publication-card:hover .card-abstract {
-  max-height: 300px; /* or larger to ensure full text is shown */
-  /* You can adjust max-height as needed if your abstracts are longer */
+  max-height: 300px; /* or bigger if your abstracts are longer */
 }
 
 /* Custom buttons */
@@ -242,4 +307,26 @@ footer {
   text-align: center;
   border-top: 1px solid #444444;
   font-size: 0.85rem;
+}
+
+/* ------ Responsive Mobile Tweaks ------ */
+
+/* On smaller screens, we show the hamburger and hide the sidebar by default. 
+   Adjust max-width or orientation as desired. */
+@media (max-width: 800px) {
+  /* Show hamburger */
+  .hamburger {
+    display: block;
+  }
+  /* Hide sidebar by default */
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0); /* show nav when toggled */
+  }
+  /* Main content no longer margin-left for smaller screens */
+  .content {
+    margin-left: 0;
+  }
 }
