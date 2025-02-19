@@ -15,7 +15,7 @@ body {
 
 /* Link styles */
 a {
-  color: #FEBC2B; /* bright orange from original design */
+  color: #FEBC2B; /* bright orange */
   text-decoration: none;
   font-weight: bold;
 }
@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* The hamburger (shown on smaller screens) */
 .hamburger {
-  display: none; /* hidden by default */
+  display: none; /* hidden by default on large screens */
   position: fixed;
   top: 15px;
   left: 15px;
@@ -51,20 +51,18 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 220px; /* adjust width as needed */
+  width: 220px; 
   height: 100vh;
-  background-color: #000000; /* black background */
+  background-color: #000000; 
   padding: 20px 15px;
   box-sizing: border-box;
   border-right: 2px solid #333333;
   overflow-y: auto;
-  transition: transform 0.3s ease; /* for slide in/out on mobile */
-
-  /* By default, we keep it in place for larger screens */
-  transform: translateX(0);
+  transition: transform 0.3s ease;
+  transform: translateX(0); /* visible by default */
 }
 .sidebar.open {
-  transform: translateX(0); /* override if hidden on mobile */
+  transform: translateX(0); /* open state on small screens */
 }
 
 /* Name + rotating last name area */
@@ -82,41 +80,30 @@ h1, h2, h3, h4, h5, h6 {
 .rotating-lastname {
   position: relative;
   display: inline-block;
-  height: 1.2em; /* the visible "window" */
+  height: 1.2em; 
   overflow: hidden;
   vertical-align: bottom;
   margin-top: 0.3em;
 }
-
-/* Container that slides upward */
 .rotating-lastname-inner {
   display: block;
   animation: slideName 10s infinite;
   line-height: 1.2em;
 }
-
-/* The 5 lines: Li, Light, 明, アキラ, 명 */
 .rotating-lastname-inner > div {
-  height: 1.2em; /* each line's height */
+  height: 1.2em;
 }
-
-/* Keyframes for upward pushing transitions */
 @keyframes slideName {
   0%   { transform: translateY(0); }
   10%  { transform: translateY(0); }
-  /* Step to second name: Light */
   20%  { transform: translateY(-1.2em); }
   30%  { transform: translateY(-1.2em); }
-  /* Step to third name: 明 */
   40%  { transform: translateY(-2.4em); }
   50%  { transform: translateY(-2.4em); }
-  /* Step to fourth name: アキラ */
   60%  { transform: translateY(-3.6em); }
   70%  { transform: translateY(-3.6em); }
-  /* Step to fifth name: 명 */
   80%  { transform: translateY(-4.8em); }
   90%  { transform: translateY(-4.8em); }
-  /* Loop back to first (Li) */
   100% { transform: translateY(0); }
 }
 
@@ -128,16 +115,16 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
 }
 
-/* Navigation links below icons */
+/* Navigation links */
 .nav-links a {
   display: block;
-  color: #DB5D69; /* same color as headings */
+  color: #DB5D69; 
   padding: 8px 0;
   font-weight: bold;
   transition: color 0.2s ease;
 }
 .nav-links a:hover {
-  color: #F191A5; /* lighten or shift color on hover */
+  color: #F191A5; 
 }
 
 /* CV area in sidebar */
@@ -166,11 +153,11 @@ h1, h2, h3, h4, h5, h6 {
           saturate(312%) hue-rotate(5deg) brightness(110%) contrast(105%);
 }
 
-/* Main content wrapper (pushed right to accommodate sidebar) */
+/* Main content */
 .content {
-  margin-left: 220px; /* same width as sidebar */
+  margin-left: 220px; 
   padding: 20px;
-  max-width: 1200px; /* optional max-width for readability */
+  max-width: 1200px;
 }
 
 /* Intro Section Layout */
@@ -178,17 +165,13 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  flex-wrap: wrap; /* wrap for smaller screens */
+  flex-wrap: wrap; 
   gap: 20px;
 }
-
-/* Intro text */
 .intro-text {
-  flex: 1 1 400px; /* allow it to shrink on small screens */
+  flex: 1 1 400px; 
   min-width: 300px;
 }
-
-/* Profile pic on the right */
 .profile-pic {
   max-width: 300px;
   flex-shrink: 0;
@@ -207,14 +190,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.5rem;
   align-items: center;
 }
-
 .edu-details {
   flex: 1 1 60%;
-  border-left: 2px solid #DB5D69; /* vertical bar */
+  border-left: 2px solid #DB5D69;
   padding-left: 15px;
   margin-right: 20px;
 }
-
 .edu-logo img {
   width: 80px;
   height: auto;
@@ -231,10 +212,8 @@ h1, h2, h3, h4, h5, h6 {
   transition: background-color 0.3s ease-in-out;
 }
 .publication-card:hover {
-  background-color: #111111; /* slightly lighter black on hover */
+  background-color: #111111; 
 }
-
-/* Pub card header: image + text side by side */
 .publication-card-header {
   display: flex;
   align-items: flex-start;
@@ -248,16 +227,12 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid #333;
   border-radius: 4px;
 }
-
-/* Title styling inside card */
 .paper-title {
   font-size: 1rem;
   font-weight: 700;
   color: #F48848;
   margin: 0 0 0.5rem 0;
 }
-
-/* Buttons within publication card */
 .pub-buttons {
   margin-top: 0.5rem;
 }
@@ -265,21 +240,17 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   margin-right: 5px;
 }
-
-/* Hide the abstract initially for collapsible effect */
 .card-abstract {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out;
   margin: 0;
 }
-
-/* Expand the card's abstract on hover */
 .publication-card:hover .card-abstract {
-  max-height: 300px; /* or bigger if your abstracts are longer */
+  max-height: 300px; 
 }
 
-/* Custom buttons */
+/* Buttons */
 .custom-button {
   padding: 7px 12px;
   border: 2px solid;
@@ -290,9 +261,8 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .generic-button {
-  color: #BA348A;  /* same color from original style suggestions */
+  color: #BA348A;  
   border-color: #BA348A;
 }
 .generic-button:hover {
@@ -309,23 +279,24 @@ footer {
   font-size: 0.85rem;
 }
 
-/* ------ Responsive Mobile Tweaks ------ */
+/* ClustrMaps globe scaling */
+.globe-wrapper {
+  display: inline-block;
+  transform: scale(0.1);             /* 50% smaller */
+  transform-origin: top center;      /* anchor scaling at top center */
+}
 
-/* On smaller screens, we show the hamburger and hide the sidebar by default. 
-   Adjust max-width or orientation as desired. */
+/* ------ Responsive Mobile Tweaks ------ */
 @media (max-width: 800px) {
-  /* Show hamburger */
   .hamburger {
     display: block;
   }
-  /* Hide sidebar by default */
   .sidebar {
     transform: translateX(-100%);
   }
   .sidebar.open {
-    transform: translateX(0); /* show nav when toggled */
+    transform: translateX(0);
   }
-  /* Main content no longer margin-left for smaller screens */
   .content {
     margin-left: 0;
   }
