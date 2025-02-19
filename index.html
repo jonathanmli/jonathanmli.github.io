@@ -1,239 +1,165 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <title>Jonathan Light</title>
   <meta name="author" content="Jonathan Light">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Add Montserrat Font -->
+  
+  <!-- Montserrat Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <!-- Existing Styles and Favicon -->
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="figures/LOGO.png">
 </head>
-  
 <body>
-  <!-------------------------- Intro----------------->
-  <table style="width:100%; max-width:1000px; border:0px; border-spacing:0px; border-collapse:separate; margin-right:auto; margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Jonathan Li(ght)</name>
-              </p>
-              <p>I am currently a Ph.D. student at Rensselaer Polytechnic Institute, Troy NY (RPI) and visiting student at Caltech.
-              </p>
-              <p>
-                Broadly speaking, I am interested in the interplay between incentives (economics), algorithms (computer science), and learning (statistics), including 
-                algorithmic game theory, online learning, sequential decision making, reinforcement learning, data economics, market design, multi-agent systems. 
-                
-                My current work is focused on <strong>foundation models for decision making</strong>, where we combine sequential decision making methods and reinforcement learning with foundation models.
-              </p>
-              <p>
-                I like collaborations! Reach out if you've got a cool problem you'd like to chat about.
-              </p>
-              <p>
-                 <!-- Add confucious quote below -->
-                <em>"Know what you know and know what you do not know. That is true wisdom."</em> <br> -- Confucious
-              </p>
-              <p>
-                In modern words, know the known knowns, known unknowns, and unknown unknowns. I feel like this is a good way to approach research, and life in general, and is particularly relevant to creating intelligent machines. 
-              </p>
-              <p>
-                In my spare time, I enjoy playing and designing board games, reading science fiction, electronic music composition, grand strategy games, fencing, and squash. I find well designed games to be extremely elegant, and a great inspiration for research.
-              </p>
-              <p style="text-align:center">
-                <a href="https://raw.githubusercontent.com/jonathanmli/jonathanmli.github.io/main/pdfs/CV.pdf" target="_blank">
-                  <button class="custom-button generic-button">CV</button>
-                </a>
-                <small>(may be slightly outdated)</small> 
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <a href="figures/self.jpg"><img style="width:100%;max-width:100%" alt="profile photo" src="figures/self.jpg" class="hoverZoomLink"></a>
 
-              <!-- Social Icons Below Profile Picture -->
-              <div style="text-align:center; margin-top:15px;">
-                <!-- Email Icon -->
-                <a href="mailto:jonathan.li.connect@gmail.com" class="social-icon">
-                  <img src="figures/email_icon.svg" alt="Email" class="icon-style">
-                </a>
+  <!-- Fixed Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="nav-header">
+      <!-- Name in same color as headings (#DB5D69) -->
+      <h2>Jonathan Li(ght)</h2>
+    </div>
+    <nav class="nav-links">
+      <a href="#intro">Home</a>
+      <a href="#education">Education</a>
+      <a href="#intern-experience">Intern Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#services">Services</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#awards">Awards</a>
+      <a href="#othernotes">Other Notes</a>
+      <a href="#quotes">Quotes</a>
+    </nav>
+    <!-- CV button in the sidebar -->
+    <div class="nav-cv">
+      <a href="https://raw.githubusercontent.com/jonathanmli/jonathanmli.github.io/main/pdfs/CV.pdf" target="_blank">
+        <button class="custom-button generic-button">CV</button>
+      </a>
+      <small>(may be slightly outdated)</small>
+    </div>
+  </aside>
 
-                <!-- LinkedIn Icon -->
-                <a href="https://www.linkedin.com/in/jonathan-m-li/" class="social-icon">
-                  <img src="figures/linkedin-icon.svg" alt="LinkedIn" class="icon-style">
-                </a>
+  <!-- Main Content Wrapper -->
+  <main class="content">
 
-                <!-- GitHub Icon -->
-                <a href="https://github.com/jonathanmli" class="social-icon">
-                  <img src="figures/github-mark-white.svg" alt="GitHub" class="icon-style">
-                </a>
+    <!-- Intro Section -->
+    <section id="intro">
+      <h1>Welcome!</h1>
+      <p>
+        I am currently a Ph.D. student at Rensselaer Polytechnic Institute, Troy NY (RPI) and visiting student at Caltech.
+        Broadly speaking, I am interested in the interplay between incentives (economics), algorithms (computer science), and learning (statistics). 
+        My current work is focused on <strong>foundation models for decision making</strong>.
+      </p>
+      <p>
+        I like collaborations! Reach out if you've got a cool problem you'd like to chat about.
+      </p>
+      <p>
+        <em>"Know what you know and know what you do not know. That is true wisdom."</em> <br> -- Confucious
+      </p>
+      <p>
+        In modern words, know the known knowns, known unknowns, and unknown unknowns.
+      </p>
+      <p>
+        In my spare time, I enjoy playing and designing board games, reading science fiction, electronic music composition, grand strategy games, fencing, and squash.
+      </p>
 
-                <!-- Google Scholar Icon -->
-                <a href="https://scholar.google.com/citations?user=NjUdt4cAAAAJ&hl=en" class="social-icon">
-                  <img src="figures/google-scholar-icon.svg" alt="Google Scholar" class="icon-style">
-                </a>
-              </div>
-            </td>
-          </tr>
-        </tbody></table>
+      <!-- Profile + Social Icons row -->
+      <div class="intro-profile">
+        <div class="profile-pic">
+          <a href="figures/self.jpg">
+            <img src="figures/self.jpg" alt="profile photo">
+          </a>
+        </div>
+        <div class="social-icons">
+          <!-- Email Icon -->
+          <a href="mailto:jonathan.li.connect@gmail.com" class="social-icon">
+            <img src="figures/email_icon.svg" alt="Email" class="icon-style">
+          </a>
+          <!-- LinkedIn Icon -->
+          <a href="https://www.linkedin.com/in/jonathan-m-li/" class="social-icon">
+            <img src="figures/linkedin-icon.svg" alt="LinkedIn" class="icon-style">
+          </a>
+          <!-- GitHub Icon -->
+          <a href="https://github.com/jonathanmli" class="social-icon">
+            <img src="figures/github-mark-white.svg" alt="GitHub" class="icon-style">
+          </a>
+          <!-- Google Scholar Icon -->
+          <a href="https://scholar.google.com/citations?user=NjUdt4cAAAAJ&hl=en" class="social-icon">
+            <img src="figures/google-scholar-icon.svg" alt="Google Scholar" class="icon-style">
+          </a>
+        </div>
+      </div>
+    </section>
 
+    <!-- Education Section -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-entry">
+        <div class="edu-details">
+          <strong>Ph.D.</strong> Sep 2023 - Present<br>
+          Rensselaer Polytechnic Institute (RPI), Troy, NY, U.S.<br>
+          Ph.D. student in Computer Science
+        </div>
+        <div class="edu-logo">
+          <img src="figures/RPI.png" alt="RPI" >
+        </div>
+      </div>
 
-  <!-------------------------- Education----------------->
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tbody><tr>
-            <td width="100%" valign="middle">
-              <heading>Education</heading>
-              <table>
-                <tbody>
-                  <tr>
-                    <td width="90%">
-                        <br>
-                        <strong>Ph.D.</strong> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Sep 2023 - Present  <br> 
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp Rensselaer Polytechnic Institute (RPI), Troy, NY, U.S.<br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp Ph.D. student in Computer Science
-                        <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp Research interests: algorithmic debiasing  and natural language processing <br> -->
-                        <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp Jan 2020 to Jan 2025 expected. -->
-                    </td>
-                    <td width="10%">
-                      <img src="figures/RPI.png" width="90%" style="display: block; margin-left: auto; margin-right: auto;">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="90%">
-                        <br>
-                        <strong> M.S. </strong> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Aug 2021 - Mar 2023 <br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp University of Chicago, Chicago, IL, U.S.<br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp  M.S. in Financial Mathematics<br> 
-                        <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp Mar. 2016 to 2019 -->
-                    </td>
-                    <td width="10%">
-                      <img src="figures/uchicago.png" width="90%" style="display: block; margin-left: auto; margin-right: auto;">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="90%">
-                        <br>
-                        <strong> B.S. </strong> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Aug 2017 - May 2021 <br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp Reed College, Portland, OR, U.S.<br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp  B.S. in Mathematics and Economics<br> 
-                        <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp Mar. 2016 to 2019 -->
-                    </td>
-                    <td width="10%">
-                      <img src="figures/reed.png" width="90%" style="display: block; margin-left: auto; margin-right: auto;">
-                    </td>
-                  </tr>
-                <tr>
-                </tr>
-              </tbody></table>
-            </td>
-          </tr>
-          </tbody></table>
+      <div class="education-entry">
+        <div class="edu-details">
+          <strong>M.S.</strong> Aug 2021 - Mar 2023 <br>
+          University of Chicago, Chicago, IL, U.S.<br>
+          M.S. in Financial Mathematics
+        </div>
+        <div class="edu-logo">
+          <img src="figures/uchicago.png" alt="UChicago" >
+        </div>
+      </div>
 
-<!--          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Education</heading>
-              <ul>
-                <li>
-                  <p>
-                  <strong>University of California, Los Angeles</strong>, Los Angeles, CA
-                  <br>Ph.D. student in Computer Science, 2019.9 - Present
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  <strong>Shanghai Jiao Tong University </strong>, Shanghai, China
-                  <br>B.S. in Information Engineering, 2015.9 - 2019.6
-                  </p>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody></table> -->
+      <div class="education-entry">
+        <div class="edu-details">
+          <strong>B.S.</strong> Aug 2017 - May 2021 <br>
+          Reed College, Portland, OR, U.S.<br>
+          B.S. in Mathematics and Economics
+        </div>
+        <div class="edu-logo">
+          <img src="figures/reed.png" alt="Reed">
+        </div>
+      </div>
+    </section>
 
+    <!-- Intern Experience Section -->
+    <section id="intern-experience">
+      <h2>Intern Experience</h2>
+      <ul>
+        <li>
+          <p>
+            <strong>May 2024 -- Jan 2025, NEC Laboratories America</strong>, Princeton, NJ<br>
+            Research Intern
+          </p>
+        </li>
+      </ul>
+    </section>
 
-  <!-------------------------- Internship----------------->
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Intern Experience</heading>
-              <ul>
-                <li>
-                  <p>
-                  <strong>May 2024 -- Jan 2025, NEC Laboratories America</strong>, Princeton, NJ
-                  <br>Research Intern
-                  </p>
-                </li>
-                <!-- <li>
-                  <p>
-                  <strong>Jun 2022 -- Sep 2022, Amazon Product Graph Team (PG)</strong>, Seattle, WA
-                  <br>Applied Scientist Intern
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  <strong>Jun 2021 -- Sep 2021, Amazon Search (A9)</strong>, Bay Area, CA
-                  <br>Applied Scientist Intern
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  <strong>Jan.2019 -- May.2019, eBay </strong>, Shanghai, China
-                  <br>Software Engineer Intern
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  <strong>Jun.2018 -- Oct.2018, University of Illinois at Urbana-Champaign (UIUC) </strong>, Urbana, IL
-                  <br>Reseach Intern
-                  </p>
-                </li> -->
-              </ul>
-            </td>
-          </tr>
-        </tbody></table>
-
-  <!-------------------------- Publications----------------->
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Publications</heading>
-            </td>
-          </tr>
-        </tbody></table>
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-          <tr>
-            <td width="25%" valign="middle">
-              <img src="figures/strategist.png" alt="prl" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <div class="tooltip">
-                <papertitle>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</papertitle>
-                <span class="tooltiptext">
-                  In this paper, we propose a new method STRATEGIST that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process. 
-                  Our method gathers quality feedback through self-play simulations with Monte Carlo tree search and LLM-based reflection, which can then be used to learn high-level 
-                  strategic skills such as how to evaluate states that guide the low-level execution. We showcase how our method can be used in both action planning and dialogue generation 
-                  in the context of games, achieving good performance on both tasks. Specifically, we demonstrate that our method can help train agents with better performance than both 
-                  traditional reinforcement learning-based approaches and other LLM-based skill learning approaches in games including the Game of Pure Strategy (GOPS) and The Resistance: Avalon. 
-                  STRATEGIST helps bridge the gap between foundation models and symbolic decision-making methods through its bi-level approach, leading to more robust decision-making.
-                </span>
-              </div>
-              <br>
-              <strong>Jonathan Light*</strong>, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
-              <br>
-              <em> International Conference on Learning Representations (ICLR) </em>, 2025
-              <br>
-              Covered by <a href="https://docs.google.com/presentation/d/1GmZmoWOa2O92BPrncRcTKa15xvQGhq7g4I4hJSNlC0M/edit#slide=id.g2d35a16f27e_0_24">State of AI Report 2024</a>, published by <a href="https://www.stateof.ai/">Air Street Capital</a>
-              <br><br>
+    <!-- Publications Section -->
+    <section id="publications">
+      <h2>Publications</h2>
+      
+      <!-- Sample Publication Card -->
+      <div class="publication-card">
+        <div class="publication-card-header">
+          <img src="figures/strategist.png" alt="strategist">
+          <div>
+            <p class="paper-title">Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</p>
+            <p><strong>Jonathan Light*</strong>, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu<br>
+               <em>ICLR 2025</em><br>
+               Covered by <a href="https://docs.google.com/presentation/d/1GmZmoWOa2O92BPrncRcTKa15xvQGhq7g4I4hJSNlC0M/edit#slide=id.g2d35a16f27e_0_24">State of AI Report 2024</a>, published by <a href="https://www.stateof.ai/">Air Street Capital</a>
+            </p>
+            <div class="pub-buttons">
               <a href="https://github.com/jonathanmli/Avalon-LLM/tree/main/strategist">
                 <button class="custom-button generic-button">Code</button>
               </a>
@@ -243,343 +169,121 @@
               <a href="https://arxiv.org/pdf/2408.10635">
                 <button class="custom-button generic-button">PDF</button>
               </a>
-            </td>
-          </tr>
-          
-          
+            </div>
+          </div>
+        </div>
+        <div class="card-abstract">
+          <p>
+            In this paper, we propose a new method STRATEGIST that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process. 
+            Our method gathers quality feedback through self-play simulations with Monte Carlo tree search and LLM-based reflection, leading to robust decision-making and better performance 
+            on tasks like the Game of Pure Strategy (GOPS) and The Resistance: Avalon. 
+          </p>
+        </div>
+      </div>
 
-          <tr>
-            <td width="25%" valign="middle">
-              <img src="figures/sfs.png" alt="sfs" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <div class="tooltip">
-                <papertitle>Scattered Forest Search: Smarter Code Space Exploration with LLMs</papertitle>
-                <span class="tooltiptext">
-                  We propose a novel approach to scaling LLM inference for code generation. We frame code generation as a black box optimization problem within the code space and employ 
-                  optimization-inspired techniques to enhance exploration. Specifically, we introduce Scattered Forest Search to enhance solution diversity while searching for solutions. 
-                  Our theoretical analysis illustrates how these methods avoid local optima during optimization. Extensive experiments on HumanEval, MBPP, APPS, CodeContests, and Leetcode 
-                  reveal significant performance improvements. For instance, our method achieves a pass@1 rate of 67.1% on HumanEval+ and 87.2% on HumanEval with GPT-3.5, marking 
-                  improvements of 8.6% and 4.3% over the state-of-the-art, while also halving the iterations needed to find the correct solution. Furthermore, our method scales more 
-                  efficiently than existing search techniques, including tree search, line search, and repeated sampling.
-                </span>
-              </div>
-              <br>
-              <strong>Jonathan Light*</strong>, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao,
-              Ziniu Hu, Haifeng Chen, Wei Cheng
-              <br>
-              <em>International Conference on Learning Representations (ICLR)</em>, 2025
-              <br><br>
+      <!-- Another Publication Card -->
+      <div class="publication-card">
+        <div class="publication-card-header">
+          <img src="figures/sfs.png" alt="SFS">
+          <div>
+            <p class="paper-title">Scattered Forest Search: Smarter Code Space Exploration with LLMs</p>
+            <p><strong>Jonathan Light*</strong>, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao, Ziniu Hu, Haifeng Chen, Wei Cheng<br>
+               <em>ICLR 2025</em>
+            </p>
+            <div class="pub-buttons">
               <a href="https://arxiv.org/pdf/2411.05010">
                 <button class="custom-button generic-button">PDF</button>
               </a>
-            </td>
-          </tr>
-          
-          <tr>
-            <td width="25%" valign="middle">
-              <img src="figures/pianist.png" alt="pianist" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <div class="tooltip">
-                <papertitle>PIANIST: Learning Partially Observable World Models with LLMs for Multi-Agent Decision Making</papertitle>
-                <span class="tooltiptext">
-                  Effective extraction of the world knowledge in LLMs for complex decision-making tasks remains a challenge. 
-                  We propose a framework PIANIST for decomposing the world model into seven intuitive components conducive to zero-shot LLM generation. 
-                  Given only the natural language description of the game and how input observations are formatted, our method can generate a working world model 
-                  for fast and efficient MCTS simulation. We show that our method works well on two different games that challenge the planning and decision-making 
-                  skills of the agent for both language and non-language-based action-taking, without any training on domain-specific data or explicitly defined world models.
-                </span>
-              </div>
-              <br>
-              <strong>Jonathan Light</strong>, Sixue Xing, Yuanzhe Liu, Weiqin Chen, Min Cai, Xiusi Chen, Guanzhi Wang, Wei Cheng, Yisong Yue, Ziniu Hu
-              <br>
-              <em>Language Gamification Workshop 2024 @ NeurIPS</em>
-              <br><br>
-              <a href="https://arxiv.org/pdf/2411.15998">
-                <button class="custom-button generic-button">PDF</button>
-              </a>
-            </td>
-          </tr>
-          
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="figures/merlin.jpg" alt="prl" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <div class="tooltip">
-                <papertitle>From Text to Tactic: Evaluating LLMs Playing the Game of Avalon</papertitle>
-                <span class="tooltiptext">
-                  In this paper, we explore the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon. 
-                  Players in Avalon are challenged not only to make informed decisions based on dynamically evolving game phases, but also to engage in discussions 
-                  where they must deceive, deduce, and negotiate with other players. These characteristics make Avalon a compelling test-bed to study the decision-making 
-                  and language-processing capabilities of LLM Agents. To facilitate research in this line, we introduce AVALONBENCH - a comprehensive game environment tailored 
-                  for evaluating multi-agent LLM Agents. This benchmark incorporates: (1) a game environment for Avalon, (2) rule-based bots as baseline opponents, and 
-                  (3) ReAct-style LLM agents with tailored prompts for each role. Notably, our evaluations based on AVALONBENCH highlight a clear capability gap. 
-                  For instance, models like ChatGPT playing good-role got a win rate of 22.2% against rule-based bots playing evil, while good-role bot achieves 38.2% 
-                  win rate in the same setting. We envision AVALONBENCH could be a good test-bed for developing more advanced LLMs (with self-playing) and agent frameworks 
-                  that can effectively model the layered complexities of such game environments.
-                </span>
-              </div>
-              <br>
-              <strong>Jonathan Light*</strong>, Min Cai, Sheng Shen, Ziniu Hu
-              <br>
-              <em>NeurIPS Foundation Models for Decision Making Workshop</em>, 2023
-              <br><br>
-              <a href="https://arxiv.org/pdf/2310.05036.pdf">
-                <button class="custom-button generic-button">PDF</button>
-              </a>
-              <a href="https://avalonbench.github.io/" target="_blank"></a>
-                <button class="custom-button generic-button">Website</button>
-              </a>
-              <a href="https://github.com/jonathanmli/Avalon-LLM" target="_blank">
-                <button class="custom-button generic-button">Code</button>
-              </a>
-            </td>
-          </tr>
-          
+            </div>
+          </div>
+        </div>
+        <div class="card-abstract">
+          <p>
+            We propose a novel approach to scaling LLM inference for code generation. By framing code generation as a black box optimization problem within code space, 
+            we introduce Scattered Forest Search to enhance diversity. Experiments show significant performance gains on HumanEval, MBPP, APPS, CodeContests, 
+            and Leetcode. 
+          </p>
+        </div>
+      </div>
 
-          
+      <!-- Add as many publication-card blocks as needed for all your publications... -->
 
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="figures/dataset_distill_rl.png" alt="prl" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <div class="tooltip">
-                <papertitle>Dataset Distillation for Offline Reinforcement Learning</papertitle>
-                <span class="tooltiptext">
-                  Offline reinforcement learning often requires a quality dataset that we can train a policy on. 
-                  However, in many situations, it is not possible to get such a dataset, nor is it easy to train 
-                  a policy to perform well in the actual environment given the offline data. We propose using 
-                  data distillation to train and distill a better dataset which can then be used for training a 
-                  better policy model. We show that our method is able to synthesize a dataset where a model 
-                  trained on it achieves similar performance to a model trained on the full dataset or a model 
-                  trained using percentile behavioral cloning. Our project site is available 
-                  <a href="https://datasetdistillation4rl.github.io/" target="_blank">here</a>. 
-                  We also provide our implementation at 
-                  <a href="https://github.com/ggflow123/DDRL" target="_blank">this GitHub repository</a>.
-                </span>
-              </div>
-              <br>
-              <strong>Jonathan Light*</strong>, Yuanzhe Liu, Ziniu Hu
-              <br>
-              <em>ICML Data-centric Machine Learning Research Workshop</em>, 2024
-              <br><br>
-              <a href="https://arxiv.org/pdf/2407.20299" target="_blank">
-                <button class="custom-button generic-button">PDF</button>
-              </a>
-              <a href="https://datasetdistillation4rl.github.io/" target="_blank">
-                <button class="custom-button generic-button">Website</button>
-              </a>
-              <a href="https://github.com/ggflow123/DDRL" target="_blank">
-                <button class="custom-button generic-button">Code</button>
-              </a>
-            </td>
-          </tr>
-          
+    </section>
 
-        </tbody></table>
+    <!-- Services Section -->
+    <section id="services">
+      <h2>Academic Services</h2>
+      <ul>
+        <li>Journal/Conference Reviewer: ICLR2025</li>
+      </ul>
+    </section>
 
+    <!-- Teaching Section -->
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul>
+        <li>Teaching Assistant, AI and Blockchain, Dacheng Xiu. Booth EMBA, 2023 Summer</li>
+        <li>Teaching Assistant, Options Pricing, Roger Lee. UChicago PSD, 2023 Spring</li>
+        <li>Teaching Assistant, Bayesian Statistical Inference and ML, Gordan Ritter. UChicago PSD, 2023 Spring</li>
+        <li>Teaching Assistant, Decoding Fintech, Dacheng Xiu. Booth, 2023 Winter</li>
+        <li>Teaching Assistant, Mathematical Statistics, Jonathan Wells. Reed College, 2021 Spring</li>
+        <li>Teaching Assistant, Probability Theory, Jonathan Wells. Reed College, 2020 Fall</li>
+        <li>Teaching Assistant, Macroeconomics, Zhe (Jasmine) Jiang. Reed College, 2020 Fall</li>
+        <li>Teaching Assistant, Econometrics, Fellipe Carrera. Reed College, 2020 Fall</li>
+        <li>Teaching Assistant, Introduction to Analysis, David Krumm. Reed College, 2019 Fall</li>
+      </ul>
+    </section>
 
-  <!-------------------------- Services----------------->
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Academic Services</heading>
-              <ul>
-                <!-- <li>
-                  <p>
-                  PC member of KDD2020, SSL@WWW2021, AAAI2022, AAAI2023, KDD2023, AAAI2024
-                  </p>
-                </li> -->
-                <li>
-                  <p>
-                  Journal/Conference Reviewer: ICLR2025
-                  </p>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody></table>
+    <!-- Awards Section -->
+    <section id="awards">
+      <h2>Honors and Awards</h2>
+      <ul>
+        <li>Phi Beta Kappa, 2021</li>
+        <li>Reed Commendation for Excellence in Scholarship, 2018, 2019, 2020, 2021</li>
+        <li>Reed Science Research Fellow, 2020</li>
+        <li>Reed Financial Services Fellow, 2019</li>
+      </ul>
+    </section>
 
-  <!-------------------------- Teaching----------------->
-       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Teaching</heading>
-              <ul>
-                <li>
-                  <p>
-                  Teaching Assistant, AI and Blockchain, Dacheng Xiu. Booth School of Business Executive MBA Program, 2023 Summer
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Teaching Assistant, Options Pricing, Roger Lee. University of Chicago PSD, 2023 Spring
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Teaching Assistant, Bayesian Statistical Inference and ML, Gordan Ritter. University of Chicago PSD, 2023 Spring
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Teaching Assistant, Decoding Fintech, Dacheng Xiu. Booth School of Business, 2023 Winter
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  Teaching Assistant, Mathematical Statistics, Jonathan Wells. Reed College, 2021 Spring
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  Teaching Assistant, Probability Theory, Jonathan Wells. Reed College, 2020 Fall
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  Teaching Assistant, Macroeconomics, Zhe (Jasmine) Jiang. Reed College, 2020 Fall
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  Teaching Assistant, Econometrics, Fellipe Carrera. Reed College, 2020 Fall
-                  </p>
-                </li>
-                <li>
-                  <p>
-                  Teaching Assistant, Introduction to Analysis, David Krumm. Reed College, 2019 Fall
-                  </p>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody></table>
+    <!-- Other Notes Section -->
+    <section id="othernotes">
+      <h2>Other Notes</h2>
+      <p>
+        I go by either Jonathan Li or Jonathan Light. I usually use Light in publications because Li is a very common last name, 
+        Light is the semantic translation of my Chinese name, and it nearly preserves lexicographic ordering.
+      </p>
+      <p>
+        I've also considered using 'Plum' (the semantic translation of my last name), but it doesn't have the same ring to it. 
+        Generally, I find semantic translations more faithful to the original meaning than pinyin.
+      </p>
+    </section>
 
+    <!-- Quotes Section -->
+    <section id="quotes">
+      <h2>Other Quotes and Historical Tidbits</h2>
+      <p>
+        I find quotes and historical tidbits to be a great source of inspiration.
+      </p>
+      <ul>
+        <li>
+          “Ask yourself whether you are happy, and you cease to be so” — John Stuart Mill
+        </li>
+        <li>
+          “The best is the enemy of the good” — Voltaire
+        </li>
+        <li>
+          “Stay hungry. Stay foolish” — Steve Jobs
+        </li>
+      </ul>
+    </section>
 
+    <!-- Footer or Final Note -->
+    <footer>
+      <p style="text-align:center; font-size:small;">
+        <a href="https://jonbarron.info/">Website Template Source</a>
+      </p>
+    </footer>
+  </main>
 
-    <!-------------------------- Awards----------------->
-       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Honors and Awards</heading>
-              <ul>
-                 <li>
-                  <p>
-                    Phi Beta Kappa, 2021
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Reed Commendation for Excellence in Scholarship, 2018, 2019, 2020, 2021
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Reed Science Research Fellow, 2020
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Reed Financial Services Fellow, 2019
-                  </p>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody></table>
-
-  <!-- other notes -->
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr>
-          <td style="padding:20px;width:100%;vertical-align:middle">
-            <heading>Other Notes</heading>
-            <p>
-              I go by either Jonathan Li or Jonathan Light. I usually use Light in publications because 
-            </p>
-            <ol>
-              <li>
-                <p>
-                  Li is a very common last name and people often get confused with all the other people that share the same name as me 
-                </p>
-              </li>
-              <li>
-                <p>
-                  Light is the semantic translation of both my Chinese given name and courtesy name
-                </p>
-              </li>
-              <li>
-                <p>
-                  Light nearly preserves the lexigraphic ordering of Li
-                </p>
-              </li>
-              I've also considered using 'Plum' (semantic translation of my last name), but it doesn't have the same ring to it, nor does it preserve the lexigraphic ordering of Li. Generally I find semantic translations to be more faithful to the original meaning, as convenient as pinyin is for romanization.
-            </ol>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- other quotes and annecdotes -->
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr>
-          <td style="padding:20px;width:100%;vertical-align:middle">
-            <heading>Other Quotes and Historical Tidbits</heading>
-            <p>
-              I find quotes and historical tidbits to be a great source of inspiration and very fascinating. Here are some of my favorites that I've collected over the years.
-            </p>
-            Quotes:
-            <ul>
-              <li>
-                <p>
-                  "Ask yourself whether you are happy, and you cease to be so" <br> -- John Stuart Mill. Says something about opportunity cost and the paradox of choice
-                </p>
-              </li>
-              <li>
-                <p>
-                  "The best is the enemy of the good" <br> -- Voltaire. This principle is used so often in optimization, approximation, and machine learning
-                </p>
-              </li>
-              <li>
-                <p>
-                  "Stay hungry. Stay foolish" <br> -- Steve Jobs. It's good to be foolish. Then you can ask the questions that others are afraid to ask
-                </p>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-
-  <!-------------------------- Stats----------------->
-          <table style="width:50%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=PeHeHzW3ltrX6TSgOTg0FnVvurZigdczh36CUtajiD8"></script>
-          </tr>
-        </tbody></table>
-
-
-  <!-------------------------- footnote----------------->
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                <a href="https://jonbarron.info/">Website Template</a>
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-  </table>
-  
 </body>
-
 </html>

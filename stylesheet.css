@@ -1,224 +1,232 @@
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+/* Smooth scrolling behavior for anchor links */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Plasma colors:
-Highlighter yellow: EBE82E
-Yellow: FEBC2B
-Orange: F48848
-Red: DB5D69
-Magenta: BA348A
-Purple: 843092
-Dark purple: 582D90
-Indigo: 2B2C7B
-*/
-
-/* Global styles */
+/* Body reset and background */
 body {
-  background-color: #000000; /* Keep black background */
-  color: #ffffff; /* Keep white main text */
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
-/* Text and headings */
-p, strong, td, th, tr {
-  color: #ffffff; /* Keep main text white */
-}
-
-name {
-  font-size: 32px;
-  color: #DB5D69; /* Bright Orange */
-  font-weight: bold;
-}
-
-/* Headings */
-heading {
-  font-size: 22px;
-  color: #DB5D69; /* Magenta */
-  font-weight: bold;
-}
-
-/* Paper titles */
-papertitle {
-  font-size: 16px;
-  font-weight: 700;
-  color: #F48848; /* Bright Orange */
-}
-
-/* Links */
+/* Link styles */
 a {
-  color: #FEBC2B; /* Bright Orange */
+  color: #FEBC2B; /* originally bright orange */
   text-decoration: none;
   font-weight: bold;
 }
-
-a:focus, a:hover {
-  color: #EBE82E; /* Golden Yellow on Hover */
+a:hover {
+  color: #EBE82E; /* lighten on hover */
   text-decoration: underline;
 }
 
-/* Social Icons Styling */
+/* HEADINGS color (used also for nav text) */
+h1, h2, h3, h4, h5, h6 {
+  color: #DB5D69; /* used for headings & nav bar text */
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px; /* adjust width as needed */
+  height: 100vh;
+  background-color: #000000; /* black background */
+  padding: 20px 15px;
+  box-sizing: border-box;
+  border-right: 2px solid #333333;
+  overflow-y: auto;
+}
+
+.nav-header {
+  margin-bottom: 20px;
+}
+
+.nav-header h2 {
+  margin: 0;
+  color: #DB5D69; /* same color as headings */
+}
+
+.nav-links a {
+  display: block;
+  color: #DB5D69; /* headings color */
+  padding: 8px 0;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #F191A5; /* lighten or shift color on hover */
+}
+
+/* CV button area in sidebar */
+.nav-cv {
+  margin-top: 20px;
+  text-align: left;
+}
+.nav-cv small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Main content wrapper (pushed right to accommodate sidebar) */
+.content {
+  margin-left: 220px; /* same width as sidebar */
+  padding: 20px;
+  max-width: 1200px; /* optional max-width */
+}
+
+/* Intro section */
+#intro p {
+  margin-bottom: 1rem;
+}
+
+/* Social Icons */
+.intro-profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.profile-pic img {
+  width: 200px;
+  height: auto;
+  border-radius: 6px;
+  margin-right: 20px;
+}
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.social-icons .social-icon {
+  margin-right: 10px;
+}
+
+/* Icon style filter (original from your code) */
 .icon-style {
-  width: 30px; /* Adjust size if needed */
+  width: 30px;
   height: 30px;
-  margin: 0 10px; /* Spacing between icons */
-  
-  /* Default Color: #FEBC2B */
-  filter: brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(512%) hue-rotate(1deg) brightness(105%) contrast(103%);
+  filter: brightness(0) saturate(100%) invert(60%) sepia(98%) 
+          saturate(512%) hue-rotate(1deg) brightness(105%) contrast(103%);
   transition: filter 0.3s ease-in-out;
 }
-
-/* Hover Effect: #EBE82E */
 .icon-style:hover {
-  filter: brightness(0) saturate(100%) invert(80%) sepia(96%) saturate(312%) hue-rotate(5deg) brightness(110%) contrast(105%);
+  filter: brightness(0) saturate(100%) invert(80%) sepia(96%) 
+          saturate(312%) hue-rotate(5deg) brightness(110%) contrast(105%);
 }
 
-
-/* Tables */
-table {
-  background-color: #000000; /* Keep black background */
-  color: #ffffff; /* Keep table text white */
+/* Education Layout */
+.education-entry {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.edu-details {
+  flex: 1 1 60%;
+  margin-right: 20px;
+}
+.edu-logo img {
+  width: 80px;
+  height: auto;
 }
 
-/* General Button Styling */
+/* Publication Cards */
+.publication-card {
+  display: block;
+  width: 100%;
+  border: 2px solid #DB5D69;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.publication-card:hover {
+  background-color: #111111; /* slightly lighter black on hover */
+}
+
+/* Publication card header: image + brief info */
+.publication-card-header {
+  display: flex;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.publication-card-header img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid #333;
+  border-radius: 4px;
+}
+
+/* Title styling inside card */
+.paper-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #F48848;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Buttons within publication card */
+.pub-buttons {
+  margin-top: 0.5rem;
+}
+.pub-buttons a {
+  text-decoration: none;
+}
+
+/* Hide abstract initially with a collapsible approach */
+.card-abstract {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  margin: 0;
+}
+
+/* Expand the card's abstract on hover */
+.publication-card:hover .card-abstract {
+  max-height: 1000px; /* large enough to reveal full text */
+}
+
+/* Buttons in general */
 .custom-button {
   padding: 7px 12px;
   margin-right: 5px;
   border: 2px solid; /* Border color will match text color */
   border-radius: 5px;
-  background: none; /* No background initially */
+  background: none;
   font-weight: bold;
   color: white; /* Default text color */
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Code Button - Yellow */
 .generic-button {
-  color: #BA348A; /* Yellow text */
-  border-color: #BA348A; /* Yellow border */
+  color: #BA348A;
+  border-color: #BA348A;
 }
-
 .generic-button:hover {
-  background-color: #BA348A; /* Fill with yellow */
-  color: #000000; /* Change text to black */
+  background-color: #BA348A;
+  color: #000000;
 }
 
-/* Code Button - Yellow */
-.code-button {
-  color: #fbbf24; /* Yellow text */
-  border-color: #fbbf24; /* Yellow border */
+/* Footer */
+footer {
+  margin-top: 2rem;
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid #444444;
+  font-size: 0.85rem;
 }
-
-.code-button:hover {
-  background-color: #fbbf24; /* Fill with yellow */
-  color: #000000; /* Change text to black */
-}
-
-/* Website Button - Purple */
-.website-button {
-  color: #d946ef; /* Purple text */
-  border-color: #d946ef; /* Purple border */
-}
-
-.website-button:hover {
-  background-color: #d946ef; /* Fill with purple */
-  color: #000000; /* Change text to black */
-}
-
-/* PDF Button - Dark Blue */
-.pdf-button {
-  color: #1e40af; /* Dark Blue text */
-  border-color: #1e40af; /* Dark Blue border */
-}
-
-.pdf-button:hover {
-  background-color: #1e40af; /* Fill with Dark Blue */
-  color: #000000; /* Change text to black */
-}
-
-/* Tooltip Container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-/* Tooltip Text (Abstract) */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 400px; /* Adjust width if needed */
-  background-color: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
-  color: #ffffff; /* White text */
-  text-align: left;
-  padding: 10px;
-  border-radius: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 120%; /* Position above the text */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  font-size: 14px;
-  line-height: 1.4;
-  white-space: normal;
-  max-width: 450px;
-}
-
-/* Tooltip Arrow */
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%; /* Below the tooltip box */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
-}
-
-/* Show Tooltip on Hover */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-
-
-/* Image effects */
-.one {
-  width: 160px;
-  height: 160px;
-  position: relative;
-}
-
-.two {
-  width: 160px;
-  height: 160px;
-  position: absolute;
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
-}
-
-.fade {
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
-}
-
