@@ -58,8 +58,8 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
   border-right: 2px solid #333333;
   overflow-y: auto;
-  transition: transform 0.3s ease;
-  transform: translateX(0); /* visible by default */
+  transition: transform 0.3s ease; /* for slide in/out on mobile */
+  transform: translateX(0); /* visible by default on large screens */
 }
 .sidebar.open {
   transform: translateX(0); /* open state on small screens */
@@ -85,14 +85,20 @@ h1, h2, h3, h4, h5, h6 {
   vertical-align: bottom;
   margin-top: 0.3em;
 }
+
+/* Container that slides upward */
 .rotating-lastname-inner {
   display: block;
   animation: slideName 10s infinite;
   line-height: 1.2em;
 }
+
+/* Five lines: Li, Light, 明, アキラ, 명 */
 .rotating-lastname-inner > div {
   height: 1.2em;
 }
+
+/* Keyframes for upward pushing transitions */
 @keyframes slideName {
   0%   { transform: translateY(0); }
   10%  { transform: translateY(0); }
@@ -115,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
 }
 
-/* Navigation links */
+/* Navigation links below icons */
 .nav-links a {
   display: block;
   color: #DB5D69; 
@@ -153,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
           saturate(312%) hue-rotate(5deg) brightness(110%) contrast(105%);
 }
 
-/* Main content */
+/* Main content wrapper (pushed right to accommodate sidebar) */
 .content {
   margin-left: 220px; 
   padding: 20px;
@@ -168,10 +174,14 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap; 
   gap: 20px;
 }
+
+/* Intro text */
 .intro-text {
   flex: 1 1 400px; 
   min-width: 300px;
 }
+
+/* Profile pic on the right */
 .profile-pic {
   max-width: 300px;
   flex-shrink: 0;
@@ -190,12 +200,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.5rem;
   align-items: center;
 }
+
 .edu-details {
   flex: 1 1 60%;
   border-left: 2px solid #DB5D69;
   padding-left: 15px;
   margin-right: 20px;
 }
+
 .edu-logo img {
   width: 80px;
   height: auto;
@@ -214,6 +226,8 @@ h1, h2, h3, h4, h5, h6 {
 .publication-card:hover {
   background-color: #111111; 
 }
+
+/* Pub card header: image + text side by side */
 .publication-card-header {
   display: flex;
   align-items: flex-start;
@@ -227,12 +241,16 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid #333;
   border-radius: 4px;
 }
+
+/* Title styling inside card */
 .paper-title {
   font-size: 1rem;
   font-weight: 700;
   color: #F48848;
   margin: 0 0 0.5rem 0;
 }
+
+/* Buttons within publication card */
 .pub-buttons {
   margin-top: 0.5rem;
 }
@@ -240,17 +258,21 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   margin-right: 5px;
 }
+
+/* Hide the abstract initially for collapsible effect */
 .card-abstract {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out;
   margin: 0;
 }
+
+/* Expand the card's abstract on hover */
 .publication-card:hover .card-abstract {
   max-height: 300px; 
 }
 
-/* Buttons */
+/* Custom buttons */
 .custom-button {
   padding: 7px 12px;
   border: 2px solid;
@@ -261,6 +283,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .generic-button {
   color: #BA348A;  
   border-color: #BA348A;
@@ -279,24 +302,22 @@ footer {
   font-size: 0.85rem;
 }
 
-/* ClustrMaps globe scaling */
-.globe-wrapper {
-  display: inline-block;
-  transform: scale(0.1);             /* 50% smaller */
-  transform-origin: top center;      /* anchor scaling at top center */
-}
-
 /* ------ Responsive Mobile Tweaks ------ */
+
+/* On smaller screens, we show the hamburger and hide the sidebar by default. */
 @media (max-width: 800px) {
+  /* Show hamburger */
   .hamburger {
     display: block;
   }
+  /* Hide sidebar by default (slide offscreen) */
   .sidebar {
     transform: translateX(-100%);
   }
   .sidebar.open {
-    transform: translateX(0);
+    transform: translateX(0); /* show nav when toggled */
   }
+  /* Main content no longer margin-left for smaller screens */
   .content {
     margin-left: 0;
   }
