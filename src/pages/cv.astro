@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
+<BaseLayout title="Background" sideBarActiveItemID="background">
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Profile</div>
   </div>
@@ -15,88 +15,45 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </div>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
-  </div>
+  <section class="mb-14">
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Background</div>
+    </div>
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Ph.D."
-      subtitle="Sep 2023 - Present · Rensselaer Polytechnic Institute (RPI), Troy, NY, U.S."
-    >
-      Ph.D. student in Computer Science.
-    </TimeLineElement>
-    <TimeLineElement
-      title="M.S."
-      subtitle="Aug 2021 - Mar 2023 · University of Chicago, Chicago, IL, U.S."
-    >
-      M.S. in Financial Mathematics.
-    </TimeLineElement>
-    <TimeLineElement
-      title="B.S."
-      subtitle="Aug 2017 - May 2021 · Reed College, Portland, OR, U.S."
-    >
-      B.S. in Mathematics and Economics.
-    </TimeLineElement>
-  </div>
+    <div class="grid gap-12">
+      <div>
+        <div class="text-2xl font-semibold mb-4">Education</div>
+        <div class="time-line-container grid gap-4">
+          <TimeLineElement
+            title="Ph.D."
+            subtitle="Sep 2023 - Present · Rensselaer Polytechnic Institute (RPI), Troy, NY, U.S."
+          >
+            Ph.D. student in Computer Science.
+          </TimeLineElement>
+          <TimeLineElement
+            title="M.S."
+            subtitle="Aug 2021 - Mar 2023 · University of Chicago, Chicago, IL, U.S."
+          >
+            M.S. in Financial Mathematics.
+          </TimeLineElement>
+          <TimeLineElement
+            title="B.S."
+            subtitle="Aug 2017 - May 2021 · Reed College, Portland, OR, U.S."
+          >
+            B.S. in Mathematics and Economics.
+          </TimeLineElement>
+        </div>
+      </div>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
-
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-  </ul>
+      <div>
+        <div class="text-2xl font-semibold mb-4">Experience</div>
+        <div class="time-line-container">
+          <TimeLineElement
+            title="Research Intern"
+            subtitle="May 2024 - Jan 2025 · NEC Laboratories America, Princeton, NJ, U.S."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
