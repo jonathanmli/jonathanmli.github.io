@@ -8,11 +8,19 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Profile</div>
   </div>
 
-  <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  <div class="mb-10 text-justify space-y-4">
+    <p>
+      I study the interplay between incentives, algorithms, and learning to build decision-making systems that plan, reason,
+      and collaborate as well as they generalize. My research spans sequential decision making, algorithmic game theory,
+      online learning, market design for data, reinforcement learning, and human-AI teaming.
+    </p>
+    <p>
+      I am a Ph.D. candidate in computer science at Rensselaer Polytechnic Institute (GPA 3.92/4.0), where I work with Ziniu
+      Hu on self-improving LLM agents. I also collaborate with Yisong Yue as a visiting scholar at Caltech, designing
+      inference-scaling methods that couple LLM reasoning with search. Recent projects include achieving human-level play in
+      Avalon, scaling code generation performance beyond AlphaEvolve, and creating market mechanisms that price data and
+      machine learning models responsibly.
+    </p>
   </div>
 
   <section class="mb-14">
@@ -25,33 +33,107 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         <div class="text-2xl font-semibold mb-4">Education</div>
         <div class="time-line-container grid gap-4">
           <TimeLineElement
-            title="Ph.D."
-            subtitle="Sep 2023 - Present · Rensselaer Polytechnic Institute (RPI), Troy, NY, U.S."
+            title="Ph.D. in Computer Science"
+            subtitle="Aug 2023 - Present · Rensselaer Polytechnic Institute (RPI), Troy, NY"
           >
-            Ph.D. student in Computer Science.
+            Graduate researcher advised by Ziniu Hu, focusing on self-improving LLM agents and alignment for autonomous
+            collaboration. GPA 3.92/4.0.
           </TimeLineElement>
           <TimeLineElement
-            title="M.S."
-            subtitle="Aug 2021 - Mar 2023 · University of Chicago, Chicago, IL, U.S."
+            title="M.S. in Financial Mathematics"
+            subtitle="Aug 2021 - Mar 2023 · University of Chicago, Chicago, IL"
           >
-            M.S. in Financial Mathematics.
+            Coursework in stochastic processes, algorithmic trading, and machine learning for finance. GPA 3.82/4.0.
           </TimeLineElement>
           <TimeLineElement
-            title="B.S."
-            subtitle="Aug 2017 - May 2021 · Reed College, Portland, OR, U.S."
+            title="B.S. in Mathematics and Economics"
+            subtitle="Aug 2017 - May 2021 · Reed College, Portland, OR"
           >
-            B.S. in Mathematics and Economics.
+            Completed dual major plus the full computer science curriculum, exceeding requirements by nine additional CS
+            courses. GPA 3.93/4.0. Undergraduate thesis on reinforcement learning and game theory.
           </TimeLineElement>
         </div>
       </div>
 
       <div>
-        <div class="text-2xl font-semibold mb-4">Experience</div>
-        <div class="time-line-container">
+        <div class="text-2xl font-semibold mb-4">Research Experience</div>
+        <div class="time-line-container grid gap-4">
           <TimeLineElement
-            title="Research Intern"
-            subtitle="May 2024 - Jan 2025 · NEC Laboratories America, Princeton, NJ, U.S."
-          />
+            title="Visiting Scholar, LLM Reasoning and Inference Scaling"
+            subtitle="Jan 2025 - Present · Caltech CMS, Pasadena, CA · Advisor: Yisong Yue"
+          >
+            Integrating LLM reasoning with search to explore strategy spaces efficiently, enabling automatic decomposition
+            of reasoning traces and improving base model accuracy by up to 4x at low cost.
+          </TimeLineElement>
+          <TimeLineElement
+            title="Ph.D. Researcher, Self-Improving LLM Agents"
+            subtitle="Jul 2023 - Present · RPI Computer Science, Troy, NY · Advisor: Ziniu Hu"
+          >
+            Developed agents that reach human-level Avalon play through self-improvement, memory, and Monte Carlo tree
+            search, revealing new collaboration strategies for autonomous teams.
+          </TimeLineElement>
+          <TimeLineElement
+            title="Part-time Researcher, Code Generation"
+            subtitle="May 2024 - Present · NEC Laboratories America, Princeton, NJ"
+          >
+            Advanced inference-scaling for code generation, delivering >5.5% gains on HumanEval, LeetCode, and APPS, and
+            devising prompt perturbation techniques to diversify solutions.
+          </TimeLineElement>
+          <TimeLineElement
+            title="Market and Mechanism Design Researcher"
+            subtitle="Aug 2022 - Jun 2023 · UChicago Computer Science, Chicago, IL"
+          >
+            Modeled optimal pricing for machine learning services and designed incentive-compatible data markets with
+            built-in privacy safeguards.
+          </TimeLineElement>
+          <TimeLineElement
+            title="Econometrics and Statistics Researcher"
+            subtitle="Aug 2021 - Jul 2023 · Booth School of Business, University of Chicago"
+          >
+            Converted time-series simulation pipelines from Python to C++ for 95% faster runtimes and built online Monte
+            Carlo methods that doubled benchmark asset pricing performance.
+          </TimeLineElement>
+          <TimeLineElement
+            title="Undergraduate Researcher, Game Theory and Probability"
+            subtitle="Aug 2020 - May 2021 · Reed College, Portland, OR · Advisors: Felipe Carrera & Jonathan Wells"
+          >
+            Investigated coalition formation among reinforcement learning agents, proved new results related to hyper
+            Sylvester’s identity, and created algorithms for sampling invertible forms.
+          </TimeLineElement>
+        </div>
+
+        <div class="mt-10">
+          <div class="text-2xl font-semibold mb-4">Professional & Teaching Experience</div>
+          <div class="time-line-container grid gap-4">
+            <TimeLineElement
+              title="Teaching Assistant"
+              subtitle="Mar 2022 - Jul 2023 · Booth School of Business, Chicago, IL"
+            >
+              Designed coursework and guest lectures for executive MBA students, highlighting applications of AI in
+              industry settings.
+            </TimeLineElement>
+            <TimeLineElement
+              title="Supervisor & Senior Reactor Operator"
+              subtitle="Sep 2017 - May 2021 · Reed Research Reactor, Portland, OR"
+            >
+              Managed NRC-licensed reactor operations, emergency response, neutron irradiation, and gamma spectroscopy
+              projects while training new operators.
+            </TimeLineElement>
+            <TimeLineElement
+              title="Tax Consultancy Intern"
+              subtitle="Jul 2019 - Aug 2019 · Deloitte Consulting, Guangzhou, China"
+            >
+              Built comparative financial models across taxation scenarios and resolved irregular accounting practices
+              identified during on-site diligence.
+            </TimeLineElement>
+            <TimeLineElement
+              title="Analyst Intern"
+              subtitle="Jul 2018 - Aug 2018 · Siemens Management Consulting, Beijing, China"
+            >
+              Delivered partnership due-diligence research ahead of schedule and introduced data analysis tooling that
+              replaced spreadsheet-heavy workflows.
+            </TimeLineElement>
+          </div>
         </div>
       </div>
     </div>
