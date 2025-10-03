@@ -11,6 +11,7 @@ export interface Publication {
   badge?: string;
   description: string;
   url: string;
+  image?: string;
   links: PublicationLink[];
 }
 
@@ -23,6 +24,7 @@ export const publications: Publication[] = [
     description:
       "Self-improvement framework that couples Monte Carlo tree search with LLM reflection to acquire strategic skills, covered by the State of AI Report 2024.",
     url: "https://llm-strategist.github.io/",
+    image: "/figures/strategist.png",
     links: [
       { label: "Code", href: "https://github.com/jonathanmli/Avalon-LLM/tree/main/strategist" },
       { label: "Website", href: "https://llm-strategist.github.io/" },
@@ -37,6 +39,7 @@ export const publications: Publication[] = [
     description:
       "Frames code generation as black-box optimization and introduces Scattered Forest Search to improve diversity, boosting performance across HumanEval, MBPP, APPS, CodeContests, and LeetCode benchmarks.",
     url: "https://codespace-optimization.github.io/",
+    image: "/figures/sfs.png",
     links: [
       { label: "Code", href: "https://github.com/codespace-optimization/sfs" },
       { label: "Website", href: "https://codespace-optimization.github.io/" },
@@ -51,6 +54,7 @@ export const publications: Publication[] = [
     description:
       "Decomposes language-described environments into intuitive components, enabling zero-shot LLM world models for efficient MCTS in multi-agent settings.",
     url: "https://arxiv.org/pdf/2411.15998",
+    image: "/figures/pianist.png",
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2411.15998" }],
   },
   {
@@ -60,6 +64,7 @@ export const publications: Publication[] = [
     description:
       "Introduces AvalonBench to benchmark LLM agents in strategic social deduction games and highlights the gap between current agents and engineered bots.",
     url: "https://avalonbench.github.io/",
+    image: "/figures/merlin.jpg",
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2310.05036.pdf" },
       { label: "Website", href: "https://avalonbench.github.io/" },
@@ -73,6 +78,7 @@ export const publications: Publication[] = [
     description:
       "Synthesizes compact, high-quality offline RL datasets that retain policy performance comparable to training on full datasets.",
     url: "https://datasetdistillation4rl.github.io/",
+    image: "/figures/dataset_distill_rl.png",
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2407.20299" },
       { label: "Website", href: "https://datasetdistillation4rl.github.io/" },
