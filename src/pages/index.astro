@@ -12,8 +12,15 @@ const last_posts = posts.slice(0, 3);
 const featuredPublications = publications.slice(0, 3);
 
 const sectionCardClasses = "rounded-2xl border border-base-200/60 bg-base-100/80 p-6 shadow-sm space-y-5";
-const listBaseClasses = "list-disc list-outside pl-6 space-y-2 text-base md:text-lg leading-relaxed";
-const listItemRowClasses = "flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2";
+const listBaseClasses = "space-y-3 text-base md:text-lg leading-relaxed";
+const listItemWrapperClasses = "flex items-start gap-3";
+const listItemContentClasses = "flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2";
+const bulletBaseClasses = "mt-2 h-2 w-2 rounded-full";
+const bulletPrimary = "bg-primary";
+const bulletSecondary = "bg-secondary";
+const bulletAccent = "bg-accent";
+const bulletInfo = "bg-info";
+const bulletWarning = "bg-base-content";
 const supportingTextClasses = "text-base-content/70";
 ---
 
@@ -116,13 +123,19 @@ const supportingTextClasses = "text-base-content/70";
         <div class="hidden sm:block h-px flex-1 bg-base-200" />
       </div>
       <ul class={listBaseClasses}>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">ICLR Conference Reviewer</span>
-          <span class={supportingTextClasses}>2025</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">ICLR Conference Reviewer</span>
+            <span class={supportingTextClasses}>2025</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">NeurIPS Conference Reviewer</span>
-          <span class={supportingTextClasses}>2025</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">NeurIPS Conference Reviewer</span>
+            <span class={supportingTextClasses}>2025</span>
+          </div>
         </li>
       </ul>
     </div>
@@ -135,21 +148,33 @@ const supportingTextClasses = "text-base-content/70";
         <div class="hidden sm:block h-px flex-1 bg-base-200" />
       </div>
       <ul class={listBaseClasses}>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Phi Beta Kappa</span>
-          <span class={supportingTextClasses}>2021</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletSecondary}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Phi Beta Kappa</span>
+            <span class={supportingTextClasses}>2021</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Reed Commendation for Excellence in Scholarship</span>
-          <span class={supportingTextClasses}>2018 · 2019 · 2020 · 2021</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletSecondary}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Reed Commendation for Excellence in Scholarship</span>
+            <span class={supportingTextClasses}>2018 · 2019 · 2020 · 2021</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Reed Science Research Fellow</span>
-          <span class={supportingTextClasses}>2020</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletSecondary}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Reed Science Research Fellow</span>
+            <span class={supportingTextClasses}>2020</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Reed Financial Services Fellow</span>
-          <span class={supportingTextClasses}>2019</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletSecondary}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Reed Financial Services Fellow</span>
+            <span class={supportingTextClasses}>2019</span>
+          </div>
         </li>
       </ul>
     </div>
@@ -162,41 +187,68 @@ const supportingTextClasses = "text-base-content/70";
         <div class="hidden sm:block h-px flex-1 bg-base-200" />
       </div>
       <ul class={listBaseClasses}>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">AI and Blockchain</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth EMBA · 2023 Summer</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">AI and Blockchain</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth EMBA · 2023 Summer</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Options Pricing</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Roger Lee · UChicago PSD · 2023 Spring</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Options Pricing</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Roger Lee · UChicago PSD · 2023 Spring</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Bayesian Statistical Inference and ML</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Gordan Ritter · UChicago PSD · 2023 Spring</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Bayesian Statistical Inference and ML</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Gordan Ritter · UChicago PSD · 2023 Spring</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Decoding Fintech</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth · 2023 Winter</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Decoding Fintech</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth · 2023 Winter</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Mathematical Statistics</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2021 Spring</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Mathematical Statistics</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2021 Spring</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Probability Theory</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2020 Fall</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Probability Theory</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2020 Fall</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Macroeconomics</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Zhe (Jasmine) Jiang · Reed College · 2020 Fall</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Macroeconomics</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Zhe (Jasmine) Jiang · Reed College · 2020 Fall</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Econometrics</span>
-          <span class={supportingTextClasses}>Teaching Assistant · Fellipe Carrera · Reed College · 2020 Fall</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Econometrics</span>
+            <span class={supportingTextClasses}>Teaching Assistant · Fellipe Carrera · Reed College · 2020 Fall</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Introduction to Analysis</span>
-          <span class={supportingTextClasses}>Teaching Assistant · David Krumm · Reed College · 2019 Fall</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletAccent}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Introduction to Analysis</span>
+            <span class={supportingTextClasses}>Teaching Assistant · David Krumm · Reed College · 2019 Fall</span>
+          </div>
         </li>
       </ul>
     </div>
@@ -209,13 +261,19 @@ const supportingTextClasses = "text-base-content/70";
         <div class="hidden sm:block h-px flex-1 bg-base-200" />
       </div>
       <ul class={listBaseClasses}>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">MIT CSAIL</span>
-          <span class={supportingTextClasses}>AI Reasoning at Scale with Search</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletInfo}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">MIT CSAIL</span>
+            <span class={supportingTextClasses}>AI Reasoning at Scale with Search</span>
+          </div>
         </li>
-        <li class={listItemRowClasses}>
-          <span class="font-semibold">Tencent AI Lab</span>
-          <span class={supportingTextClasses}>Scaling LLM Reasoning through Search and RL</span>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletInfo}`}></span>
+          <div class={listItemContentClasses}>
+            <span class="font-semibold">Tencent AI Lab</span>
+            <span class={supportingTextClasses}>Scaling LLM Reasoning through Search and RL</span>
+          </div>
         </li>
       </ul>
     </div>
@@ -229,10 +287,19 @@ const supportingTextClasses = "text-base-content/70";
       </div>
       <div class="space-y-4 text-base md:text-lg leading-relaxed">
         <p class="font-medium">I go by either Jonathan Li or Jonathan Light. I usually use Light in publications because:</p>
-        <ul class="list-disc list-outside pl-6 space-y-2">
-          <li>Li is a very common last name. Without exception, every institution I've been to has had at least one other Jonathan Li.</li>
-          <li>Light is the semantic translation of my Chinese given name.</li>
-          <li>Light nearly preserves the lexigraphic ordering of Li.</li>
+        <ul class="space-y-2">
+          <li class={listItemWrapperClasses}>
+            <span class={`${bulletBaseClasses} ${bulletWarning}`}></span>
+            <span>Li is a very common last name. Without exception, every institution I've been to has had at least one other Jonathan Li.</span>
+          </li>
+          <li class={listItemWrapperClasses}>
+            <span class={`${bulletBaseClasses} ${bulletWarning}`}></span>
+            <span>Light is the semantic translation of my Chinese given name.</span>
+          </li>
+          <li class={listItemWrapperClasses}>
+            <span class={`${bulletBaseClasses} ${bulletWarning}`}></span>
+            <span>Light nearly preserves the lexigraphic ordering of Li.</span>
+          </li>
         </ul>
         <p>
           I've also considered using "Plum" (the semantic translation of my last name), but it doesn't have the same ring to it, nor does it
