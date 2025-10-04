@@ -10,6 +10,11 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 
 const last_posts = posts.slice(0, 3);
 const featuredPublications = publications.slice(0, 3);
+
+const sectionCardClasses = "rounded-2xl border border-base-200/60 bg-base-100/80 p-6 shadow-sm space-y-5";
+const listBaseClasses = "list-disc list-outside pl-6 space-y-2 text-base md:text-lg leading-relaxed";
+const listItemRowClasses = "flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2";
+const supportingTextClasses = "text-base-content/70";
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -105,60 +110,136 @@ const featuredPublications = publications.slice(0, 3);
   }
 
   <section id="services" class="mt-12">
-    <div class="text-3xl font-bold mb-5">Services</div>
-    <ul class="space-y-2 text-lg">
-      <li>ICLR Conference Reviewer, 2025</li>
-      <li>NeurIPS Conference Reviewer, 2025</li>
-    </ul>
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold">Services</div>
+        <div class="hidden sm:block h-px flex-1 bg-base-200" />
+      </div>
+      <ul class={listBaseClasses}>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">ICLR Conference Reviewer</span>
+          <span class={supportingTextClasses}>2025</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">NeurIPS Conference Reviewer</span>
+          <span class={supportingTextClasses}>2025</span>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <section id="awards" class="mt-12">
-    <div class="text-3xl font-bold mb-5">Honors and Awards</div>
-    <ul class="space-y-2 text-lg">
-      <li>Phi Beta Kappa, 2021</li>
-      <li>Reed Commendation for Excellence in Scholarship, 2018, 2019, 2020, 2021</li>
-      <li>Reed Science Research Fellow, 2020</li>
-      <li>Reed Financial Services Fellow, 2019</li>
-    </ul>
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold">Honors and Awards</div>
+        <div class="hidden sm:block h-px flex-1 bg-base-200" />
+      </div>
+      <ul class={listBaseClasses}>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Phi Beta Kappa</span>
+          <span class={supportingTextClasses}>2021</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Reed Commendation for Excellence in Scholarship</span>
+          <span class={supportingTextClasses}>2018 · 2019 · 2020 · 2021</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Reed Science Research Fellow</span>
+          <span class={supportingTextClasses}>2020</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Reed Financial Services Fellow</span>
+          <span class={supportingTextClasses}>2019</span>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <section id="teaching" class="mt-12">
-    <div class="text-3xl font-bold mb-5">Teaching</div>
-    <ul class="space-y-2 text-lg">
-      <li>Teaching Assistant, AI and Blockchain, Dacheng Xiu. Booth EMBA, 2023 Summer</li>
-      <li>Teaching Assistant, Options Pricing, Roger Lee. UChicago PSD, 2023 Spring</li>
-      <li>Teaching Assistant, Bayesian Statistical Inference and ML, Gordan Ritter. UChicago PSD, 2023 Spring</li>
-      <li>Teaching Assistant, Decoding Fintech, Dacheng Xiu. Booth, 2023 Winter</li>
-      <li>Teaching Assistant, Mathematical Statistics, Jonathan Wells. Reed College, 2021 Spring</li>
-      <li>Teaching Assistant, Probability Theory, Jonathan Wells. Reed College, 2020 Fall</li>
-      <li>Teaching Assistant, Macroeconomics, Zhe (Jasmine) Jiang. Reed College, 2020 Fall</li>
-      <li>Teaching Assistant, Econometrics, Fellipe Carrera. Reed College, 2020 Fall</li>
-      <li>Teaching Assistant, Introduction to Analysis, David Krumm. Reed College, 2019 Fall</li>
-    </ul>
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold">Teaching</div>
+        <div class="hidden sm:block h-px flex-1 bg-base-200" />
+      </div>
+      <ul class={listBaseClasses}>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">AI and Blockchain</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth EMBA · 2023 Summer</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Options Pricing</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Roger Lee · UChicago PSD · 2023 Spring</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Bayesian Statistical Inference and ML</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Gordan Ritter · UChicago PSD · 2023 Spring</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Decoding Fintech</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth · 2023 Winter</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Mathematical Statistics</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2021 Spring</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Probability Theory</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2020 Fall</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Macroeconomics</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Zhe (Jasmine) Jiang · Reed College · 2020 Fall</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Econometrics</span>
+          <span class={supportingTextClasses}>Teaching Assistant · Fellipe Carrera · Reed College · 2020 Fall</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Introduction to Analysis</span>
+          <span class={supportingTextClasses}>Teaching Assistant · David Krumm · Reed College · 2019 Fall</span>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <section id="talks" class="mt-12">
-    <div class="text-3xl font-bold mb-5">Talks</div>
-    <ul class="space-y-2 text-lg">
-      <li>MIT CSAIL, AI Reasoning at Scale with Search</li>
-      <li>Tencent AI Lab, Scaling LLM Reasoning through Search and RL</li>
-    </ul>
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold">Talks</div>
+        <div class="hidden sm:block h-px flex-1 bg-base-200" />
+      </div>
+      <ul class={listBaseClasses}>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">MIT CSAIL</span>
+          <span class={supportingTextClasses}>AI Reasoning at Scale with Search</span>
+        </li>
+        <li class={listItemRowClasses}>
+          <span class="font-semibold">Tencent AI Lab</span>
+          <span class={supportingTextClasses}>Scaling LLM Reasoning through Search and RL</span>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <section id="notes" class="mt-12 mb-12">
-    <div class="text-3xl font-bold mb-5">Other Notes</div>
-    <div class="space-y-4 text-lg">
-      <p>I go by either Jonathan Li or Jonathan Light. I usually use Light in publications because:</p>
-      <ul class="list-disc list-inside space-y-2">
-        <li>Li is a very common last name. Without exception, every institution I've been to has had at least one other Jonathan Li.</li>
-        <li>Light is the semantic translation of my Chinese given name.</li>
-        <li>Light nearly preserves the lexigraphic ordering of Li.</li>
-      </ul>
-      <p>
-        I've also considered using "Plum" (the semantic translation of my last name), but it doesn't have the same ring to it, nor does it
-        preserve the lexigraphic ordering of Li. Generally I find semantic translations to be more faithful to the original meaning, as
-        convenient as pinyin is for romanization.
-      </p>
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold">Other Notes</div>
+        <div class="hidden sm:block h-px flex-1 bg-base-200" />
+      </div>
+      <div class="space-y-4 text-base md:text-lg leading-relaxed">
+        <p class="font-medium">I go by either Jonathan Li or Jonathan Light. I usually use Light in publications because:</p>
+        <ul class="list-disc list-outside pl-6 space-y-2">
+          <li>Li is a very common last name. Without exception, every institution I've been to has had at least one other Jonathan Li.</li>
+          <li>Light is the semantic translation of my Chinese given name.</li>
+          <li>Light nearly preserves the lexigraphic ordering of Li.</li>
+        </ul>
+        <p>
+          I've also considered using "Plum" (the semantic translation of my last name), but it doesn't have the same ring to it, nor does it
+          preserve the lexigraphic ordering of Li. Generally I find semantic translations to be more faithful to the original meaning, as
+          convenient as pinyin is for romanization.
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>
