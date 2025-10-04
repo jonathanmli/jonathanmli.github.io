@@ -22,7 +22,7 @@ const supportingTextClasses = "text-base-content/70";
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
+  <div class="pb-6 mt-5">
     <div class="text-xl py-1">Hey there 👋</div>
     <div class="text-5xl font-bold">I'm Jonathan</div>
     <div class="text-3xl py-3 font-bold">AI Researcher exploring scalable reasoning and intelligent agents</div>
@@ -50,7 +50,7 @@ const supportingTextClasses = "text-base-content/70";
   </div>
 
   <a
-    class="btn btn-primary mb-10"
+    class="btn btn-primary mb-4"
     href="https://x.com/lightetal"
     target="_blank"
     rel="noopener"
@@ -58,85 +58,83 @@ const supportingTextClasses = "text-base-content/70";
     Let's Connect!
   </a>
 
-  <section id="news" class="mt-12">
-    <div class={sectionCardClasses}>
-      <div class="flex items-center gap-3">
-        <div class="text-3xl font-bold">News</div>
-        <div class="hidden sm:block h-px flex-1 bg-base-200" />
-      </div>
-      <ul class={listBaseClasses}>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Sep 2025</span>
-            <span>🎉 One paper accepted to <strong>NeurIPS 2025</strong></span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Jan 2025</span>
-            <span>🎉 Two papers accepted to <strong>ICLR 2025</strong></span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Jan 2025</span>
-            <span>
-              Joined
-              <a class="link link-primary font-semibold" href="https://www.cms.caltech.edu/">
-                Caltech
-              </a>
-              as a <strong>Visiting Researcher</strong>, working with
-              <a class="link link-primary font-semibold" href="https://www.yisongyue.com/">
-                Yisong Yue
-              </a>
-            </span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Oct 2024</span>
-            <span>
-              🎉 One paper accepted at the NeurIPS 2024 Workshop on
-              <a class="link link-primary font-semibold" href="https://language-gamification.github.io/">
-                Language &amp; Gamification (LanGame)
-              </a>
-            </span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Jun 2024</span>
-            <span>
-              🎉 One paper accepted at the ICML 2024 Workshop on
-              <a class="link link-primary font-semibold" href="https://autorlworkshop.github.io/">
-                AutoRL
-              </a>
-            </span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">May 2024</span>
-            <span>
-              Joined
-              <a class="link link-primary font-semibold" href="https://www.nec-labs.com/">
-                NEC Laboratories America
-              </a>
-              as a <strong>Research Intern</strong>, working with
-              <a class="link link-primary font-semibold" href="https://chengw07.github.io/">
-                Wei Cheng
-              </a>
-            </span>
-          </div>
-        </li>
-      </ul>
+  <section id="news" class="mt-6 mb-12 space-y-6">
+    <div class="flex items-center gap-3">
+      <div class="text-3xl font-bold">News</div>
+      <div class="hidden sm:block h-px flex-1 bg-base-200" />
     </div>
+    <ul class={listBaseClasses}>
+      <li class={listItemWrapperClasses}>
+        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
+        <div class={listItemContentClasses}>
+          <span class="font-semibold">Sep 2025</span>
+          <span>🎉 One paper accepted to <strong>NeurIPS 2025</strong></span>
+        </div>
+      </li>
+      <li class={listItemWrapperClasses}>
+        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
+        <div class={listItemContentClasses}>
+          <span class="font-semibold">Jan 2025</span>
+          <span>🎉 Two papers accepted to <strong>ICLR 2025</strong></span>
+        </div>
+      </li>
+      <li class={listItemWrapperClasses}>
+        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
+        <div class={listItemContentClasses}>
+          <span class="font-semibold">Jan 2025</span>
+          <span>
+            Joined
+            <a class="link link-primary font-semibold" href="https://www.cms.caltech.edu/">
+              Caltech
+            </a>
+            as a <strong>Visiting Researcher</strong>, working with
+            <a class="link link-primary font-semibold" href="https://www.yisongyue.com/">
+              Yisong Yue
+            </a>
+          </span>
+        </div>
+      </li>
+      <li class={listItemWrapperClasses}>
+        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
+        <div class={listItemContentClasses}>
+          <span class="font-semibold">Oct 2024</span>
+          <span>
+            🎉 One paper accepted at the NeurIPS 2024 Workshop on
+            <a class="link link-primary font-semibold" href="https://language-gamification.github.io/">
+              LanGame
+            </a>
+          </span>
+        </div>
+      </li>
+      <li class={listItemWrapperClasses}>
+        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
+        <div class={listItemContentClasses}>
+          <span class="font-semibold">Jun 2024</span>
+          <span>
+            🎉 One paper accepted at the ICML 2024 Workshop on
+            <a class="link link-primary font-semibold" href="https://autorlworkshop.github.io/">
+              AutoRL
+            </a>
+          </span>
+        </div>
+      </li>
+      <li class={listItemWrapperClasses}>
+        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
+        <div class={listItemContentClasses}>
+          <span class="font-semibold">May 2024</span>
+          <span>
+            Joined
+            <a class="link link-primary font-semibold" href="https://www.nec-labs.com/">
+              NEC Laboratories America
+            </a>
+            as a <strong>Research Intern</strong>, working with
+            <a class="link link-primary font-semibold" href="https://chengw07.github.io/">
+              Wei Cheng
+            </a>
+          </span>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <div class="flex flex-wrap items-center justify-between gap-2">
