@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { publications } from "../lib/publications";
+---
+
+<BaseLayout title="Publications" sideBarActiveItemID="publications">
+  <div class="flex flex-wrap items-center justify-between w-full mb-5 gap-3">
+    <div class="text-3xl font-bold">Selected Publications</div>
+    <a
+      href="https://scholar.google.com/citations?user=NjUdt4cAAAAJ&hl=en"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-sm btn-outline"
+    >
+      View Google Scholar
+    </a>
+  </div>
+
+  {
+    publications.map((publication, index) => (
+      <>
+        <HorizontalCard
+          title={publication.title}
+          subtitle={publication.subtitle}
+          desc={publication.description}
+          url={publication.url}
+          badge={publication.badge}
+          img={publication.image}
+          links={publication.links}
+        />
+        {index < publications.length - 1 && <div class="divider my-0" />}
+      </>
+    ))
+  }
+</BaseLayout>

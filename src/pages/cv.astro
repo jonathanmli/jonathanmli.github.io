@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title="Background" sideBarActiveItemID="background">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">About Me</div>
+  </div>
+
+  <div class="mb-10 text-justify space-y-4">
+    <p>
+      I study the intersection of <strong>incentives, algorithms, and learning</strong> to design decision-making systems that can
+      <strong>plan, reason, and collaborate</strong> as effectively as they generalize.
+      With an interdisciplinary background in <strong>computer science</strong>, <strong>economics</strong>, and <strong>statistics</strong>,
+      my research explores how <strong>incentives and rewards</strong>, <strong>algorithmic design</strong>, and <strong>learning principles</strong>
+      interact to produce intelligent and adaptive systems.
+    </p>
+    <p>
+      Currently, my work focuses on how <strong>foundation models</strong>, such as large language models, can be harnessed for
+      <strong>sequential decision making</strong>. I explore ways to integrate ideas from <strong>reinforcement learning</strong>,
+      <strong>test-time computation</strong>, and <strong>adaptive search</strong> to enable autonomous agents that <strong>plan,
+      learn, and generalize</strong> in complex environments. I'm particularly fascinated by how such models can achieve
+      <strong>self-improvement</strong> and <strong>post-training adaptation</strong>—hallmarks of truly general intelligence.
+    </p>
+    <p>
+      I enjoy collaborations—feel free to reach out if you've got an interesting problem to chat about!
+    </p>
+    <hr class="border-t border-gray-300 dark:border-gray-700" />
+    <blockquote class="border-l-4 border-primary pl-4 italic">
+      <p>"Know what you know and know what you do not know. That is true wisdom."</p>
+      <footer>— <em>Confucius</em></footer>
+    </blockquote>
+    <p>
+      In modern terms: <em>know the known knowns, the known unknowns, and the unknown unknowns.</em> This idea guides my research
+      and reflects what I see as the central challenge in building intelligent systems: understanding and expanding the
+      boundaries of one's own knowledge.
+    </p>
+    <hr class="border-t border-gray-300 dark:border-gray-700" />
+    <p>
+      Outside of research, I enjoy <strong>playing and designing board games</strong>, <strong>reading science fiction</strong>,
+      <strong>electronic music composition</strong>, <strong>grand strategy games</strong>, <strong>fencing</strong>, and
+      <strong>squash</strong>. I find well-designed games to be elegant systems—rich sources of insight into planning, reasoning,
+      and interaction.
+    </p>
+  </div>
+
+  <section class="mb-14">
+    <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div class="text-3xl w-full font-bold">Background</div>
+      <a
+        class="text-primary font-semibold hover:underline whitespace-nowrap"
+        href="/pdfs/CV.pdf"
+        target="_blank"
+        rel="noopener"
+      >
+        View CV
+      </a>
+    </div>
+
+    <div class="grid gap-12">
+      <div>
+        <div class="text-2xl font-semibold mb-4">Education</div>
+        <div class="time-line-container grid gap-4">
+          <TimeLineElement
+            title="Ph.D. in Computer Science"
+            subtitle="Aug 2023 - Present · Rensselaer Polytechnic Institute (RPI), Troy, NY"
+          />
+          <TimeLineElement
+            title="M.S. in Financial Mathematics"
+            subtitle="Aug 2021 - Mar 2023 · University of Chicago, Chicago, IL"
+          />
+          <TimeLineElement
+            title="B.S. in Mathematics and Economics"
+            subtitle="Aug 2017 - May 2021 · Reed College, Portland, OR"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="text-2xl font-semibold mb-4">Work Experience</div>
+        <div class="time-line-container grid gap-4">
+          <TimeLineElement
+            title="NEC Laboratories America"
+            subtitle="Part-time Researcher, Code Generation · May 2024 - Present · Princeton, NJ"
+          />
+          <TimeLineElement
+            title="Reed Research Reactor"
+            subtitle="Supervisor & Senior Reactor Operator · Sep 2017 - May 2021 · Portland, OR"
+          />
+          <TimeLineElement
+            title="Deloitte Consulting"
+            subtitle="Tax Consultancy Intern · Jul 2019 - Aug 2019 · Guangzhou, China"
+          />
+          <TimeLineElement
+            title="Siemens Management Consulting"
+            subtitle="Analyst Intern · Jul 2018 - Aug 2018 · Beijing, China"
+          />
+        </div>
+
+        <div class="mt-10">
+          <div class="text-2xl font-semibold mb-4">Skills</div>
+          <div class="grid gap-3 md:grid-cols-2">
+            <div class="flex items-start gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-primary"></span>
+              <div>
+                <div class="font-semibold">Computer languages</div>
+                <div>C++, Python, R, Golang, SQL, Mathematica, PyTorch</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-primary"></span>
+              <div>
+                <div class="font-semibold">Human languages</div>
+                <div>English (native), Chinese (native)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

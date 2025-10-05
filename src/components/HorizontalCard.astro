@@ -1,0 +1,84 @@
+---
+const {
+  title,
+  img,
+  desc,
+  url,
+  badge,
+  tags,
+  target = "_blank",
+  links = [],
+  subtitle,
+} = Astro.props;
+import { Image } from "astro:assets";
+const hasTags = Array.isArray(tags) && tags.length > 0;
+const hasLinks = Array.isArray(links) && links.length > 0;
+const normalizedUrl = url ?? "#";
+const tag_url = normalizedUrl.split("/").slice(0, -1).join("/") + "/tag";
+const baseRel = target === "_blank" ? "noopener noreferrer" : undefined;
+---
+
+<div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
+  <div class="hero-content flex-col md:flex-row">
+    {
+      img && (
+        <Image
+          src={img}
+          width={750}
+          height={422}
+          format="webp"
+          alt={title}
+          class="max-w-full md:max-w-[13rem] rounded-lg"
+        />
+      )
+    }
+    <div class="grow w-full">
+      <div class="flex flex-wrap items-center gap-2">
+        <a
+          href={normalizedUrl}
+          target={target}
+          rel={baseRel}
+          class="text-xl font-bold hover:underline"
+        >
+          {title}
+        </a>
+        {badge && <div class="badge badge-secondary">{badge}</div>}
+      </div>
+      {subtitle && <div class="text-sm text-base-content/70 py-1">{subtitle}</div>}
+      {desc && (
+        <p class="py-1 text-1xl" set:html={desc}></p>
+      )}
+      {(hasTags || hasLinks) && (
+        <div class="flex flex-wrap items-center gap-2 pt-2">
+          {
+            hasTags && (
+              <div class="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            )
+          }
+          {
+            hasLinks && (
+              <div class={`flex flex-wrap gap-2 ${hasTags ? "ml-auto" : ""}`}>
+                {links.map((link) => (
+                  <a
+                    href={link.href}
+                    target={link.target ?? "_blank"}
+                    rel={link.rel ?? "noopener noreferrer"}
+                    class="btn btn-sm btn-outline"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )
+          }
+        </div>
+      )}
+    </div>
+  </div>
+</div>
