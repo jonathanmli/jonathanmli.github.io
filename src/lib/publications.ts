@@ -92,7 +92,7 @@ export const publications: Publication[] = [
     description:
       "Introduces AvalonBench to benchmark LLM agents in strategic social deduction games and highlights the gap between current agents and engineered bots.",
     url: "https://avalonbench.github.io/",
-    image: "/figures/merlin.jpg",
+    image: "/figures/merlin.png",
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2310.05036.pdf" },
       { label: "Website", href: "https://avalonbench.github.io/" },
