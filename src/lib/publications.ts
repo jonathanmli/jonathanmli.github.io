@@ -58,6 +58,20 @@ export const publications: Publication[] = [
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2411.15998" }],
   },
   {
+    title:
+      "Reasoning in Reasoning: A Hierarchical Framework for Better and Faster Neural Theorem Proving",
+    subtitle:
+      "Ziyu Ye, Jiacheng Chen, Jonathan Light, Yifei Wang, Jiankai Sun, Mac Schwager, Philip Torr, Guohao Li, Yuxin Chen, Kaiyu Yang, Yisong Yue, Ziniu Hu",
+    badge: "NeurIPS 2024 Workshop",
+    description:
+      "Introduces Reasoning in Reasoning (RiR), a hierarchical planner-actor formulation that unifies decomposition and search to accelerate neural theorem proving across LeanDojo and miniF2F benchmarks.",
+    url: "https://openreview.net/forum?id=H5hePMXKht",
+    image: "/figures/bilevel-new.png",
+    links: [
+      { label: "PDF", href: "https://openreview.net/pdf?id=H5hePMXKht" },
+    ],
+  },
+  {
     title: "From Text to Tactic: Evaluating LLMs Playing the Game of Avalon",
     subtitle: "Jonathan Light*, Min Cai, Sheng Shen, Ziniu Hu",
     badge: "NeurIPS 2023 Workshop",
