@@ -17,6 +17,20 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    title: "DISC: Dynamic Decomposition Improves LLM Inference Scaling",
+    subtitle:
+      "Jonathan Light*, Wei Cheng, Benjamin Riviere, Wu Yue, Masafumi Oyamada, Mengdi Wang, Yisong Yue, Santiago Paternain, Haifeng Chen",
+    badge: "NeurIPS 2025",
+    description:
+      "Adaptive, compute-aware reasoning - dynamically expands or contracts thought steps for efficient problem-solving. Delivers +33% accuracy vs DeepSeek-R1 at equal tokens and 5-10% lower error on APPS, MATH, and LiveCodeBench.",
+    url: "https://disc-search.github.io/",
+    image: "/figures/disc.png",
+    links: [
+      { label: "Website", href: "https://disc-search.github.io/" },
+      { label: "PDF", href: "https://arxiv.org/pdf/2502.16706" },
+    ],
+  },
+  {
     title: "Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search",
     subtitle:
       "Jonathan Light*, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu",
