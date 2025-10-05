@@ -51,7 +51,7 @@ export const publications: Publication[] = [
       "Jonathan Light*, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao, Ziniu Hu, Haifeng Chen, Wei Cheng",
     badge: "ICLR 2025",
     description:
-      "Frames code generation as black-box optimization and introduces Scattered Forest Search to improve diversity, boosting performance across HumanEval, MBPP, APPS, CodeContests, and LeetCode benchmarks.",
+      "Reframes code generation as black-box optimization: uses <strong>Scattering</strong>, <strong>Foresting</strong>, and <strong>Scouting</strong> to boost exploration + feedback exploitation. Achieves <strong>SOTA on HumanEval, MBPP, APPS, CodeContests, LeetCode</strong> (e.g. 87.2% pass@1 on HumanEval) while halving iterations vs prior methods.",
     url: "https://codespace-optimization.github.io/",
     image: "/figures/sfs.png",
     links: [
