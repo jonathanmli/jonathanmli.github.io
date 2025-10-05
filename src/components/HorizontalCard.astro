@@ -45,7 +45,9 @@ const baseRel = target === "_blank" ? "noopener noreferrer" : undefined;
         {badge && <div class="badge badge-secondary">{badge}</div>}
       </div>
       {subtitle && <div class="text-sm text-base-content/70 py-1">{subtitle}</div>}
-      {desc && <p class="py-1 text-1xl">{desc}</p>}
+      {desc && (
+        <p class="py-1 text-1xl" set:html={desc}></p>
+      )}
       {(hasTags || hasLinks) && (
         <div class="flex flex-wrap items-center gap-2 pt-2">
           {

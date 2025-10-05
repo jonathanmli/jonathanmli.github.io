@@ -36,7 +36,7 @@ export const publications: Publication[] = [
       "Jonathan Light*, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu",
     badge: "ICLR 2025",
     description:
-      "Self-improvement framework that couples Monte Carlo tree search with LLM reflection to acquire strategic skills, covered by the State of AI Report 2024.",
+      'LLM + MCTS hybrid that <strong>learns to optimize its own decision process</strong> through self-play and strategy refinement. Outperforms RL and existing LLM agents, achieves <strong>human-level performance</strong> in complex games. Highlighted in the <a class="link link-primary font-semibold" href="https://docs.google.com/presentation/d/1GmZmoWOa2O92BPrncRcTKa15xvQGhq7g4I4hJSNlC0M/edit?slide=id.g2d35a16f27e_0_24#slide=id.g2d35a16f27e_0_24" target="_blank" rel="noopener noreferrer"><strong>State of AI Report 2024</strong></a> as a breakthrough in autonomous agent design.',
     url: "https://llm-strategist.github.io/",
     image: "/figures/strategist.png",
     links: [
