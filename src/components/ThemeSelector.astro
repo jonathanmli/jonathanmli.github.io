@@ -592,15 +592,27 @@
 </div>
 
 <script is:inline>
-  function setTheme(doc) {
-    const theme_selectors = doc.querySelectorAll("#theme-selector div[data-theme]");
-    const theme = window.localStorage.getItem("data-theme");
-
-    if (theme) {
-      updateTheme(doc, theme);
-    } else {
-      updateTheme(doc, "lofi");
+  function pickRandomTheme(themeSelectors) {
+    if (themeSelectors.length === 0) {
+      return "lofi";
     }
+
+    const randomSelector = themeSelectors[Math.floor(Math.random() * themeSelectors.length)];
+    return randomSelector.getAttribute("data-theme") ?? "lofi";
+  }
+
+  function setTheme(doc) {
+    const themeSelectors = Array.from(
+      doc.querySelectorAll("#theme-selector div[data-theme]")
+    );
+    const storedTheme = window.localStorage.getItem("data-theme");
+
+    if (storedTheme) {
+      updateTheme(doc, storedTheme);
+      return;
+    }
+
+    updateTheme(doc, pickRandomTheme(themeSelectors));
   }
 
   function updateTheme(doc, newTheme) {
@@ -609,8 +621,8 @@
   }
 
   function changeThemeBehavior(doc) {
-    const theme_selectors = doc.querySelectorAll("#theme-selector div[data-theme]");
-    theme_selectors.forEach((selector) => {
+    const themeSelectors = doc.querySelectorAll("#theme-selector div[data-theme]");
+    themeSelectors.forEach((selector) => {
       selector.addEventListener("click", () => {
         updateTheme(doc, selector.getAttribute("data-theme"));
       });
