@@ -61,6 +61,20 @@ export const publications: Publication[] = [
     ],
   },
   {
+    title: "Actor-Curator: Co-adaptive Curriculum Learning via Policy-Improvement Bandits for RL Post-Training",
+    subtitle:
+      "Zhengyao Gu*, Jonathan Light*, Raul Astudillo, Ziyu Ye, Langzhou He, Henry Peng Zou, Wei Cheng, Santiago Paternain, Philip S. Yu, Yisong Yue",
+    badge: "ICLR 2026 Workshop",
+    description:
+      "A scalable, fully automated curriculum-learning framework for RL post-training of LLMs. Learns a neural curator that selects training problems to directly maximize <strong>expected policy improvement</strong>, formulated as a non-stationary bandit with regret guarantees. Delivers <strong>+28.6% on AIME2024</strong>, <strong>+30.5% on ARC-1D</strong>, and up to <strong>80% speedup</strong> over the strongest baseline.",
+    url: "https://actor-curator.github.io/",
+    image: "/figures/actor_curator.png",
+    links: [
+      { label: "Website", href: "https://actor-curator.github.io/" },
+      { label: "PDF", href: "https://arxiv.org/pdf/2602.20532" },
+    ],
+  },
+  {
     title: "PIANIST: Learning Partially Observable World Models with LLMs for Multi-Agent Decision Making",
     subtitle:
       "Jonathan Light, Sixue Xing, Yuanzhe Liu, Weiqin Chen, Min Cai, Xiusi Chen, Guanzhi Wang, Wei Cheng, Yisong Yue, Ziniu Hu",
