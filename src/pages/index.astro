@@ -10,6 +10,7 @@ const sectionCardClasses = "rounded-2xl border border-base-200/60 bg-base-100/80
 const listBaseClasses = "space-y-3 text-base md:text-lg leading-relaxed";
 const listItemWrapperClasses = "flex items-start gap-3";
 const listItemContentClasses = "flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2";
+const stackedItemContentClasses = "flex flex-col gap-1";
 const bulletBaseClasses = "mt-2 h-2 w-2 rounded-full";
 const bulletPrimary = "bg-primary";
 const bulletWarning = "bg-base-content";
@@ -222,7 +223,7 @@ const supportingTextClasses = "text-base-content/70";
         <li class={listItemWrapperClasses}>
           <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
           <div class={listItemContentClasses}>
-            <span class="font-semibold">ICML Conference Reviewer</span>
+            <span class="font-semibold">ICML Gold Reviewer</span>
             <span class={supportingTextClasses}>2026</span>
           </div>
         </li>
@@ -376,16 +377,44 @@ const supportingTextClasses = "text-base-content/70";
       <ul class={listBaseClasses}>
         <li class={listItemWrapperClasses}>
           <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">MIT CSAIL</span>
-            <span class={supportingTextClasses}>AI Reasoning at Scale with Search</span>
+          <div class={stackedItemContentClasses}>
+            <span class="font-semibold">From Imitation to Exploration: Search-Driven Self-Improvement in AI Agents</span>
+            <span class={supportingTextClasses}>Adaption Labs · AI Circle · Across AI · 2026</span>
           </div>
         </li>
         <li class={listItemWrapperClasses}>
           <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Tencent AI Lab</span>
-            <span class={supportingTextClasses}>Scaling LLM Reasoning through Search and RL</span>
+          <div class={stackedItemContentClasses}>
+            <span class="font-semibold">Self-Evolving Systems & Strategic Self-Play</span>
+            <span class={supportingTextClasses}>Pebblebed · Hexo Labs · The Frontier Syndicate · 2026</span>
+          </div>
+        </li>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
+          <div class={stackedItemContentClasses}>
+            <span class="font-semibold">Smart Problem Curation for RL Post-Training</span>
+            <span class={supportingTextClasses}>Protege · AI Collective · 2026</span>
+          </div>
+        </li>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
+          <div class={stackedItemContentClasses}>
+            <span class="font-semibold">Scaling LLM Reasoning through Reinforcement Learning and Inference-Time Search</span>
+            <span class={supportingTextClasses}>Chemistry · AI Collective · DiversisAI · Valley · 2025</span>
+          </div>
+        </li>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
+          <div class={stackedItemContentClasses}>
+            <span class="font-semibold">AI Reasoning at Scale with Search</span>
+            <span class={supportingTextClasses}>MIT CSAIL · 2025</span>
+          </div>
+        </li>
+        <li class={listItemWrapperClasses}>
+          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
+          <div class={stackedItemContentClasses}>
+            <span class="font-semibold">Scaling LLM Reasoning through Search and RL</span>
+            <span class={supportingTextClasses}>Tencent AI Lab · 2025</span>
           </div>
         </li>
       </ul>
