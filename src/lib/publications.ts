@@ -164,7 +164,7 @@ export const publications: Publication[] = [
   },
   {
     title: "Dataset Distillation for Offline Reinforcement Learning",
-    subtitle: "Jonathan Light*, Yuanzhe Liu, Ziniu Hu",
+    subtitle: "Jonathan Light*, Yuanzhe Liu*, Ziniu Hu",
     badge: "ICML 2024 Workshop",
     description:
       "Synthesizes compact, high-quality offline RL datasets that retain policy performance comparable to training on full datasets.",
