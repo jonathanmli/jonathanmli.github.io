@@ -1,0 +1,340 @@
+---
+import { publications, topicSlug } from "../lib/publications";
+
+/**
+ * A three-arrow self-improvement loop, with paper chips driven from the
+ * publications data so the diagram stays in sync with the publications page.
+ */
+
+interface PaperRef {
+  /** Short display name for the chip. */
+  name: string;
+  /** Prefix of the publication title, used to look up the entry. */
+  title: string;
+  /** Direct link for papers that are not in the publications list. */
+  href?: string;
+}
+
+interface Stage {
+  id: string;
+  verb: string;
+  gloss: string;
+  description: string;
+  /** daisyUI color token used for the arc, marker and card accent. */
+  tone: "primary" | "secondary" | "accent";
+  /** Topic on the publications page that best matches this stage. */
+  topic: string;
+  papers: PaperRef[];
+  note?: string;
+}
+
+const stages: Stage[] = [
+  {
+    id: "propose",
+    verb: "Propose",
+    gloss: "what to solve next",
+    description:
+      "Curriculum and task generation: choosing the problems whose solutions would improve the model the most right now.",
+    tone: "primary",
+    topic: "Curriculum Learning",
+    papers: [
+      { name: "Actor-Curator", title: "Actor-Curator" },
+      { name: "FrogNano", title: "FrogNano", href: "https://arxiv.org/abs/2609.07925" },
+    ],
+  },
+  {
+    id: "explore",
+    verb: "Explore",
+    gloss: "how to solve it better",
+    description:
+      "Inference-time search and scaling: spending compute to find better solutions than a single forward pass would.",
+    tone: "secondary",
+    topic: "Inference Scaling",
+    papers: [
+      { name: "DISC", title: "DISC" },
+      { name: "Scattered Forest Search", title: "Scattered Forest Search" },
+      { name: "Strategist", title: "Strategist" },
+      { name: "PIANIST", title: "PIANIST" },
+    ],
+  },
+  {
+    id: "learn",
+    verb: "Learn",
+    gloss: "what to keep",
+    description:
+      "Feedback internalization: turning the attempts into a signal and absorbing it, into weights or into memory.",
+    tone: "accent",
+    topic: "RL Post-Training",
+    papers: [
+      { name: "ROFT", title: "Shockingly Simple Self-retrospection" },
+      { name: "Dataset Distillation for RL", title: "Dataset Distillation for Offline Reinforcement Learning" },
+      { name: "Strategist", title: "Strategist" },
+    ],
+    note: "Selecting which experiences to learn from counts as part of this step.",
+  },
+];
+
+const hub: PaperRef[] = [
+  { name: "JAZ", title: "Harness as a Language" },
+  { name: "AvalonBench", title: "From Text to Tactic" },
+];
+
+function resolveRef(ref: PaperRef) {
+  const pub = publications.find((p) => p.title.startsWith(ref.title));
+  if (pub) return { ...ref, href: pub.url, fullTitle: pub.title };
+  if (ref.href) return { ...ref, href: ref.href, fullTitle: ref.title };
+  throw new Error(`SelfImprovementLoop: no publication with a title starting with "${ref.title}" and no href given`);
+}
+
+const resolveRefs = (refs: PaperRef[]) => refs.map(resolveRef);
+
+const stageData = stages.map((stage) => ({ ...stage, papers: resolveRefs(stage.papers) }));
+const hubPapers = resolveRefs(hub);
+
+// ---- Diagram geometry -------------------------------------------------------
+const W = 570;
+const H = 400;
+const cx = W / 2;
+const cy = 190;
+const r = 150;
+const gap = 19; // degrees of clearance either side of a node pill
+
+const toRad = (deg: number) => (deg * Math.PI) / 180;
+const pt = (deg: number, radius: number) => ({
+  x: +(cx + radius * Math.cos(toRad(deg))).toFixed(1),
+  y: +(cy + radius * Math.sin(toRad(deg))).toFixed(1),
+});
+
+// Three state nodes, clockwise: the model proposes tasks, tasks yield
+// trajectories, trajectories update the model.
+const nodes = [
+  { id: "model", label: "Model", angle: -90, width: 84 },
+  { id: "tasks", label: "Tasks", angle: 30, width: 80 },
+  { id: "trajectories", label: "Trajectories", angle: 150, width: 130 },
+].map((n) => ({ ...n, ...pt(n.angle, r) }));
+
+const arcs = stageData.map((stage, i) => {
+  const from = nodes[i].angle + gap;
+  const to = nodes[(i + 1) % nodes.length].angle - gap + (i === nodes.length - 1 ? 360 : 0);
+  const start = pt(from, r);
+  const end = pt(to, r);
+  const mid = (from + to) / 2;
+  const label = pt(mid, r + 30);
+  const anchor = Math.cos(toRad(mid)) > 0.3 ? "start" : Math.cos(toRad(mid)) < -0.3 ? "end" : "middle";
+  return {
+    stage,
+    d: `M ${start.x} ${start.y} A ${r} ${r} 0 0 1 ${end.x} ${end.y}`,
+    label,
+    anchor,
+  };
+});
+
+const tone = {
+  primary: {
+    stroke: "stroke-primary",
+    fill: "fill-primary",
+    text: "fill-primary",
+    dot: "bg-primary",
+    badge: "badge-primary",
+    ring: "hover:border-primary/60 focus-within:border-primary/60",
+  },
+  secondary: {
+    stroke: "stroke-secondary",
+    fill: "fill-secondary",
+    text: "fill-secondary",
+    dot: "bg-secondary",
+    badge: "badge-secondary",
+    ring: "hover:border-secondary/60 focus-within:border-secondary/60",
+  },
+  accent: {
+    stroke: "stroke-accent",
+    fill: "fill-accent",
+    text: "fill-accent",
+    dot: "bg-accent",
+    badge: "badge-accent",
+    ring: "hover:border-accent/60 focus-within:border-accent/60",
+  },
+} as const;
+---
+
+<section id="research" class="mt-6 mb-12 space-y-6" data-loop>
+  <div class="flex items-center gap-3">
+    <div class="text-3xl font-bold">Research</div>
+    <div class="hidden sm:block h-px flex-1 bg-base-200"></div>
+  </div>
+
+  <p class="text-lg">
+    I think of self-improvement as a loop with three moving parts. I've been gradually working on improving different
+    parts of the loop, and the whole loop runs on a harness and a set of environments.
+  </p>
+
+  <div class="grid gap-8 md:grid-cols-2 md:items-center">
+    <figure class="mx-auto w-full max-w-lg space-y-3">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-labelledby="loop-title"
+        class="w-full h-auto select-none"
+      >
+        <title id="loop-title">
+          Self-improvement loop: the model proposes tasks, explores trajectories, and learns from them.
+        </title>
+        <defs>
+          {
+            arcs.map(({ stage }) => (
+              <marker
+                id={`loop-arrow-${stage.id}`}
+                viewBox="0 0 10 10"
+                refX="7"
+                refY="5"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" class={tone[stage.tone].fill} />
+              </marker>
+            ))
+          }
+        </defs>
+
+        <!-- Hub -->
+        <circle cx={cx} cy={cy} r="62" class="fill-base-200/60 stroke-base-content/20" stroke-width="1.5" stroke-dasharray="4 4" />
+        <text x={cx} y={cy - 6} text-anchor="middle" class="fill-base-content/80" font-size="15" font-weight="600">
+          Harness &amp;
+        </text>
+        <text x={cx} y={cy + 14} text-anchor="middle" class="fill-base-content/80" font-size="15" font-weight="600">
+          environments
+        </text>
+
+        <!-- Arcs -->
+        {
+          arcs.map(({ stage, d, label, anchor }) => (
+            <g data-stage={stage.id} class="loop-arc transition-opacity duration-200">
+              <path
+                d={d}
+                fill="none"
+                class={tone[stage.tone].stroke}
+                stroke-width="6"
+                stroke-linecap="round"
+                marker-end={`url(#loop-arrow-${stage.id})`}
+              />
+              <text x={label.x} y={label.y} text-anchor={anchor} class={tone[stage.tone].text}>
+                <tspan font-size="21" font-weight="700" dy="-2">
+                  {stage.verb}
+                </tspan>
+                <tspan x={label.x} dy="19" font-size="13" font-weight="500" class="fill-base-content/70">
+                  {stage.gloss}
+                </tspan>
+              </text>
+            </g>
+          ))
+        }
+
+        <!-- State nodes -->
+        {
+          nodes.map((n) => (
+            <g>
+              <rect
+                x={n.x - n.width / 2}
+                y={n.y - 17}
+                width={n.width}
+                height="34"
+                rx="17"
+                class="fill-base-100 stroke-base-content/40"
+                stroke-width="1.5"
+              />
+              <text x={n.x} y={n.y + 5} text-anchor="middle" font-size="15" font-weight="600" class="fill-base-content">
+                {n.label}
+              </text>
+            </g>
+          ))
+        }
+      </svg>
+      <figcaption class="text-sm text-base-content/70 text-center">
+        The loop closes: what the model learns changes which tasks are worth proposing next.
+      </figcaption>
+    </figure>
+
+    <ol class="space-y-3">
+      {
+        stageData.map((stage, index) => (
+          <li
+            data-stage={stage.id}
+            class={`loop-card rounded-2xl border border-base-200/80 bg-base-100/80 p-4 shadow-sm transition-all duration-200 ${tone[stage.tone].ring}`}
+          >
+            <div class="flex items-baseline gap-2 flex-wrap">
+              <span class={`inline-block h-3 w-3 rounded-full ${tone[stage.tone].dot}`} aria-hidden="true" />
+              <span class="text-lg font-bold">
+                {index + 1}. {stage.verb}
+              </span>
+              <span class="text-base-content/70">{stage.gloss}</span>
+            </div>
+            <p class="mt-1 text-sm md:text-base leading-relaxed">{stage.description}</p>
+            {stage.note && <p class="mt-1 text-sm text-base-content/60">{stage.note}</p>}
+            <div class="mt-2 flex flex-wrap items-center gap-1.5">
+              {stage.papers.map((paper) => (
+                <a
+                  href={paper.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={paper.fullTitle}
+                  class={`badge badge-outline ${tone[stage.tone].badge} badge-md hover:badge-solid no-underline`}
+                >
+                  {paper.name}
+                </a>
+              ))}
+              <a href={`/publications#${topicSlug(stage.topic)}`} class="link link-hover text-xs text-base-content/60 ml-1">
+                more on {stage.topic} →
+              </a>
+            </div>
+          </li>
+        ))
+      }
+      <li class="rounded-2xl border border-dashed border-base-content/20 p-4">
+        <div class="flex items-baseline gap-2 flex-wrap">
+          <span class="text-lg font-bold">Runs on</span>
+          <span class="text-base-content/70">a harness and environments</span>
+        </div>
+        <p class="mt-1 text-sm md:text-base leading-relaxed">
+          The substrate the loop executes in: how the agent is scaffolded and which worlds it acts in.
+        </p>
+        <div class="mt-2 flex flex-wrap items-center gap-1.5">
+          {
+            hubPapers.map((paper) => (
+              <a
+                href={paper.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={paper.fullTitle}
+                class="badge badge-outline badge-md no-underline hover:bg-base-200"
+              >
+                {paper.name}
+              </a>
+            ))
+          }
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<script>
+  // Hovering or focusing a stage card highlights its arc, and vice versa.
+  document.querySelectorAll<HTMLElement>("[data-loop]").forEach((root) => {
+    const arcs = root.querySelectorAll<HTMLElement>(".loop-arc[data-stage]");
+    const cards = root.querySelectorAll<HTMLElement>(".loop-card[data-stage]");
+
+    const setActive = (id: string | null) => {
+      arcs.forEach((arc) => arc.classList.toggle("opacity-30", id !== null && arc.dataset.stage !== id));
+      cards.forEach((card) => card.classList.toggle("opacity-60", id !== null && card.dataset.stage !== id));
+    };
+
+    [...arcs, ...cards].forEach((el) => {
+      const id = el.dataset.stage ?? null;
+      el.addEventListener("mouseenter", () => setActive(id));
+      el.addEventListener("mouseleave", () => setActive(null));
+      el.addEventListener("focusin", () => setActive(id));
+      el.addEventListener("focusout", () => setActive(null));
+    });
+  });
+</script>

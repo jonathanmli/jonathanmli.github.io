@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import SelfImprovementLoop from "../components/SelfImprovementLoop.astro";
 import { publications, topicSlug } from "../lib/publications";
 
 const featuredPublications = publications.slice(0, 3);
@@ -53,6 +54,8 @@ const supportingTextClasses = "text-base-content/70";
   >
     Let's Connect!
   </a>
+
+  <SelfImprovementLoop />
 
   <section id="news" class="mt-6 mb-12 space-y-6">
     <div class="flex items-center gap-3">
