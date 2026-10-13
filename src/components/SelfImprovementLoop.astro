@@ -136,6 +136,7 @@ const tone = {
     dot: "bg-primary",
     badge: "badge-primary",
     ring: "hover:border-primary/60 focus-within:border-primary/60",
+    active: "border-primary/60",
   },
   secondary: {
     stroke: "stroke-secondary",
@@ -144,6 +145,7 @@ const tone = {
     dot: "bg-secondary",
     badge: "badge-secondary",
     ring: "hover:border-secondary/60 focus-within:border-secondary/60",
+    active: "border-secondary/60",
   },
   accent: {
     stroke: "stroke-accent",
@@ -152,6 +154,7 @@ const tone = {
     dot: "bg-accent",
     badge: "badge-accent",
     ring: "hover:border-accent/60 focus-within:border-accent/60",
+    active: "border-accent/60",
   },
 } as const;
 ---
@@ -217,6 +220,7 @@ const tone = {
                 stroke-linecap="round"
                 marker-end={`url(#loop-arrow-${stage.id})`}
               />
+              <path d={d} fill="none" class="loop-flow stroke-base-100" stroke-width="2.5" stroke-linecap="round" />
               <text x={label.x} y={label.y} text-anchor={anchor} class={tone[stage.tone].text}>
                 <tspan font-size="21" font-weight="700" dy="-2">
                   {stage.verb}
@@ -259,6 +263,7 @@ const tone = {
         stageData.map((stage, index) => (
           <li
             data-stage={stage.id}
+            data-active-class={tone[stage.tone].active}
             class={`loop-card flex flex-col rounded-2xl border border-base-200/80 bg-base-100/80 p-4 shadow-sm transition-all duration-200 ${tone[stage.tone].ring}`}
           >
             <div class="flex items-center gap-2">
@@ -319,23 +324,108 @@ const tone = {
   </div>
 </section>
 
-<script>
-  // Hovering or focusing a stage card highlights its arc, and vice versa.
-  document.querySelectorAll<HTMLElement>("[data-loop]").forEach((root) => {
-    const arcs = root.querySelectorAll<HTMLElement>(".loop-arc[data-stage]");
-    const cards = root.querySelectorAll<HTMLElement>(".loop-card[data-stage]");
+<style>
+  /* Moving dashes along the active arc. Hidden unless the arc is active. */
+  .loop-flow {
+    opacity: 0;
+    stroke-dasharray: 6 18;
+    transition: opacity 300ms ease;
+  }
+  .loop-arc.is-active .loop-flow {
+    opacity: 0.75;
+    animation: loop-flow 1.4s linear infinite;
+  }
+  @keyframes loop-flow {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loop-flow { display: none; }
+  }
+</style>
 
-    const setActive = (id: string | null) => {
-      arcs.forEach((arc) => arc.classList.toggle("opacity-30", id !== null && arc.dataset.stage !== id));
-      cards.forEach((card) => card.classList.toggle("opacity-60", id !== null && card.dataset.stage !== id));
+<script>
+  // The loop cycles through its stages while on screen. Hovering or focusing a
+  // stage takes over the highlight and pauses the cycle. Reduced-motion users
+  // get the static diagram with hover only.
+  document.querySelectorAll<HTMLElement>("[data-loop]").forEach((root) => {
+    const arcs = [...root.querySelectorAll<HTMLElement>(".loop-arc[data-stage]")];
+    const cards = [...root.querySelectorAll<HTMLElement>(".loop-card[data-stage]")];
+    const order = arcs.map((arc) => arc.dataset.stage!);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const STEP_MS = 3000;
+    const RESUME_MS = 2500;
+
+    let auto: string | null = null; // stage lit by the cycle
+    let hover: string | null = null; // stage lit by the user
+    let timer: number | undefined;
+    let resumeTimer: number | undefined;
+    let visible = false;
+
+    const render = () => {
+      const id = hover ?? auto;
+      const strong = hover !== null;
+      arcs.forEach((arc) => {
+        const self = arc.dataset.stage === id;
+        arc.classList.toggle("is-active", self);
+        arc.classList.toggle("opacity-30", strong && !self);
+        arc.classList.toggle("opacity-60", !strong && id !== null && !self);
+      });
+      cards.forEach((card) => {
+        const self = card.dataset.stage === id;
+        card.classList.toggle("opacity-60", strong && !self);
+        card.classList.toggle("border-base-200/80", !self);
+        card.classList.toggle(card.dataset.activeClass!, self);
+        card.classList.toggle("shadow-md", self);
+      });
+    };
+
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = undefined;
+    };
+
+    const start = () => {
+      if (reduceMotion || timer !== undefined || !visible) return;
+      if (auto === null) auto = order[0];
+      render();
+      timer = window.setInterval(() => {
+        auto = order[(order.indexOf(auto!) + 1) % order.length];
+        render();
+      }, STEP_MS);
+    };
+
+    const setHover = (id: string | null) => {
+      window.clearTimeout(resumeTimer);
+      hover = id;
+      if (id !== null) {
+        stop();
+        auto = id; // resume from where the user left off
+        render();
+      } else {
+        render();
+        resumeTimer = window.setTimeout(start, RESUME_MS);
+      }
     };
 
     [...arcs, ...cards].forEach((el) => {
       const id = el.dataset.stage ?? null;
-      el.addEventListener("mouseenter", () => setActive(id));
-      el.addEventListener("mouseleave", () => setActive(null));
-      el.addEventListener("focusin", () => setActive(id));
-      el.addEventListener("focusout", () => setActive(null));
+      el.addEventListener("mouseenter", () => setHover(id));
+      el.addEventListener("mouseleave", () => setHover(null));
+      el.addEventListener("focusin", () => setHover(id));
+      el.addEventListener("focusout", () => setHover(null));
     });
+
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+
+    new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) start();
+        else stop();
+      },
+      { threshold: 0.25 }
+    ).observe(root);
   });
 </script>
