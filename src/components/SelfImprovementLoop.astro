@@ -67,10 +67,9 @@ const stages: Stage[] = [
     topic: "RL Post-Training",
     papers: [
       { name: "ROFT", title: "Shockingly Simple Self-retrospection" },
-      { name: "Dataset Distillation for RL", title: "Dataset Distillation for Offline Reinforcement Learning" },
       { name: "Strategist", title: "Strategist" },
+      { name: "Dataset Distillation for RL", title: "Dataset Distillation for Offline Reinforcement Learning" },
     ],
-    note: "Selecting which experiences to learn from counts as part of this step.",
   },
 ];
 
@@ -168,8 +167,8 @@ const tone = {
     parts of the loop, and the whole loop runs on a harness and a set of environments.
   </p>
 
-  <div class="grid gap-8 md:grid-cols-2 md:items-center">
-    <figure class="mx-auto w-full max-w-lg space-y-3">
+  <div class="space-y-8">
+    <figure class="mx-auto w-full max-w-xl space-y-2">
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
@@ -255,23 +254,23 @@ const tone = {
       </figcaption>
     </figure>
 
-    <ol class="space-y-3">
+    <ol class="grid gap-4 md:grid-cols-3">
       {
         stageData.map((stage, index) => (
           <li
             data-stage={stage.id}
-            class={`loop-card rounded-2xl border border-base-200/80 bg-base-100/80 p-4 shadow-sm transition-all duration-200 ${tone[stage.tone].ring}`}
+            class={`loop-card flex flex-col rounded-2xl border border-base-200/80 bg-base-100/80 p-4 shadow-sm transition-all duration-200 ${tone[stage.tone].ring}`}
           >
-            <div class="flex items-baseline gap-2 flex-wrap">
+            <div class="flex items-center gap-2">
               <span class={`inline-block h-3 w-3 rounded-full ${tone[stage.tone].dot}`} aria-hidden="true" />
               <span class="text-lg font-bold">
                 {index + 1}. {stage.verb}
               </span>
-              <span class="text-base-content/70">{stage.gloss}</span>
             </div>
-            <p class="mt-1 text-sm md:text-base leading-relaxed">{stage.description}</p>
+            <div class="text-sm text-base-content/70">{stage.gloss}</div>
+            <p class="mt-2 text-sm md:text-base leading-relaxed">{stage.description}</p>
             {stage.note && <p class="mt-1 text-sm text-base-content/60">{stage.note}</p>}
-            <div class="mt-2 flex flex-wrap items-center gap-1.5">
+            <div class="mt-auto pt-3 flex flex-wrap items-center gap-1.5">
               {stage.papers.map((paper) => (
                 <a
                   href={paper.href}
@@ -283,22 +282,24 @@ const tone = {
                   {paper.name}
                 </a>
               ))}
-              <a href={`/publications#${topicSlug(stage.topic)}`} class="link link-hover text-xs text-base-content/60 ml-1">
-                more on {stage.topic} →
-              </a>
             </div>
+            <a href={`/publications#${topicSlug(stage.topic)}`} class="link link-hover mt-2 text-xs text-base-content/60">
+              more on {stage.topic} →
+            </a>
           </li>
         ))
       }
-      <li class="rounded-2xl border border-dashed border-base-content/20 p-4">
-        <div class="flex items-baseline gap-2 flex-wrap">
-          <span class="text-lg font-bold">Runs on</span>
-          <span class="text-base-content/70">a harness and environments</span>
+      <li class="md:col-span-3 rounded-2xl border border-dashed border-base-content/20 p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+        <div class="flex-1">
+          <div class="flex items-baseline gap-2 flex-wrap">
+            <span class="text-lg font-bold">Runs on</span>
+            <span class="text-base-content/70">a harness and environments</span>
+          </div>
+          <p class="mt-1 text-sm md:text-base leading-relaxed">
+            The substrate the loop executes in: how the agent is scaffolded and which worlds it acts in.
+          </p>
         </div>
-        <p class="mt-1 text-sm md:text-base leading-relaxed">
-          The substrate the loop executes in: how the agent is scaffolded and which worlds it acts in.
-        </p>
-        <div class="mt-2 flex flex-wrap items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-1.5">
           {
             hubPapers.map((paper) => (
               <a
