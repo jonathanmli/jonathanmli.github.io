@@ -105,6 +105,21 @@ export const publications: Publication[] = [
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2609.35741" }],
   },
   {
+    title: "Harness as a Language: A Minimalist Agent Framework With Maximal Expressivity",
+    subtitle:
+      "Zhening Li, Joshua Liu*, Mateja Vukelic*, Nicole Shen, Supriya Lall, Amitayush Thakur, Alex Zhang, Omar Khattab, Jonathan Light, Armando Solar-Lezama",
+    badge: "NeurIPS 2026 Workshop",
+    description:
+      "Introduces <strong>JAZ</strong>, a minimal LLM agent framework built on a single language primitive, <strong>invoke</strong>: a function whose body is written by the LLM at call time, with recursive calls and the full interaction history available as variables in a Python REPL. With prompting alone and no dedicated memory or meta-harness, JAZ beats Letta (MemGPT) by <strong>8% at half the cost</strong> on long-horizon StuLife recall and beats ACE by <strong>4% at lower cost</strong> on AppWorld self-improvement.",
+    url: "https://arxiv.org/abs/2609.26891",
+    image: "/figures/jaz.png",
+    topics: ["LLM Agents", "Code Generation"],
+    links: [
+      { label: "Code", href: "https://github.com/jaz-lang/jaz" },
+      { label: "PDF", href: "https://arxiv.org/pdf/2609.26891" },
+    ],
+  },
+  {
     title: "Scattered Forest Search: Smarter Code Space Optimization improves LLM Inference Scaling",
     subtitle:
       "Jonathan Light*, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao, Ziniu Hu, Haifeng Chen, Wei Cheng",
