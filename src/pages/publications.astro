@@ -1,7 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
-import { publications } from "../lib/publications";
+import { publications, getTopicSummaries, topicSlug } from "../lib/publications";
+
+const topics = getTopicSummaries(publications);
+const topicHref = (topic: string) => `/publications#${topicSlug(topic)}`;
 ---
 
 <BaseLayout title="Publications" sideBarActiveItemID="publications">
@@ -17,20 +20,141 @@ import { publications } from "../lib/publications";
     </a>
   </div>
 
-  {
-    publications.map((publication, index) => (
-      <>
-        <HorizontalCard
-          title={publication.title}
-          subtitle={publication.subtitle}
-          desc={publication.description}
-          url={publication.url}
-          badge={publication.badge}
-          img={publication.image}
-          links={publication.links}
-        />
-        {index < publications.length - 1 && <div class="divider my-0" />}
-      </>
-    ))
-  }
+  <section id="topic-filter" class="mb-6" aria-label="Filter publications by topic">
+    <div class="flex flex-wrap items-center gap-2 mb-2">
+      <span class="text-sm font-semibold text-base-content/70">Filter by topic</span>
+      <span id="topic-count" class="text-sm text-base-content/60" aria-live="polite">
+        Showing all {publications.length} papers
+      </span>
+    </div>
+    <div class="flex flex-wrap gap-2" role="group">
+      <button type="button" class="btn btn-xs btn-primary" data-topic="" aria-pressed="true">
+        All
+      </button>
+      {
+        topics.map((topic) => (
+          <button
+            type="button"
+            class="btn btn-xs btn-outline"
+            data-topic={topic.slug}
+            aria-pressed="false"
+          >
+            {topic.name}
+            <span class="opacity-60">{topic.count}</span>
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  <div id="publication-list">
+    {
+      publications.map((publication) => (
+        <div
+          class="publication-item"
+          data-topics={publication.topics.map(topicSlug).join(" ")}
+        >
+          <HorizontalCard
+            title={publication.title}
+            subtitle={publication.subtitle}
+            desc={publication.description}
+            url={publication.url}
+            badge={publication.badge}
+            img={publication.image}
+            links={publication.links}
+            tags={publication.topics}
+            tagHref={topicHref}
+          />
+          <div class="divider my-0" />
+        </div>
+      ))
+    }
+    <p id="topic-empty" class="hidden text-base-content/60 py-6">
+      No papers match the selected topics.
+    </p>
+  </div>
 </BaseLayout>
+
+<script>
+  const buttons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("#topic-filter button[data-topic]")
+  );
+  const items = Array.from(document.querySelectorAll<HTMLElement>(".publication-item"));
+  const countEl = document.getElementById("topic-count");
+  const emptyEl = document.getElementById("topic-empty");
+  const knownSlugs = new Set(buttons.map((b) => b.dataset.topic).filter(Boolean));
+  const total = items.length;
+
+  function readHash(): Set<string> {
+    const raw = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    return new Set(
+      raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => knownSlugs.has(s))
+    );
+  }
+
+  function writeHash(selected: Set<string>) {
+    const next = selected.size ? "#" + [...selected].join(",") : "";
+    const url = window.location.pathname + window.location.search + next;
+    history.replaceState(null, "", url);
+  }
+
+  function apply(selected: Set<string>) {
+    let shown = 0;
+    let lastVisible: HTMLElement | null = null;
+    for (const item of items) {
+      const own = (item.dataset.topics ?? "").split(" ");
+      const match = selected.size === 0 || own.some((t) => selected.has(t));
+      item.classList.toggle("hidden", !match);
+      if (match) {
+        shown++;
+        lastVisible = item;
+      }
+      item.querySelector(".divider")?.classList.remove("hidden");
+    }
+    // Hide the trailing divider on the last visible card.
+    lastVisible?.querySelector(".divider")?.classList.add("hidden");
+
+    for (const btn of buttons) {
+      const slug = btn.dataset.topic ?? "";
+      const active = slug === "" ? selected.size === 0 : selected.has(slug);
+      btn.classList.toggle("btn-primary", active);
+      btn.classList.toggle("btn-outline", !active);
+      btn.setAttribute("aria-pressed", String(active));
+    }
+
+    if (countEl) {
+      countEl.textContent =
+        selected.size === 0
+          ? `Showing all ${total} papers`
+          : `Showing ${shown} of ${total} papers`;
+    }
+    emptyEl?.classList.toggle("hidden", shown > 0);
+  }
+
+  let selected = readHash();
+  apply(selected);
+
+  for (const btn of buttons) {
+    btn.addEventListener("click", () => {
+      const slug = btn.dataset.topic ?? "";
+      if (slug === "") {
+        selected = new Set();
+      } else if (selected.has(slug)) {
+        selected.delete(slug);
+      } else {
+        selected.add(slug);
+      }
+      writeHash(selected);
+      apply(selected);
+    });
+  }
+
+  // Support in-page topic badge links and back/forward navigation.
+  window.addEventListener("hashchange", () => {
+    selected = readHash();
+    apply(selected);
+  });
+</script>

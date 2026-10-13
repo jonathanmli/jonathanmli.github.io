@@ -9,12 +9,16 @@ const {
   target = "_blank",
   links = [],
   subtitle,
+  tagHref,
 } = Astro.props;
 import { Image } from "astro:assets";
 const hasTags = Array.isArray(tags) && tags.length > 0;
 const hasLinks = Array.isArray(links) && links.length > 0;
 const normalizedUrl = url ?? "#";
 const tag_url = normalizedUrl.split("/").slice(0, -1).join("/") + "/tag";
+// Optional custom tag link builder (e.g. publications topics). Defaults to blog tag pages.
+const buildTagHref: (tag: string) => string =
+  typeof tagHref === "function" ? tagHref : (tag) => `${tag_url}/${tag}`;
 const baseRel = target === "_blank" ? "noopener noreferrer" : undefined;
 ---
 
@@ -54,7 +58,7 @@ const baseRel = target === "_blank" ? "noopener noreferrer" : undefined;
             hasTags && (
               <div class="flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                  <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                  <a href={buildTagHref(tag)} class="badge badge-outline">
                     {tag}
                   </a>
                 ))}
