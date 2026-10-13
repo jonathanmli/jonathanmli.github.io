@@ -68,6 +68,7 @@ export const publications: Publication[] = [
     description:
       "Introduces <strong>Retrospection-Only Fine-Tuning (ROFT)</strong>: an agent attempts a task, writes a retrospective explanation, and is fine-tuned on that explanation alone - no verifier or reward-based update. With Qwen3.5-4B, reaches <strong>49.2% on SWE-bench Verified</strong> and <strong>26.8% on SWE-bench Pro</strong> after 20 updates, beating GRPO after 40 updates.",
     url: "https://arxiv.org/abs/2609.35741",
+    image: "/figures/roft.png",
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2609.35741" }],
   },
   {
