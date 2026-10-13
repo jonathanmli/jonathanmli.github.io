@@ -17,6 +17,21 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    title: "Actor-Curator: Co-adaptive Curriculum Learning via Policy-Improvement Bandits for RL Post-Training",
+    subtitle:
+      "Zhengyao Gu*, Jonathan Light*, Raul Astudillo, Ziyu Ye, Langzhou He, Henry Peng Zou, Wei Cheng, Santiago Paternain, Philip S. Yu, Yisong Yue",
+    badge: "COLM 2026",
+    description:
+      "A scalable, fully automated curriculum-learning framework for RL post-training of LLMs. Learns a neural curator that selects training problems to directly maximize <strong>expected policy improvement</strong>, formulated as a non-stationary bandit with regret guarantees. Delivers <strong>+28.6% on AIME2024</strong>, <strong>+30.5% on ARC-1D</strong>, and up to <strong>80% speedup</strong> over the strongest baseline.",
+    url: "https://actor-curator.github.io/",
+    image: "/figures/actor_curator.png",
+    links: [
+      { label: "Code", href: "https://github.com/actor-curator/actor-curator" },
+      { label: "Website", href: "https://actor-curator.github.io/" },
+      { label: "PDF", href: "https://arxiv.org/pdf/2602.20532" },
+    ],
+  },
+  {
     title: "DISC: Dynamic Decomposition Improves LLM Inference Scaling",
     subtitle:
       "Jonathan Light*, Wei Cheng, Benjamin Riviere, Wu Yue, Masafumi Oyamada, Mengdi Wang, Yisong Yue, Santiago Paternain, Haifeng Chen",
@@ -46,6 +61,16 @@ export const publications: Publication[] = [
     ],
   },
   {
+    title: "Shockingly Simple Self-retrospection Improves Agentic Models Without RL",
+    subtitle:
+      "Jonathan Light, Christopher Zhang Cui, Jeonghye Kim, Roger Creus Castanyer, Emiliano Penaloza, Zhengyan Shi, Alessandro Sordoni, Marc-Alexandre Côté, Xingdi Yuan, Minseon Kim",
+    badge: "arXiv 2026",
+    description:
+      "Introduces <strong>Retrospection-Only Fine-Tuning (ROFT)</strong>: an agent attempts a task, writes a retrospective explanation, and is fine-tuned on that explanation alone - no verifier or reward-based update. With Qwen3.5-4B, reaches <strong>49.2% on SWE-bench Verified</strong> and <strong>26.8% on SWE-bench Pro</strong> after 20 updates, beating GRPO after 40 updates.",
+    url: "https://arxiv.org/abs/2609.35741",
+    links: [{ label: "PDF", href: "https://arxiv.org/pdf/2609.35741" }],
+  },
+  {
     title: "Scattered Forest Search: Smarter Code Space Optimization improves LLM Inference Scaling",
     subtitle:
       "Jonathan Light*, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao, Ziniu Hu, Haifeng Chen, Wei Cheng",
@@ -58,20 +83,6 @@ export const publications: Publication[] = [
       { label: "Code", href: "https://github.com/codespace-optimization/sfs" },
       { label: "Website", href: "https://codespace-optimization.github.io/" },
       { label: "PDF", href: "https://arxiv.org/pdf/2411.05010" },
-    ],
-  },
-  {
-    title: "Actor-Curator: Co-adaptive Curriculum Learning via Policy-Improvement Bandits for RL Post-Training",
-    subtitle:
-      "Zhengyao Gu*, Jonathan Light*, Raul Astudillo, Ziyu Ye, Langzhou He, Henry Peng Zou, Wei Cheng, Santiago Paternain, Philip S. Yu, Yisong Yue",
-    badge: "ICLR 2026 Workshop",
-    description:
-      "A scalable, fully automated curriculum-learning framework for RL post-training of LLMs. Learns a neural curator that selects training problems to directly maximize <strong>expected policy improvement</strong>, formulated as a non-stationary bandit with regret guarantees. Delivers <strong>+28.6% on AIME2024</strong>, <strong>+30.5% on ARC-1D</strong>, and up to <strong>80% speedup</strong> over the strongest baseline.",
-    url: "https://actor-curator.github.io/",
-    image: "/figures/actor_curator.png",
-    links: [
-      { label: "Website", href: "https://actor-curator.github.io/" },
-      { label: "PDF", href: "https://arxiv.org/pdf/2602.20532" },
     ],
   },
   {
