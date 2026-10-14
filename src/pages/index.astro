@@ -1,39 +1,84 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
-import TimeLineElement from "../components/cv/TimeLine.astro";
 import SelfImprovementLoop from "../components/SelfImprovementLoop.astro";
 import { publications, topicSlug } from "../lib/publications";
 
-const featuredPublications = publications.slice(0, 3);
+const featuredPublications = publications.filter((p) => p.featured);
 
-const sectionCardClasses = "rounded-2xl border border-base-200/60 bg-base-100/80 p-6 shadow-sm space-y-5";
+interface NewsItem {
+  date: string;
+  /** Inline HTML for the item body. */
+  html: string;
+}
+
+const link = (href: string, text: string) =>
+  `<a class="link link-primary font-semibold" href="${href}">${text}</a>`;
+
+// Newest first. The first RECENT_NEWS items show by default; the rest fold away.
+const news: NewsItem[] = [
+  { date: "Jul 2026", html: "🎉 One paper accepted to <strong>COLM 2026</strong>" },
+  {
+    date: "Jun 2026",
+    html: `Joined ${link("https://www.microsoft.com/en-us/research/lab/microsoft-research-montreal/", "Microsoft Research")}, working with the ${link("https://microsoft.github.io/debug-gym/", "Froggy")} team on <strong>post-training coding agents</strong>`,
+  },
+  { date: "Apr 2026", html: "🎉 Two papers accepted to <strong>ICML 2026</strong>" },
+  {
+    date: "Mar 2026",
+    html: `🎉 One paper accepted as <strong>Oral</strong> at the ${link("https://sites.google.com/view/iclr-2026-llmreasoning", "ICLR 2026 Logical Reasoning Workshop")}`,
+  },
+  { date: "Sep 2025", html: "🎉 One paper accepted to <strong>NeurIPS 2025</strong>" },
+  {
+    date: "May 2025",
+    html: `Joined ${link("https://asari.ai/", "Asari.ai")}, working on <strong>code translation</strong> and <strong>GPU kernel optimization</strong>`,
+  },
+  { date: "Jan 2025", html: "🎉 Two papers accepted to <strong>ICLR 2025</strong>" },
+  {
+    date: "Jan 2025",
+    html: `Joined ${link("https://www.cms.caltech.edu/", "Caltech")} as a <strong>Visiting Researcher</strong>, working with ${link("https://www.yisongyue.com/", "Yisong Yue")}`,
+  },
+  {
+    date: "Oct 2024",
+    html: `🎉 One paper accepted at the NeurIPS 2024 Workshop on ${link("https://language-gamification.github.io/", "LanGame")}`,
+  },
+  {
+    date: "Jun 2024",
+    html: `🎉 One paper accepted at the ICML 2024 Workshop on ${link("https://autorlworkshop.github.io/", "AutoRL")}`,
+  },
+  {
+    date: "May 2024",
+    html: `Joined ${link("https://www.nec-labs.com/", "NEC Laboratories America")} as a <strong>Research Intern</strong>, working with ${link("https://chengw07.github.io/", "Wei Cheng")}`,
+  },
+];
+
+const RECENT_NEWS = 5;
+const recentNews = news.slice(0, RECENT_NEWS);
+const olderNews = news.slice(RECENT_NEWS);
+
 const listBaseClasses = "space-y-3 text-base md:text-lg leading-relaxed";
 const listItemWrapperClasses = "flex items-start gap-3";
 const listItemContentClasses = "flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2";
-const stackedItemContentClasses = "flex flex-col gap-1";
-const bulletBaseClasses = "mt-2 h-2 w-2 rounded-full";
-const bulletPrimary = "bg-primary";
-const bulletWarning = "bg-base-content";
-const supportingTextClasses = "text-base-content/70";
+const bulletClasses = "mt-2 h-2 w-2 shrink-0 bg-primary";
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-6 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Jonathan</div>
-    <div class="text-3xl py-3 font-bold">AI Researcher exploring scalable reasoning and intelligent agents</div>
+  <section class="pb-6 mt-5">
+    <p class="text-xl py-1">Hey there 👋</p>
+    <h1 class="text-5xl font-bold">I'm Jonathan</h1>
+    <p class="text-3xl py-3 font-bold">
+      I build LLM agents that improve themselves through search and reinforcement learning.
+    </p>
     <div class="py-2 space-y-4 text-lg">
       <p>
-        I work on scaling self-improvement of large language models and LLM agents through methods such as search,
-        inference scaling, and reinforcement learning.
+        My research asks how a model can propose its own problems, explore solutions with inference-time search, and
+        learn from what it finds. Lately that has meant post-training coding agents.
       </p>
       <p>
         I am a Visiting Researcher at <a class="link link-primary" href="https://www.caltech.edu/">Caltech</a>,
         advised by <a class="link link-primary" href="https://www.yisongyue.com/">Yisong Yue</a>. I am pursuing a Ph.D. in
         Computer Science at <a class="link link-primary" href="https://www.rpi.edu/">Rensselaer Polytechnic Institute</a>, advised by
         <a class="link link-primary" href="https://sites.ecse.rpi.edu/~paters/">Santiago Paternain</a> and previously by
-        <a class="link link-primary" href="https://acbull.github.io/">Ziniu Hu</a>, with expected graduation of May 2027. I received my M.S. from the
+        <a class="link link-primary" href="https://acbull.github.io/">Ziniu Hu</a>, and expect to graduate in May 2027. I received my M.S. from the
         <a class="link link-primary" href="https://www.uchicago.edu/">University of Chicago</a>, where I worked with
         <a class="link link-primary" href="https://www.haifeng-xu.com/">Haifeng Xu</a> and <a class="link link-primary" href="https://dachxiu.chicagobooth.edu/">Dacheng Xiu</a>.
         Before that, I trained as an economist.
@@ -50,437 +95,76 @@ const supportingTextClasses = "text-base-content/70";
         <a class="link link-primary" href="https://docs.google.com/presentation/d/1GmZmoWOa2O92BPrncRcTKa15xvQGhq7g4I4hJSNlC0M/edit#slide=id.g2d35a16f27e_0_24">2024 edition</a>.
       </p>
     </div>
-  </div>
+  </section>
 
-  <a
-    class="btn btn-primary mb-4"
-    href="https://x.com/lightetal"
-    target="_blank"
-    rel="noopener"
-  >
-    Let's Connect!
-  </a>
+  <a class="btn btn-primary mb-4" href="mailto:jonathan.li.connect@gmail.com">Get in touch</a>
 
   <SelfImprovementLoop />
 
   <section id="news" class="mt-6 mb-12 space-y-6">
     <div class="flex items-center gap-3">
-      <div class="text-3xl font-bold">News</div>
-      <div class="hidden sm:block h-px flex-1 bg-base-200" />
+      <h2 class="text-3xl font-bold">News</h2>
+      <div class="hidden sm:block h-px flex-1 bg-base-200"></div>
     </div>
     <ul class={listBaseClasses}>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Jul 2026</span>
-          <span>🎉 One paper accepted to <strong>COLM 2026</strong></span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Jun 2026</span>
-          <span>
-            Joined <a class="link link-primary font-semibold" href="https://www.microsoft.com/en-us/research/lab/microsoft-research-montreal/">Microsoft Research</a>,
-            working with the <a class="link link-primary font-semibold" href="https://microsoft.github.io/debug-gym/">Froggy</a> team on <strong>post-training coding agents</strong>
-          </span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Apr 2026</span>
-          <span>🎉 Two papers accepted to <strong>ICML 2026</strong></span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Mar 2026</span>
-          <span>
-            🎉 One paper accepted as <strong>Oral</strong> at the
-            <a class="link link-primary font-semibold" href="https://sites.google.com/view/iclr-2026-llmreasoning">ICLR 2026 Logical Reasoning Workshop</a>
-          </span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Sep 2025</span>
-          <span>🎉 One paper accepted to <strong>NeurIPS 2025</strong></span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Jun 2025</span>
-          <span>
-            Joined <a class="link link-primary font-semibold" href="https://asari.ai/">Asari.ai</a>, working on <strong>code translation</strong> and <strong>GPU kernel optimization</strong>
-          </span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Jan 2025</span>
-          <span>🎉 Two papers accepted to <strong>ICLR 2025</strong></span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Jan 2025</span>
-          <span>
-            Joined
-            <a class="link link-primary font-semibold" href="https://www.cms.caltech.edu/">
-              Caltech
-            </a>
-            as a <strong>Visiting Researcher</strong>, working with
-            <a class="link link-primary font-semibold" href="https://www.yisongyue.com/">
-              Yisong Yue
-            </a>
-          </span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Oct 2024</span>
-          <span>
-            🎉 One paper accepted at the NeurIPS 2024 Workshop on
-            <a class="link link-primary font-semibold" href="https://language-gamification.github.io/">
-              LanGame
-            </a>
-          </span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">Jun 2024</span>
-          <span>
-            🎉 One paper accepted at the ICML 2024 Workshop on
-            <a class="link link-primary font-semibold" href="https://autorlworkshop.github.io/">
-              AutoRL
-            </a>
-          </span>
-        </div>
-      </li>
-      <li class={listItemWrapperClasses}>
-        <span class={`${bulletBaseClasses} ${bulletPrimary} rounded-none`}></span>
-        <div class={listItemContentClasses}>
-          <span class="font-semibold">May 2024</span>
-          <span>
-            Joined
-            <a class="link link-primary font-semibold" href="https://www.nec-labs.com/">
-              NEC Laboratories America
-            </a>
-            as a <strong>Research Intern</strong>, working with
-            <a class="link link-primary font-semibold" href="https://chengw07.github.io/">
-              Wei Cheng
-            </a>
-          </span>
-        </div>
-      </li>
+      {
+        recentNews.map((item) => (
+          <li class={listItemWrapperClasses}>
+            <span class={bulletClasses} />
+            <div class={listItemContentClasses}>
+              <span class="font-semibold whitespace-nowrap">{item.date}</span>
+              <span set:html={item.html} />
+            </div>
+          </li>
+        ))
+      }
     </ul>
+    {
+      olderNews.length > 0 && (
+        <details class="group">
+          <summary class="cursor-pointer text-sm text-base-content/70 hover:text-base-content list-none">
+            <span class="group-open:hidden">Show older news ({olderNews.length})</span>
+            <span class="hidden group-open:inline">Hide older news</span>
+          </summary>
+          <ul class={`${listBaseClasses} mt-3`}>
+            {olderNews.map((item) => (
+              <li class={listItemWrapperClasses}>
+                <span class={bulletClasses} />
+                <div class={listItemContentClasses}>
+                  <span class="font-semibold whitespace-nowrap">{item.date}</span>
+                  <span set:html={item.html} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )
+    }
   </section>
 
-  <div class="flex flex-wrap items-center justify-between gap-2">
-    <div class="text-3xl font-bold">Recent Publications</div>
-    <a href="/publications" class="link link-primary text-sm md:text-base">View all</a>
-  </div>
-
-  {
-    featuredPublications.map((publication, index) => (
-      <>
-        <HorizontalCard
-          title={publication.title}
-          subtitle={publication.subtitle}
-          desc={publication.description}
-          url={publication.url}
-          badge={publication.badge}
-          img={publication.image}
-          links={publication.links}
-          tags={publication.topics}
-          tagHref={(topic: string) => `/publications#${topicSlug(topic)}`}
-        />
-        {index < featuredPublications.length - 1 && <div class="divider my-0" />}
-      </>
-    ))
-  }
-
-  <section class="mt-12">
-    <div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-      <div class="text-3xl font-bold">Education</div>
-      <a href="/cv" class="link link-primary text-sm md:text-base whitespace-nowrap">View background</a>
+  <section class="mb-12">
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+      <h2 class="text-3xl font-bold">Selected Publications</h2>
+      <a href="/publications" class="link link-primary text-sm md:text-base">View all</a>
     </div>
 
-    <div class="time-line-container grid gap-4">
-      <TimeLineElement
-        title="Ph.D. in Computer Science"
-        subtitle="Aug 2023 - Present &middot; Rensselaer Polytechnic Institute (RPI), Troy, NY"
-      />
-      <TimeLineElement
-        title="M.S. in Financial Mathematics"
-        subtitle="Aug 2021 - Mar 2023 &middot; University of Chicago, Chicago, IL"
-      />
-      <TimeLineElement
-        title="B.S. in Mathematics and Economics"
-        subtitle="Aug 2017 - May 2021 &middot; Reed College, Portland, OR"
-      />
-    </div>
+    {
+      featuredPublications.map((publication, index) => (
+        <>
+          <HorizontalCard
+            title={publication.title}
+            subtitle={publication.subtitle}
+            desc={publication.description}
+            url={publication.url}
+            badge={publication.badge}
+            img={publication.image}
+            links={publication.links}
+            tags={publication.topics}
+            tagHref={(topic: string) => `/publications#${topicSlug(topic)}`}
+          />
+          {index < featuredPublications.length - 1 && <div class="divider my-0" />}
+        </>
+      ))
+    }
   </section>
-
-  <section id="services" class="mt-12">
-    <div class={sectionCardClasses}>
-      <div class="flex items-center gap-3">
-        <div class="text-3xl font-bold">Services</div>
-        <div class="hidden sm:block h-px flex-1 bg-base-200" />
-      </div>
-      <ul class={listBaseClasses}>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">ICML Gold Reviewer</span>
-            <span class={supportingTextClasses}>2026</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">ICLR Conference Reviewer</span>
-            <span class={supportingTextClasses}>2025</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">NeurIPS Conference Reviewer</span>
-            <span class={supportingTextClasses}>2025</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="awards" class="mt-12">
-    <div class={sectionCardClasses}>
-      <div class="flex items-center gap-3">
-        <div class="text-3xl font-bold">Honors and Awards</div>
-        <div class="hidden sm:block h-px flex-1 bg-base-200" />
-      </div>
-      <ul class={listBaseClasses}>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">
-              Outstanding Paper Award,
-              <a class="link link-primary" href="https://sites.google.com/view/iclr-2026-llmreasoning">ICLR 2026 Logical Reasoning Workshop</a>
-            </span>
-            <span class={supportingTextClasses}>2026</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Phi Beta Kappa</span>
-            <span class={supportingTextClasses}>2021</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Reed Commendation for Excellence in Scholarship</span>
-            <span class={supportingTextClasses}>2018 · 2019 · 2020 · 2021</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Reed Science Research Fellow</span>
-            <span class={supportingTextClasses}>2020</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Reed Financial Services Fellow</span>
-            <span class={supportingTextClasses}>2019</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="teaching" class="mt-12">
-    <div class={sectionCardClasses}>
-      <div class="flex items-center gap-3">
-        <div class="text-3xl font-bold">Teaching</div>
-        <div class="hidden sm:block h-px flex-1 bg-base-200" />
-      </div>
-      <ul class={listBaseClasses}>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">AI and Blockchain</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth EMBA · 2023 Summer</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Options Pricing</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Roger Lee · UChicago PSD · 2023 Spring</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Bayesian Statistical Inference and ML</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Gordan Ritter · UChicago PSD · 2023 Spring</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Decoding Fintech</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Dacheng Xiu · Booth · 2023 Winter</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Mathematical Statistics</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2021 Spring</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Probability Theory</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Jonathan Wells · Reed College · 2020 Fall</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Macroeconomics</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Zhe (Jasmine) Jiang · Reed College · 2020 Fall</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Econometrics</span>
-            <span class={supportingTextClasses}>Teaching Assistant · Fellipe Carrera · Reed College · 2020 Fall</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={listItemContentClasses}>
-            <span class="font-semibold">Introduction to Analysis</span>
-            <span class={supportingTextClasses}>Teaching Assistant · David Krumm · Reed College · 2019 Fall</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="talks" class="mt-12">
-    <div class={sectionCardClasses}>
-      <div class="flex items-center gap-3">
-        <div class="text-3xl font-bold">Talks</div>
-        <div class="hidden sm:block h-px flex-1 bg-base-200" />
-      </div>
-      <ul class={listBaseClasses}>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={stackedItemContentClasses}>
-            <span class="font-semibold">From Imitation to Exploration: Search-Driven Self-Improvement in AI Agents</span>
-            <span class={supportingTextClasses}>Adaption Labs · AI Circle · Across AI · 2026</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={stackedItemContentClasses}>
-            <span class="font-semibold">Self-Evolving Systems & Strategic Self-Play</span>
-            <span class={supportingTextClasses}>Pebblebed · Hexo Labs · The Frontier Syndicate · 2026</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={stackedItemContentClasses}>
-            <span class="font-semibold">Smart Problem Curation for RL Post-Training</span>
-            <span class={supportingTextClasses}>Protege · AI Collective · 2026</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={stackedItemContentClasses}>
-            <span class="font-semibold">Scaling LLM Reasoning through Reinforcement Learning and Inference-Time Search</span>
-            <span class={supportingTextClasses}>Chemistry · AI Collective · DiversisAI · Valley · 2025</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={stackedItemContentClasses}>
-            <span class="font-semibold">AI Reasoning at Scale with Search</span>
-            <span class={supportingTextClasses}>MIT CSAIL · 2025</span>
-          </div>
-        </li>
-        <li class={listItemWrapperClasses}>
-          <span class={`${bulletBaseClasses} ${bulletPrimary}`}></span>
-          <div class={stackedItemContentClasses}>
-            <span class="font-semibold">Scaling LLM Reasoning through Search and RL</span>
-            <span class={supportingTextClasses}>Tencent AI Lab · 2025</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="notes" class="mt-12 mb-12">
-    <div class={sectionCardClasses}>
-      <div class="flex items-center gap-3">
-        <div class="text-3xl font-bold">Other Notes</div>
-        <div class="hidden sm:block h-px flex-1 bg-base-200" />
-      </div>
-      <div class="space-y-4 text-base md:text-lg leading-relaxed">
-        <p class="font-medium">I go by either Jonathan Li or Jonathan Light. I usually use Light in publications because:</p>
-        <ul class="space-y-2">
-          <li class={listItemWrapperClasses}>
-            <span class={`${bulletBaseClasses} ${bulletWarning}`}></span>
-            <span>Li is a very common last name. Without exception, every institution I've been to has had at least one other Jonathan Li.</span>
-          </li>
-          <li class={listItemWrapperClasses}>
-            <span class={`${bulletBaseClasses} ${bulletWarning}`}></span>
-            <span>Light is the semantic translation of my Chinese given name.</span>
-          </li>
-          <li class={listItemWrapperClasses}>
-            <span class={`${bulletBaseClasses} ${bulletWarning}`}></span>
-            <span>Light nearly preserves the lexigraphic ordering of Li.</span>
-          </li>
-        </ul>
-        <p>
-          I've also considered using "Plum" (the semantic translation of my last name), but it doesn't have the same ring to it, nor does it
-          preserve the lexigraphic ordering of Li. Generally I find semantic translations to be more faithful to the original meaning, as
-          convenient as pinyin is for romanization.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="mt-12 mb-12">
-    <div class={`${sectionCardClasses} flex flex-col items-center text-center`}>
-      <div class="text-3xl font-bold">Site Visitors</div>
-      <div class="w-full flex justify-center">
-        <script
-          type="text/javascript"
-          id="clstr_globe"
-          src="https://clustrmaps.com/globe.js?d=PeHeHzW3ltrX6TSgOTg0FnVvurZigdczh36CUtajiD8"
-        ></script>
-      </div>
-    </div>
-  </section>
-
 </BaseLayout>

@@ -1,4 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+// Figures live in src/assets so Astro resizes and converts them at build time.
+const figures = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/figures/*.{png,jpg,jpeg,webp}",
+  { eager: true }
+);
+
 const {
   title,
   img,
@@ -11,47 +20,49 @@ const {
   subtitle,
   tagHref,
 } = Astro.props;
-import { Image } from "astro:assets";
+
+let image: ImageMetadata | undefined;
+if (img && typeof img === "object") {
+  image = img;
+} else if (typeof img === "string") {
+  const key = `/src/assets/figures/${img}`;
+  image = figures[key]?.default;
+  if (!image) throw new Error(`HorizontalCard: no figure at ${key}`);
+}
+
 const hasTags = Array.isArray(tags) && tags.length > 0;
 const hasLinks = Array.isArray(links) && links.length > 0;
 const normalizedUrl = url ?? "#";
-const tag_url = normalizedUrl.split("/").slice(0, -1).join("/") + "/tag";
-// Optional custom tag link builder (e.g. publications topics). Defaults to blog tag pages.
+// Optional custom tag link builder (e.g. publications topics).
 const buildTagHref: (tag: string) => string =
-  typeof tagHref === "function" ? tagHref : (tag) => `${tag_url}/${tag}`;
+  typeof tagHref === "function" ? tagHref : (tag) => `#${tag}`;
 const baseRel = target === "_blank" ? "noopener noreferrer" : undefined;
 ---
 
-<div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
+<article class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
   <div class="hero-content flex-col md:flex-row">
     {
-      img && (
+      image && (
         <Image
-          src={img}
-          width={750}
-          height={422}
+          src={image}
+          width={480}
           format="webp"
-          alt={title}
-          class="max-w-full md:max-w-[13rem] rounded-lg"
+          alt={`Figure from ${title}`}
+          class="max-w-full md:max-w-[13rem] h-auto rounded-lg"
         />
       )
     }
     <div class="grow w-full">
       <div class="flex flex-wrap items-center gap-2">
-        <a
-          href={normalizedUrl}
-          target={target}
-          rel={baseRel}
-          class="text-xl font-bold hover:underline"
-        >
-          {title}
-        </a>
+        <h3 class="text-xl font-bold">
+          <a href={normalizedUrl} target={target} rel={baseRel} class="hover:underline">
+            {title}
+          </a>
+        </h3>
         {badge && <div class="badge badge-secondary">{badge}</div>}
       </div>
       {subtitle && <div class="text-sm text-base-content/70 py-1">{subtitle}</div>}
-      {desc && (
-        <p class="py-1 text-1xl" set:html={desc}></p>
-      )}
+      {desc && <p class="py-1" set:html={desc} />}
       {(hasTags || hasLinks) && (
         <div class="flex flex-wrap items-center gap-2 pt-2">
           {
@@ -85,4 +96,4 @@ const baseRel = target === "_blank" ? "noopener noreferrer" : undefined;
       )}
     </div>
   </div>
-</div>
+</article>

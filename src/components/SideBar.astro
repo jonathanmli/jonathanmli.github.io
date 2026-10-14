@@ -1,6 +1,7 @@
 ---
 import SideBarFooter from "./SideBarFooter.astro";
 import { Image } from "astro:assets";
+import profile from "../assets/profile.png";
 import SideBarMenu from "./SideBarMenu.astro";
 const { sideBarActiveItemID } = Astro.props;
 ---
@@ -12,7 +13,7 @@ const { sideBarActiveItemID } = Astro.props;
       <a href="/" class="group w-fit">
         <div class="avatar transition ease-in-out group-hover:scale-[102%] block m-auto">
           <div class="w-[8.5rem]">
-            <Image class="mask mask-circle" format="png" width={300} height={300} src="/profile.png" alt="Profile image" />
+            <Image class="mask mask-circle" format="webp" width={300} height={300} src={profile} alt="Jonathan Light" loading="eager" />
           </div>
         </div>
       </a>

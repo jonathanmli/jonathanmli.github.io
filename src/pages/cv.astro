@@ -1,122 +1,281 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+
+const sectionCardClasses = "rounded-2xl border border-base-200/60 bg-base-100/80 p-6 shadow-sm space-y-5";
+const listBaseClasses = "space-y-3 text-base md:text-lg leading-relaxed";
+const listItemWrapperClasses = "flex items-start gap-3";
+const listItemContentClasses = "flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2";
+const stackedItemContentClasses = "flex flex-col gap-1";
+const bulletClasses = "mt-2 h-2 w-2 shrink-0 rounded-full bg-primary";
+const bulletNeutral = "mt-2 h-2 w-2 shrink-0 rounded-full bg-base-content";
+const supportingTextClasses = "text-base-content/70";
+
+const education = [
+  { title: "Ph.D. in Computer Science", subtitle: "Aug 2023 - Present · Rensselaer Polytechnic Institute (RPI), Troy, NY" },
+  { title: "M.S. in Financial Mathematics", subtitle: "Aug 2021 - Mar 2023 · University of Chicago, Chicago, IL" },
+  { title: "B.A. in Mathematics and Economics", subtitle: "Aug 2017 - May 2021 · Reed College, Portland, OR" },
+];
+
+const experience = [
+  { title: "Microsoft Research", subtitle: "Research Intern, Agentic Coding · Jun 2026 - Oct 2026 · Montreal, Canada" },
+  { title: "Asari AI", subtitle: "Founding Member of Technical Staff, LLM Agents & Training Infrastructure · May 2025 - Jun 2026 · San Francisco, CA" },
+  { title: "Caltech", subtitle: "Visiting Researcher, LLM Reasoning and Inference Scaling · Jan 2025 - Present · Pasadena, CA" },
+  { title: "NEC Laboratories America", subtitle: "Part-time Researcher, Code Generation · May 2024 - May 2025 · Princeton, NJ" },
+  { title: "Reed Research Reactor", subtitle: "Supervisor & Senior Reactor Operator (NRC licensed) · Sep 2017 - May 2021 · Portland, OR" },
+  { title: "Deloitte Consulting", subtitle: "Tax Consultancy Intern · Jul 2019 - Aug 2019 · Guangzhou, China" },
+  { title: "Siemens Management Consulting", subtitle: "Analyst Intern · Jul 2018 - Aug 2018 · Beijing, China" },
+];
+
+const service = [
+  { name: "ICML Gold Reviewer", when: "2026" },
+  { name: "NeurIPS Conference Reviewer", when: "2025" },
+  { name: "ICLR Conference Reviewer", when: "2025" },
+];
+
+const awards = [
+  {
+    html: 'Outstanding Paper Award, <a class="link link-primary" href="https://sites.google.com/view/iclr-2026-llmreasoning">ICLR 2026 Logical Reasoning Workshop</a>',
+    when: "2026",
+  },
+  { html: "Phi Beta Kappa", when: "2021" },
+  { html: "Reed Commendation for Excellence in Scholarship", when: "2018 · 2019 · 2020 · 2021" },
+  { html: "Reed Science Research Fellow", when: "2020" },
+  { html: "Reed Financial Services Fellow", when: "2019" },
+];
+
+const teaching = [
+  { course: "AI and Blockchain", detail: "Teaching Assistant · Dacheng Xiu · Booth EMBA · 2023 Summer" },
+  { course: "Options Pricing", detail: "Teaching Assistant · Roger Lee · UChicago PSD · 2023 Spring" },
+  { course: "Bayesian Statistical Inference and ML", detail: "Teaching Assistant · Gordan Ritter · UChicago PSD · 2023 Spring" },
+  { course: "Decoding Fintech", detail: "Teaching Assistant · Dacheng Xiu · Booth · 2023 Winter" },
+  { course: "Mathematical Statistics", detail: "Teaching Assistant · Jonathan Wells · Reed College · 2021 Spring" },
+  { course: "Probability Theory", detail: "Teaching Assistant · Jonathan Wells · Reed College · 2020 Fall" },
+  { course: "Macroeconomics", detail: "Teaching Assistant · Zhe (Jasmine) Jiang · Reed College · 2020 Fall" },
+  { course: "Econometrics", detail: "Teaching Assistant · Fellipe Carrera · Reed College · 2020 Fall" },
+  { course: "Introduction to Analysis", detail: "Teaching Assistant · David Krumm · Reed College · 2019 Fall" },
+];
+
+const talks = [
+  { title: "From Imitation to Exploration: Search-Driven Self-Improvement in AI Agents", where: "Adaption Labs · AI Circle · Across AI · 2026" },
+  { title: "Self-Evolving Systems & Strategic Self-Play", where: "Pebblebed · Hexo Labs · The Frontier Syndicate · 2026" },
+  { title: "Smart Problem Curation for RL Post-Training", where: "Protege · AI Collective · 2026" },
+  { title: "Scaling LLM Reasoning through Reinforcement Learning and Inference-Time Search", where: "Chemistry · AI Collective · DiversisAI · Valley · 2025" },
+  { title: "AI Reasoning at Scale with Search", where: "MIT CSAIL · 2025" },
+  { title: "Scaling LLM Reasoning through Search and RL", where: "Tencent AI Lab · 2025" },
+];
 ---
 
 <BaseLayout title="Background" sideBarActiveItemID="background">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">About Me</div>
-  </div>
+  <section class="mb-12">
+    <h1 class="text-3xl font-bold mb-5">About Me</h1>
 
-  <div class="mb-10 text-justify space-y-4">
-    <p>
-      I study the intersection of <strong>incentives, algorithms, and learning</strong> to design decision-making systems that can
-      <strong>plan, reason, and collaborate</strong> as effectively as they generalize.
-      With an interdisciplinary background in <strong>computer science</strong>, <strong>economics</strong>, and <strong>statistics</strong>,
-      my research explores how <strong>incentives and rewards</strong>, <strong>algorithmic design</strong>, and <strong>learning principles</strong>
-      interact to produce intelligent and adaptive systems.
-    </p>
-    <p>
-      Currently, my work focuses on how <strong>foundation models</strong>, such as large language models, can be harnessed for
-      <strong>sequential decision making</strong>. I explore ways to integrate ideas from <strong>reinforcement learning</strong>,
-      <strong>test-time computation</strong>, and <strong>adaptive search</strong> to enable autonomous agents that <strong>plan,
-      learn, and generalize</strong> in complex environments. I'm particularly fascinated by how such models can achieve
-      <strong>self-improvement</strong> and <strong>post-training adaptation</strong>—hallmarks of truly general intelligence.
-    </p>
-    <p>
-      I enjoy collaborations—feel free to reach out if you've got an interesting problem to chat about!
-    </p>
-    <hr class="border-t border-gray-300 dark:border-gray-700" />
-    <blockquote class="border-l-4 border-primary pl-4 italic">
-      <p>"Know what you know and know what you do not know. That is true wisdom."</p>
-      <footer>— <em>Confucius</em></footer>
-    </blockquote>
-    <p>
-      In modern terms: <em>know the known knowns, the known unknowns, and the unknown unknowns.</em> This idea guides my research
-      and reflects what I see as the central challenge in building intelligent systems: understanding and expanding the
-      boundaries of one's own knowledge.
-    </p>
-    <hr class="border-t border-gray-300 dark:border-gray-700" />
-    <p>
-      Outside of research, I enjoy <strong>playing and designing board games</strong>, <strong>reading science fiction</strong>,
-      <strong>electronic music composition</strong>, <strong>grand strategy games</strong>, <strong>fencing</strong>, and
-      <strong>squash</strong>. I find well-designed games to be elegant systems—rich sources of insight into planning, reasoning,
-      and interaction.
-    </p>
-  </div>
+    <!-- A photo can go here: a figure floated right of the first two paragraphs works well. -->
+    <div class="space-y-4 text-base md:text-lg leading-relaxed">
+      <p>
+        I build large language model agents that improve themselves: agents that learn from their own experience and
+        pick up new capabilities through exploration and discovery. My work combines reinforcement learning and
+        post-training with inference-time scaling through search and planning. I am especially interested in how agents
+        learn from feedback, adapt to unfamiliar tasks, and develop strategic reasoning and social skills, with
+        applications to coding agents and multi-agent collaboration in open-ended environments.
+      </p>
+      <p>
+        Along the way this has touched reward modeling and credit assignment, adaptive curricula and online learning,
+        and learning from synthetic data, self-play, and self-reflection.
+      </p>
+      <p>
+        I came to this from an unusual direction. I trained as a mathematician and economist at Reed, studied financial
+        mathematics at Chicago, and worked on market and mechanism design before moving into reinforcement learning.
+        That background still shapes how I think about agents: as systems whose <strong>incentives, algorithms, and
+        learning dynamics</strong> have to be designed together.
+      </p>
+      <p>
+        I enjoy collaborations. If you have an interesting problem, <a class="link link-primary" href="mailto:jonathan.li.connect@gmail.com">reach out</a>.
+      </p>
+      <hr class="border-t border-base-200" />
+      <blockquote class="border-l-4 border-primary pl-4 italic">
+        <p>"Know what you know and know what you do not know. That is true wisdom."</p>
+        <footer>— <em>Confucius</em></footer>
+      </blockquote>
+      <p>
+        In modern terms: <em>know the known knowns, the known unknowns, and the unknown unknowns.</em> This idea guides my
+        research and reflects what I see as the central challenge in building intelligent systems: understanding and
+        expanding the boundaries of one's own knowledge.
+      </p>
+      <hr class="border-t border-base-200" />
+      <p>
+        Outside of research, I enjoy playing and designing board games, reading science fiction, electronic music
+        composition, grand strategy games, fencing, and squash. I find well-designed games to be elegant systems and rich
+        sources of insight into planning, reasoning, and interaction.
+      </p>
+    </div>
+  </section>
 
-  <section class="mb-14">
+  <section id="experience" class="mb-14">
     <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <div class="text-3xl w-full font-bold">Background</div>
-      <a
-        class="text-primary font-semibold hover:underline whitespace-nowrap"
-        href="/pdfs/CV.pdf"
-        target="_blank"
-        rel="noopener"
-      >
-        View CV
+      <h2 class="text-3xl font-bold">Background</h2>
+      <a class="text-primary font-semibold hover:underline whitespace-nowrap" href="/pdfs/CV.pdf" target="_blank" rel="noopener">
+        View CV (PDF)
       </a>
     </div>
 
     <div class="grid gap-12">
       <div>
-        <div class="text-2xl font-semibold mb-4">Education</div>
+        <h3 class="text-2xl font-semibold mb-4">Education</h3>
         <div class="time-line-container grid gap-4">
-          <TimeLineElement
-            title="Ph.D. in Computer Science"
-            subtitle="Aug 2023 - Present · Rensselaer Polytechnic Institute (RPI), Troy, NY"
-          />
-          <TimeLineElement
-            title="M.S. in Financial Mathematics"
-            subtitle="Aug 2021 - Mar 2023 · University of Chicago, Chicago, IL"
-          />
-          <TimeLineElement
-            title="B.S. in Mathematics and Economics"
-            subtitle="Aug 2017 - May 2021 · Reed College, Portland, OR"
-          />
+          {education.map((e) => <TimeLineElement title={e.title} subtitle={e.subtitle} />)}
         </div>
       </div>
 
       <div>
-        <div class="text-2xl font-semibold mb-4">Work Experience</div>
+        <h3 class="text-2xl font-semibold mb-4">Experience</h3>
         <div class="time-line-container grid gap-4">
-          <TimeLineElement
-            title="NEC Laboratories America"
-            subtitle="Part-time Researcher, Code Generation · May 2024 - Present · Princeton, NJ"
-          />
-          <TimeLineElement
-            title="Reed Research Reactor"
-            subtitle="Supervisor & Senior Reactor Operator · Sep 2017 - May 2021 · Portland, OR"
-          />
-          <TimeLineElement
-            title="Deloitte Consulting"
-            subtitle="Tax Consultancy Intern · Jul 2019 - Aug 2019 · Guangzhou, China"
-          />
-          <TimeLineElement
-            title="Siemens Management Consulting"
-            subtitle="Analyst Intern · Jul 2018 - Aug 2018 · Beijing, China"
-          />
+          {experience.map((e) => <TimeLineElement title={e.title} subtitle={e.subtitle} />)}
         </div>
+      </div>
 
-        <div class="mt-10">
-          <div class="text-2xl font-semibold mb-4">Skills</div>
-          <div class="grid gap-3 md:grid-cols-2">
-            <div class="flex items-start gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-primary"></span>
-              <div>
-                <div class="font-semibold">Computer languages</div>
-                <div>C++, Python, R, Golang, SQL, Mathematica, PyTorch</div>
-              </div>
+      <div>
+        <h3 class="text-2xl font-semibold mb-4">Skills</h3>
+        <div class="grid gap-3 md:grid-cols-2">
+          <div class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span>
+            <div>
+              <div class="font-semibold">Programming languages and tools</div>
+              <div>Python, C++, R, PyTorch, Kubernetes, Go, SQL, Mathematica</div>
             </div>
-            <div class="flex items-start gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-primary"></span>
-              <div>
-                <div class="font-semibold">Human languages</div>
-                <div>English (native), Chinese (native)</div>
-              </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span>
+            <div>
+              <div class="font-semibold">Human languages</div>
+              <div>English (native), Chinese (native)</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="mt-12">
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-bold">Service</h2>
+        <div class="hidden sm:block h-px flex-1 bg-base-200"></div>
+      </div>
+      <ul class={listBaseClasses}>
+        {service.map((s) => (
+          <li class={listItemWrapperClasses}>
+            <span class={bulletClasses}></span>
+            <div class={listItemContentClasses}>
+              <span class="font-semibold">{s.name}</span>
+              <span class={supportingTextClasses}>{s.when}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="awards" class="mt-12">
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-bold">Honors and Awards</h2>
+        <div class="hidden sm:block h-px flex-1 bg-base-200"></div>
+      </div>
+      <ul class={listBaseClasses}>
+        {awards.map((a) => (
+          <li class={listItemWrapperClasses}>
+            <span class={bulletClasses}></span>
+            <div class={listItemContentClasses}>
+              <span class="font-semibold" set:html={a.html} />
+              <span class={supportingTextClasses}>{a.when}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="teaching" class="mt-12">
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-bold">Teaching</h2>
+        <div class="hidden sm:block h-px flex-1 bg-base-200"></div>
+      </div>
+      <ul class={listBaseClasses}>
+        {teaching.map((t) => (
+          <li class={listItemWrapperClasses}>
+            <span class={bulletClasses}></span>
+            <div class={listItemContentClasses}>
+              <span class="font-semibold">{t.course}</span>
+              <span class={supportingTextClasses}>{t.detail}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="talks" class="mt-12">
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-bold">Talks</h2>
+        <div class="hidden sm:block h-px flex-1 bg-base-200"></div>
+      </div>
+      <ul class={listBaseClasses}>
+        {talks.map((t) => (
+          <li class={listItemWrapperClasses}>
+            <span class={bulletClasses}></span>
+            <div class={stackedItemContentClasses}>
+              <span class="font-semibold">{t.title}</span>
+              <span class={supportingTextClasses}>{t.where}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="notes" class="mt-12">
+    <div class={sectionCardClasses}>
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-bold">On My Name</h2>
+        <div class="hidden sm:block h-px flex-1 bg-base-200"></div>
+      </div>
+      <div class="space-y-4 text-base md:text-lg leading-relaxed">
+        <p class="font-medium">I go by either Jonathan Li or Jonathan Light. I usually use Light in publications because:</p>
+        <ul class="space-y-2">
+          <li class={listItemWrapperClasses}>
+            <span class={bulletNeutral}></span>
+            <span>Li is a very common last name. Without exception, every institution I've been to has had at least one other Jonathan Li.</span>
+          </li>
+          <li class={listItemWrapperClasses}>
+            <span class={bulletNeutral}></span>
+            <span>Light is the semantic translation of my Chinese given name.</span>
+          </li>
+          <li class={listItemWrapperClasses}>
+            <span class={bulletNeutral}></span>
+            <span>Light nearly preserves the lexicographic ordering of Li.</span>
+          </li>
+        </ul>
+        <p>
+          I've also considered using "Plum" (the semantic translation of my last name), but it doesn't have the same ring to it, nor does it
+          preserve the lexicographic ordering of Li. Generally I find semantic translations to be more faithful to the original meaning, as
+          convenient as pinyin is for romanization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12 mb-12">
+    <div class={`${sectionCardClasses} flex flex-col items-center text-center`}>
+      <h2 class="text-3xl font-bold">Site Visitors</h2>
+      <div class="w-full flex justify-center">
+        <script
+          type="text/javascript"
+          id="clstr_globe"
+          src="https://clustrmaps.com/globe.js?d=PeHeHzW3ltrX6TSgOTg0FnVvurZigdczh36CUtajiD8"
+        ></script>
       </div>
     </div>
   </section>

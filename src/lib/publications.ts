@@ -11,10 +11,13 @@ export interface Publication {
   badge?: string;
   description: string;
   url: string;
+  /** File name under src/assets/figures/, optimized at build time. */
   image?: string;
   links: PublicationLink[];
   /** Research topics used for filtering on the publications page. */
   topics: string[];
+  /** Shown in the "Selected Publications" block on the home page. */
+  featured?: boolean;
 }
 
 export function topicSlug(topic: string): string {
@@ -53,8 +56,9 @@ export const publications: Publication[] = [
     description:
       "A scalable, fully automated curriculum-learning framework for RL post-training of LLMs. Learns a neural curator that selects training problems to directly maximize <strong>expected policy improvement</strong>, formulated as a non-stationary bandit with regret guarantees. Delivers <strong>+28.6% on AIME2024</strong>, <strong>+30.5% on ARC-1D</strong>, and up to <strong>80% speedup</strong> over the strongest baseline.",
     url: "https://actor-curator.github.io/",
-    image: "/figures/actor_curator.png",
+    image: "actor_curator.png",
     topics: ["RL Post-Training", "Curriculum Learning", "LLM Reasoning"],
+    featured: true,
     links: [
       { label: "Code", href: "https://github.com/actor-curator/actor-curator" },
       { label: "Website", href: "https://actor-curator.github.io/" },
@@ -62,30 +66,43 @@ export const publications: Publication[] = [
     ],
   },
   {
+    title: "A Data-Centric Online Market for Machine Learning: From Discovery to Pricing",
+    subtitle:
+      "Sainyam Galhotra*, Minbiao Han*, Jonathan Light*, Steven Xia*, Raul Castro Fernandez, Haifeng Xu",
+    badge: "ICML 2026",
+    description:
+      "A data-augmented AutoML market that automatically augments a buyer's training data with external datasets and prices the resulting model by its <strong>measured performance gain</strong> rather than compute. Pricing is grounded in the instrumental value of the sourced data, which sidesteps direct dataset pricing, mitigates strategic buyer behavior, and accommodates diverse valuations through menu-based options.",
+    url: "https://arxiv.org/abs/2310.17843",
+    topics: ["Data Markets", "Mechanism Design"],
+    links: [{ label: "PDF", href: "https://arxiv.org/pdf/2310.17843" }],
+  },
+  {
     title: "DISC: Dynamic Decomposition Improves LLM Inference Scaling",
     subtitle:
-      "Jonathan Light*, Wei Cheng, Benjamin Riviere, Wu Yue, Masafumi Oyamada, Mengdi Wang, Yisong Yue, Santiago Paternain, Haifeng Chen",
+      "Jonathan Light, Wei Cheng, Benjamin Riviere, Wu Yue, Masafumi Oyamada, Mengdi Wang, Yisong Yue, Santiago Paternain, Haifeng Chen",
     badge: "NeurIPS 2025",
     description:
       "Adaptive, compute-aware reasoning - dynamically expands or contracts thought steps for efficient problem-solving. Delivers +33% accuracy vs DeepSeek-R1 at equal tokens and 5-10% lower error on APPS, MATH, and LiveCodeBench.",
     url: "https://disc-search.github.io/",
-    image: "/figures/disc.png",
+    image: "disc.png",
     topics: ["Inference Scaling", "LLM Reasoning", "Code Generation"],
+    featured: true,
     links: [
       { label: "Website", href: "https://disc-search.github.io/" },
       { label: "PDF", href: "https://arxiv.org/pdf/2502.16706" },
     ],
   },
   {
-    title: "Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search",
+    title: "Strategist: Self-improvement of LLM Decision Making via Bi-Level Tree Search",
     subtitle:
-      "Jonathan Light*, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu",
+      "Jonathan Light, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu",
     badge: "ICLR 2025",
     description:
       'LLM + MCTS hybrid that <strong>learns to optimize its own decision process</strong> through self-play and strategy refinement. Outperforms RL and existing LLM agents, achieves <strong>human-level performance</strong> in complex games. Highlighted in the <a class="link link-primary font-semibold" href="https://docs.google.com/presentation/d/1GmZmoWOa2O92BPrncRcTKa15xvQGhq7g4I4hJSNlC0M/edit?slide=id.g2d35a16f27e_0_24#slide=id.g2d35a16f27e_0_24" target="_blank" rel="noopener noreferrer"><strong>State of AI Report 2024</strong></a> as a breakthrough in autonomous agent design.',
     url: "https://llm-strategist.github.io/",
-    image: "/figures/strategist.png",
+    image: "strategist.png",
     topics: ["Tree Search", "Multi-Agent & Games", "LLM Agents"],
+    featured: true,
     links: [
       { label: "Code", href: "https://github.com/jonathanmli/Avalon-LLM/tree/main/strategist" },
       { label: "Website", href: "https://llm-strategist.github.io/" },
@@ -100,7 +117,7 @@ export const publications: Publication[] = [
     description:
       "Introduces <strong>Retrospection-Only Fine-Tuning (ROFT)</strong>: an agent attempts a task, writes a retrospective explanation, and is fine-tuned on that explanation alone - no verifier or reward-based update. With Qwen3.5-4B, reaches <strong>49.2% on SWE-bench Verified</strong> and <strong>26.8% on SWE-bench Pro</strong> after 20 updates, beating GRPO after 40 updates.",
     url: "https://arxiv.org/abs/2609.35741",
-    image: "/figures/roft.png",
+    image: "roft.png",
     topics: ["LLM Agents", "RL Post-Training", "Code Generation"],
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2609.35741" }],
   },
@@ -112,7 +129,7 @@ export const publications: Publication[] = [
     description:
       "Introduces <strong>JAZ</strong>, a minimal LLM agent framework built on a single language primitive, <strong>invoke</strong>: a function whose body is written by the LLM at call time, with recursive calls and the full interaction history available as variables in a Python REPL. With prompting alone and no dedicated memory or meta-harness, JAZ beats Letta (MemGPT) by <strong>8% at half the cost</strong> on long-horizon StuLife recall and beats ACE by <strong>4% at lower cost</strong> on AppWorld self-improvement.",
     url: "https://arxiv.org/abs/2609.26891",
-    image: "/figures/jaz.png",
+    image: "jaz.png",
     topics: ["LLM Agents", "Code Generation"],
     links: [
       { label: "Code", href: "https://github.com/jaz-lang/jaz" },
@@ -120,14 +137,14 @@ export const publications: Publication[] = [
     ],
   },
   {
-    title: "Scattered Forest Search: Smarter Code Space Optimization improves LLM Inference Scaling",
+    title: "Scattered Forest Search: Smarter Code Space Exploration with LLMs",
     subtitle:
-      "Jonathan Light*, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao, Ziniu Hu, Haifeng Chen, Wei Cheng",
+      "Jonathan Light, Yue Wu, Yiyou Sun, Wenchao Yu, Yanchi Liu, Xujiang Zhao, Ziniu Hu, Haifeng Chen, Wei Cheng",
     badge: "ICLR 2025",
     description:
       "Reframes code generation as black-box optimization: uses <strong>Scattering</strong>, <strong>Foresting</strong>, and <strong>Scouting</strong> to boost exploration + feedback exploitation. Achieves <strong>SOTA on HumanEval, MBPP, APPS, CodeContests, LeetCode</strong> (e.g. 87.2% pass@1 on HumanEval) while halving iterations vs prior methods.",
     url: "https://codespace-optimization.github.io/",
-    image: "/figures/sfs.png",
+    image: "sfs.png",
     topics: ["Inference Scaling", "Code Generation", "Tree Search"],
     links: [
       { label: "Code", href: "https://github.com/codespace-optimization/sfs" },
@@ -143,18 +160,18 @@ export const publications: Publication[] = [
     description:
       "Decomposes language-described environments into intuitive components, enabling zero-shot LLM world models for efficient MCTS in multi-agent settings.",
     url: "https://arxiv.org/pdf/2411.15998",
-    image: "/figures/pianist.png",
+    image: "pianist.png",
     topics: ["World Models", "Multi-Agent & Games", "Tree Search"],
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2411.15998" }],
   },
   {
-    title: "From Text to Tactic: Evaluating LLMs Playing the Game of Avalon",
-    subtitle: "Jonathan Light*, Min Cai, Sheng Shen, Ziniu Hu",
+    title: "AvalonBench: Evaluating LLMs Playing the Game of Avalon",
+    subtitle: "Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu",
     badge: "NeurIPS 2023 Workshop",
     description:
       "Introduces AvalonBench to benchmark LLM agents in strategic social deduction games and highlights the gap between current agents and engineered bots.",
     url: "https://avalonbench.github.io/",
-    image: "/figures/merlin.png",
+    image: "merlin.png",
     topics: ["Multi-Agent & Games", "LLM Agents", "Benchmarks"],
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2310.05036.pdf" },
@@ -169,7 +186,7 @@ export const publications: Publication[] = [
     description:
       "Synthesizes compact, high-quality offline RL datasets that retain policy performance comparable to training on full datasets.",
     url: "https://datasetdistillation4rl.github.io/",
-    image: "/figures/dataset_distill_rl.png",
+    image: "dataset_distill_rl.png",
     topics: ["Offline RL", "Dataset Distillation"],
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2407.20299" },

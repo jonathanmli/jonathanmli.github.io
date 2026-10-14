@@ -29,7 +29,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Or the Node.js version required by your project
+          node-version: '22'
           cache: 'npm' # Or 'pnpm', 'yarn'
       - name: Install dependencies
         run: npm ci # Or pnpm install --frozen-lockfile, yarn install --frozen-lockfile
