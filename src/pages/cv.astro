@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import { Image } from "astro:assets";
+import headshot from "../assets/photos/headshot.jpg";
+import posterPhoto from "../assets/photos/colm-2026-poster.jpg";
 
 const sectionCardClasses = "rounded-2xl border border-base-200/60 bg-base-100/80 p-6 shadow-sm space-y-5";
 const listBaseClasses = "space-y-3 text-base md:text-lg leading-relaxed";
@@ -70,8 +73,15 @@ const talks = [
   <section class="mb-12">
     <h1 class="text-3xl font-bold mb-5">About Me</h1>
 
-    <!-- A photo can go here: a figure floated right of the first two paragraphs works well. -->
     <div class="space-y-4 text-base md:text-lg leading-relaxed">
+      <Image
+        src={headshot}
+        width={560}
+        format="webp"
+        alt="Jonathan Light"
+        loading="eager"
+        class="float-none sm:float-right w-40 sm:w-48 md:w-56 mx-auto sm:ml-6 mb-4 rounded-2xl shadow-sm"
+      />
       <p>
         I build large language model agents that improve themselves: agents that learn from their own experience and
         pick up new capabilities through exploration and discovery. My work combines reinforcement learning and
@@ -92,7 +102,7 @@ const talks = [
       <p>
         I enjoy collaborations. If you have an interesting problem, <a class="link link-primary" href="mailto:jonathan.li.connect@gmail.com">reach out</a>.
       </p>
-      <hr class="border-t border-base-200" />
+      <hr class="border-t border-base-200 clear-both" />
       <blockquote class="border-l-4 border-primary pl-4 italic">
         <p>"Know what you know and know what you do not know. That is true wisdom."</p>
         <footer>— <em>Confucius</em></footer>
@@ -155,6 +165,19 @@ const talks = [
       </div>
     </div>
   </section>
+
+  <figure class="mt-12 space-y-2">
+    <Image
+      src={posterPhoto}
+      width={1200}
+      format="webp"
+      alt="Jonathan Light pointing at the Actor-Curator poster at COLM 2026"
+      class="w-full rounded-2xl shadow-sm"
+    />
+    <figcaption class="text-sm text-base-content/70 text-center">
+      Presenting <a class="link link-primary" href="https://actor-curator.github.io/">Actor-Curator</a> at COLM 2026.
+    </figcaption>
+  </figure>
 
   <section id="services" class="mt-12">
     <div class={sectionCardClasses}>
