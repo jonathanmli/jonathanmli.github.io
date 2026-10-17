@@ -73,6 +73,7 @@ export const publications: Publication[] = [
     description:
       "A data-augmented AutoML market that automatically augments a buyer's training data with external datasets and prices the resulting model by its <strong>measured performance gain</strong> rather than compute. Pricing is grounded in the instrumental value of the sourced data, which sidesteps direct dataset pricing, mitigates strategic buyer behavior, and accommodates diverse valuations through menu-based options.",
     url: "https://arxiv.org/abs/2310.17843",
+    image: "data_market.png",
     topics: ["Data Markets", "Mechanism Design"],
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2310.17843" }],
   },
